@@ -2,6 +2,7 @@
 
 import { BsChevronLeft } from 'react-icons/bs'
 import { useState } from 'react'
+import TabShape from './TabShape'
 
 type TabList = 'shape' | 'text' | 'outline' | 'deco'
 const tabList: { id: TabList; text: string }[] = [
@@ -39,7 +40,7 @@ export default function CreateCake() {
   const getTabContent = () => {
     switch (currentTab) {
       case 'shape':
-        return <div>모양 선택 컴포넌트</div>
+        return <TabShape />
       case 'text':
         return <div>텍스트 선택 컴포넌트</div>
       case 'outline':
@@ -61,7 +62,7 @@ export default function CreateCake() {
           {
             tabList.map(({ id, text }) => (
               <li 
-                className={`${getTabTextColor(currentTab === id)} w-full text-center border-b-2`}
+                className={`${getTabTextColor(currentTab === id)} w-full text-center border-b-2 cursor-pointer`}
                 key={id}
                 onClick={() => updateCurrentTab(id)}
               >
