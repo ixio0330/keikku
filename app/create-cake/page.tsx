@@ -51,7 +51,7 @@ export default function CreateCake() {
   };
 
   return (
-    <div className='w-96 px-3 m-auto border-box'>
+    <div className='w-96 px-3 m-auto border-box min-h-screen relative'>
       <header className='py-3.5 flex justify-between items-center'>
         <BsChevronLeft />
         <h1 className='text-lg font-bold'>케이크 제작</h1>
@@ -72,6 +72,14 @@ export default function CreateCake() {
           }
         </ul>
         {getTabContent()}
+        <div className="flex w-full absolute bottom-0 left-0 py-4">
+          <button className='w-3/5 text-[#175428] font-semibold border border-[#175428] rounded-lg box-border p-2 bg-white font-xs mr-4'>
+            이전
+          </button>
+          <button className='w-full text-white font-semibold border border-[#175428] rounded-lg box-border p-2 bg-[#175428] font-xs'>
+            다음
+          </button>
+        </div>
       </section>
     </div>
   )
