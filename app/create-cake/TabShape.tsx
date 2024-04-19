@@ -2,8 +2,20 @@
 
 import { useState } from 'react'
 
+const cakeColors = [
+  { color: '#fff', className: 'border-gray-200 bg-white' },
+  { color: '#CE8FFF', className: 'border-[#CE8FFF] bg-[#CE8FFF]' },
+  { color: '#EE9998', className: 'border-[#EE9998] bg-[#EE9998]' },
+  { color: '#98C5E8', className: 'border-[#98C5E8] bg-[#98C5E8]' },
+  { color: '#86D180', className: 'border-[#86D180] bg-[#86D180]' },
+  { color: '#FFC416', className: 'border-[#FFC416] bg-[#FFC416]' },
+];
+
 export default function TabShape() {
   const [cakeColor, setCakeColor] = useState('#fff');
+  const updateCakeColor = (color: string) => {
+    setCakeColor(color);
+  };
 
   return (
     <div className="flex flex-col space-y-10">
@@ -45,15 +57,24 @@ export default function TabShape() {
       <div>
         <h2 className="font-bold text-lg">모양</h2>
         <ul className="flex">
-          <li className="border rounded-2xl w-24 h-24"></li>
+          <li className="border rounded-2xl bg-white w-24 h-24"></li>
         </ul>
       </div>
 
       {/* 색상 */}
       <div>
         <h2 className="font-bold text-lg">색상</h2>
-        <ul className="flex">
-          <li className="border rounded-full w-7 h-7"></li>
+        <ul className="flex w-full justify-between">
+          {
+            cakeColors.map(({ color, className }) => (
+              <li
+                key={color} 
+                onClick={() => updateCakeColor(color)}
+                className={`rounded-full w-7 h-7 border ${className}`} 
+              />
+            ))
+          }
+          <li><input type="color" /></li>
         </ul>
       </div>
     </div>
