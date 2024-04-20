@@ -1,15 +1,19 @@
 'use client'
 
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
+import Image from 'next/image'
+import { BsCheck2 } from 'react-icons/bs'
 
 const cakeColors = [
-  { color: '#fff', className: 'border-gray-200 bg-white' },
-  { color: '#CE8FFF', className: 'border-[#CE8FFF] bg-[#CE8FFF]' },
-  { color: '#EE9998', className: 'border-[#EE9998] bg-[#EE9998]' },
-  { color: '#98C5E8', className: 'border-[#98C5E8] bg-[#98C5E8]' },
-  { color: '#86D180', className: 'border-[#86D180] bg-[#86D180]' },
-  { color: '#FFC416', className: 'border-[#FFC416] bg-[#FFC416]' },
+  { color: '#fff', className: 'bg-white' },
+  { color: '#CE8FFF', className: 'bg-[#CE8FFF]' },
+  { color: '#EE9998', className: 'bg-[#EE9998]' },
+  { color: '#98C5E8', className: 'bg-[#98C5E8]' },
+  { color: '#86D180', className: 'bg-[#86D180]' },
+  { color: '#FFC416', className: 'bg-[#FFC416]' },
 ];
+
+type CakeShape = 'circle' | 'rectangle'
 
 export default function TabShape() {
   const [cakeColor, setCakeColor] = useState('#fff');
@@ -17,11 +21,11 @@ export default function TabShape() {
     setCakeColor(color);
   };
 
-  return (
-    <div className="flex flex-col space-y-10">
-      {/* 케이크 틀 */}
-      <div className="m-auto border rounded-2xl w-72 h-72 bg-[#FFF8EB] flex justify-center items-center">
-        <svg width="240" height="165" viewBox="0 0 240 165" fill="none" xmlns="http://www.w3.org/2000/svg">
+  const [cakeShape, setCakeShape] = useState<CakeShape>('circle');
+  const getCakeFrame = (shape: CakeShape) => {
+    switch (shape) {
+      case 'circle':
+        return <svg width="240" height="165" viewBox="0 0 240 165" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g filter="url(#filter0_d_548_593)">
         <path d="M6 33.6846H233.5V138.038C233.5 143.153 176.347 157.581 134.092 158.068C68.0759 158.828 6 142.398 6 132.598V33.6846Z" fill={cakeColor}/>
         </g>
@@ -51,6 +55,22 @@ export default function TabShape() {
         </filter>
         </defs>
         </svg>
+      case 'rectangle':
+        return null
+    }
+  };
+
+  const [customColor, setCustomColor] = useState('');
+  const handleChangeCustomColor = (e: ChangeEvent<HTMLInputElement>) => {
+    setCustomColor(e.target.value);
+    setCakeColor(e.target.value);
+  }
+
+  return (
+    <div className="flex flex-col space-y-10">
+      {/* 케이크 틀 */}
+      <div className="m-auto border rounded-2xl w-72 h-72 bg-[#FFF8EB] flex justify-center items-center">
+        { getCakeFrame(cakeShape) }
       </div>
 
       {/* 모양 */}
@@ -70,11 +90,42 @@ export default function TabShape() {
               <li
                 key={color} 
                 onClick={() => updateCakeColor(color)}
-                className={`rounded-full w-7 h-7 border ${className}`} 
-              />
+                className={`rounded-full w-7 h-7 border ${className} flex justify-center items-center`}>
+                {
+                  color === cakeColor && <BsCheck2 size={20} />
+                }
+              </li>
             ))
           }
-          <li><input type="color" /></li>
+          <li className="relative">
+            {
+              customColor ? 
+              <div className="relative z-20 border w-7 h-7 rounded-full overflow-hidden">
+                <input 
+                  className="bg-white h-10 absolute -top-2 -left-2" type="color"
+                  onChange={handleChangeCustomColor} 
+                />
+              </div> :
+              <div className="opacity-0 relative z-20 border w-7 h-7 rounded-full overflow-hidden">
+                <input 
+                  className="bg-white h-10 absolute -top-2 -left-2" type="color"
+                  onChange={handleChangeCustomColor} 
+                />
+            </div>
+            }
+            {
+              !customColor && cakeColor !== customColor && <Image 
+                width={28}
+                height={28}
+                alt="사용자 정의 색상"
+                src="/custom-color.png"
+                className="absolute top-0 left-0 z-10"
+              />
+            }
+            {
+              cakeColor === customColor && <BsCheck2 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30" size={20} />
+            }
+          </li>
         </ul>
       </div>
     </div>
