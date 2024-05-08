@@ -102,8 +102,7 @@ export default function TabShape({ onClickNext }: { onClickNext: () => void }) {
   return (
     <div className="flex flex-col space-y-10">
       {/* 케이크 틀 */}
-      {/* TODO 테두리 크기 다른 탭이랑 똑같이 하면 어떨지 */}
-      <div className="m-auto border rounded-2xl w-72 h-72 bg-[#FFF8EB] flex justify-center items-center">
+      <div className="m-auto border rounded-2xl w-80 h-80 bg-[#FFF8EB] flex justify-center items-center">
         { getCakeFrame(cakeShape) }
       </div>
 
