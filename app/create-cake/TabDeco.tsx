@@ -1,4 +1,4 @@
-export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () => void, onClickNext: () => void }) {
+export default function TabDeco({ onClickPrev, onClickNext }: { onClickPrev: () => void, onClickNext: () => void }) {
   return (
     <div className="flex flex-col space-y-10">
       <div className="m-auto border rounded-2xl w-80 h-80 bg-[#FFF8EB] flex justify-center items-center">
