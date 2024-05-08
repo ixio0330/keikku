@@ -132,7 +132,7 @@ export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () 
               >
               {
                 fontStyleList.map(({ text, value, className }) => (
-                  <option key={`font-size-${value}`} value={value}>{text}</option>
+                  <option key={`font-family-${value}`} value={value}>{text}</option>
                 ))
               }
             </select>
