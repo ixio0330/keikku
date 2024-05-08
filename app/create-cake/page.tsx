@@ -4,6 +4,8 @@ import { BsChevronLeft } from 'react-icons/bs'
 import { useState } from 'react'
 import TabShape from './TabShape'
 import TabText from './TabText'
+import TabOutline from './TabOutline'
+import TabDeco from './TabDeco'
 
 type TabList = 'shape' | 'text' | 'outline' | 'deco'
 const tabList: { id: TabList; text: string }[] = [
@@ -38,11 +40,11 @@ export default function CreateCake() {
       case 'shape':
         return <TabShape onClickNext={() => setCurrentTab("text")} />
       case 'text':
-        return <TabText />
+        return <TabText onClickPrev={() => setCurrentTab("shape")} onClickNext={() => setCurrentTab("outline")} />
       case 'outline':
-        return <div>테두리 선택 컴포넌트</div>
+        return <TabOutline onClickPrev={() => setCurrentTab("text")} onClickNext={() => setCurrentTab("deco")} />
       case 'deco':
-        return <div>데코 선택 컴포넌트</div>
+        return <TabDeco onClickPrev={() => setCurrentTab("outline")} onClickNext={() => console.log("완성!")} />
     }
   };
 
