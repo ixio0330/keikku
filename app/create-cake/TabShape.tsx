@@ -97,11 +97,12 @@ export default function TabShape({ onClickNext }: { onClickNext: () => void }) {
   const handleChangeCustomColor = (e: ChangeEvent<HTMLInputElement>) => {
     setCustomColor(e.target.value);
     setCakeColor(e.target.value);
-  }
+  };
 
   return (
     <div className="flex flex-col space-y-10">
       {/* 케이크 틀 */}
+      {/* TODO 테두리 크기 다른 탭이랑 똑같이 하면 어떨지 */}
       <div className="m-auto border rounded-2xl w-72 h-72 bg-[#FFF8EB] flex justify-center items-center">
         { getCakeFrame(cakeShape) }
       </div>
@@ -109,7 +110,7 @@ export default function TabShape({ onClickNext }: { onClickNext: () => void }) {
       {/* 모양 */}
       <div>
         <h2 className="font-bold text-lg">모양</h2>
-        <ul className="flex space-x-5">
+        <ul className="mt-3 flex space-x-5">
           <li 
             className={`flex justify-center items-center border-2 rounded-2xl bg-white w-24 h-24 ${getShapeStyle(cakeShape === "circle")}`}
             onClick={() => setCakeShape("circle")}
@@ -170,6 +171,7 @@ export default function TabShape({ onClickNext }: { onClickNext: () => void }) {
         </ul>
       </div>
 
+      {/* 버튼 */}
       <div className="flex w-full absolute bottom-0 left-0 py-4">
         <button 
           onClick={onClickNext}
