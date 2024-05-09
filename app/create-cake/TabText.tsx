@@ -118,7 +118,10 @@ export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () 
     <div className="flex flex-col space-y-10">
       {/* 케이크 틀 */}
       <div className="m-auto border rounded-2xl w-80 h-80 bg-[#FFF8EB] flex justify-center items-center">
-        <div className="w-64 h-64 rounded-full bg-[#B0D5FF]" />
+        <div 
+          onClick={() => console.log("케이크 클릭!")}
+          className="w-64 h-64 rounded-full bg-[#B0D5FF]" 
+        />
       </div>
       
       {/* 서체 */}

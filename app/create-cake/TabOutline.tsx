@@ -15,7 +15,7 @@ const outlineColors = [
   { color: '#FFC416', className: 'bg-[#FFC416]' },
 ];
 
-const getShapeStyle = (isSelected: boolean) => isSelected ? "border-[#175428] bg-[#E6F6F4]" : "border-gray-300 bg-white";
+const getShapeStyle = (isSelected: boolean) => isSelected ? "border-[#175428] bg-emerald-100" : "border-gray-300 bg-white";
 const getShapeCakeStyle = (isSelected: boolean) => isSelected ? "bg-white" : "bg-gray-300";
 const getColorStyle = (isSelected: boolean) => isSelected ? "border-[#175428]" : "border-transparent";
 
