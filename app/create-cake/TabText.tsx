@@ -1,7 +1,7 @@
 'use client'
 
 import Image from "next/image";
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, MouseEventHandler, useState } from 'react'
 
 const editorList = [
   {
@@ -77,7 +77,6 @@ const fontStyleList = [
     className: "",
   },
 ];
-
 const textColors = [
   { color: '#fff', className: 'bg-white' },
   { color: '#1F2227', className: 'bg-[#1F2227]' },
@@ -87,7 +86,7 @@ const textColors = [
   { color: '#001582', className: 'bg-[#001582]' },
 ];
 
-const isInclude = (isInclude: boolean) => isInclude ? "bg-gray-400" : "bg-white";
+const isInclude = (isInclude: boolean) => isInclude ? "border-[#175428]" : "border-transparent";
 const getColorStyle = (isSelected: boolean) => isSelected ? "border-[#175428]" : "border-transparent";
 
 export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () => void, onClickNext: () => void }) {
@@ -114,14 +113,33 @@ export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () 
     setCakeColor(e.target.value);
   };
 
+  const [inputPosition, setInputPosition] = useState({ x: 0, y: 0 });
+  const handleClickCake: MouseEventHandler<HTMLDivElement> = (e) => {
+    const { clientX, clientY } = e.nativeEvent;
+    setInputPosition({ x: clientX, y: clientY });
+  };
+
+
+  const [text, setText] = useState("");
+  const updateText = (e: ChangeEvent<HTMLInputElement>) => {
+    setText(e.target.value);
+  };
+
+  const [fontSize, setFontSize] = useState(20);
+
   return (
     <div className="flex flex-col space-y-10">
       {/* 케이크 틀 */}
       <div className="m-auto border rounded-2xl w-80 h-80 bg-[#FFF8EB] flex justify-center items-center">
         <div 
-          onClick={() => console.log("케이크 클릭!")}
-          className="w-64 h-64 rounded-full bg-[#B0D5FF]" 
-        />
+          onClick={handleClickCake}
+          className="relative w-64 h-64 rounded-full bg-[#B0D5FF] overflow-hidden" 
+        >
+          <textarea
+            onClick={e => e.stopPropagation()}
+            className={`w-auto absolute resize-none bg-white border-transparent outline-none focus:border-black`} style={{ left: inputPosition.x - 644, top: inputPosition.y - 152, fontSize }} 
+          />
+        </div>
       </div>
       
       {/* 서체 */}
@@ -143,7 +161,9 @@ export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () 
           <li className="w-3/12">
             <select 
               className="bg-white border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-[#175428] focus:border-[#175428] block w-full p-2.5 outline-none"
-              >
+              value={fontSize}
+              onChange={e => setFontSize(Number(e.target.value))}
+            >
               {
                 Array(11).fill(0).map((_, idx) => (
                   <option key={`font-size-${idx + 20}`} value={idx + 20}>{idx + 20}pt</option>
@@ -158,7 +178,7 @@ export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () 
             editorList.map(({ src, alt, value }) => (
               <li 
                 key={value}
-                className={`${isInclude(editor.has(value))}`}
+                className={`p-[6px] border-2 rounded-full ${isInclude(editor.has(value))}`}
                 onClick={() => addEditorItem(value)}
               >
                 <Image 
