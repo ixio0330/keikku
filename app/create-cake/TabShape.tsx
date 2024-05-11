@@ -2,6 +2,7 @@
 
 import { ChangeEvent, useState } from 'react'
 import Image from 'next/image'
+import ShapeList from './ShapeList';
 import { useCreateCakeContext, CakeShape } from '@/context/useCreateCake';
 
 const cakeColors = [
@@ -105,21 +106,21 @@ export default function TabShape({ onClickNext }: { onClickNext: () => void }) {
 
       {/* 모양 */}
       <div>
-        <h2 className="font-bold text-lg">모양</h2>
-        <ul className="mt-3 flex space-x-5">
-          <li 
-            className={`flex justify-center items-center border-2 rounded-2xl bg-white w-24 h-24 ${getShapeStyle(cakeShape === "circle")}`}
-            onClick={() => setCakeShape("circle")}
-          >
-            <div className={`w-16 h-16 rounded-full ${getShapeCakeStyle(cakeShape === "circle")}`} />
-          </li>
-          <li 
-            className={`flex justify-center items-center border-2 rounded-2xl bg-white w-24 h-24 ${getShapeStyle(cakeShape === "rectangle")}`}
-            onClick={() => setCakeShape("rectangle")}
-          >
-            <div className={`w-16 h-16 rounded-2xl ${getShapeCakeStyle(cakeShape === "rectangle")}`} />
-          </li>
-        </ul>
+        <ShapeList 
+          title="모양"
+          items={[
+            { 
+              onClick: () => setCakeShape("circle"),
+              isSelected: cakeShape === "circle",
+              Item: () => <div className={`w-16 h-16 rounded-full ${getShapeCakeStyle(cakeShape === "circle")}`} />
+            },
+            { 
+              onClick: () => setCakeShape("rectangle"),
+              isSelected: cakeShape === "rectangle",
+              Item: () => <div className={`w-16 h-16 rounded-2xl ${getShapeCakeStyle(cakeShape === "rectangle")}`} />
+            },
+          ]}
+        />
       </div>
 
       {/* 색상 */}

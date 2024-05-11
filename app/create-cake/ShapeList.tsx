@@ -1,0 +1,21 @@
+const getShapeOutlineStyle = (isSelected: boolean) => isSelected ? "border-[#175428] bg-[#E6F6F5]" : "border-gray-300 bg-white";
+
+export default function ShapeList({ title, items }: any) {
+  return (
+    <>
+      <h2 className="font-bold text-lg">{title}</h2>
+      <ul className="mt-3 flex space-x-5">
+        {
+          items.map(({ onClick, isSelected, Item }: any, index: number) => 
+            <li
+              key={index} 
+              className={`flex justify-center items-center border-2 rounded-2xl bg-white w-24 h-24 ${getShapeOutlineStyle(isSelected)}`}
+              onClick={onClick}
+            >
+              <Item />
+            </li>)
+        }
+      </ul>
+    </>
+  )
+};
