@@ -1,5 +1,6 @@
 'use client'
 
+import { CreateCakeProvider } from '@/context/useCreateCake'
 import { BsChevronLeft } from 'react-icons/bs'
 import { useState } from 'react'
 import TabShape from './TabShape'
@@ -49,28 +50,30 @@ export default function CreateCake() {
   };
 
   return (
-    <div className='w-96 px-3 m-auto border-box min-h-screen relative'>
-      <header className='py-3.5 flex justify-between items-center'>
-        <BsChevronLeft />
-        <h1 className='text-lg font-bold'>케이크 제작</h1>
-        <span></span>
-      </header>
-      <section>
-        <ul className='py-3.5 flex justify-between items-center text-lg font-bold text-gray-400'>
-          {
-            tabList.map(({ id, text }) => (
-              <li 
-                className={`${getTabTextColor(currentTab === id)} w-full text-center border-b-2 cursor-pointer`}
-                key={id}
-                onClick={() => updateCurrentTab(id)}
-              >
-                {text}
-              </li>
-            ))
-          }
-        </ul>
-        {getTabContent()}
-      </section>
-    </div>
+    <CreateCakeProvider>
+      <div className='w-96 px-3 m-auto border-box min-h-screen relative'>
+        <header className='py-3.5 flex justify-between items-center'>
+          <BsChevronLeft />
+          <h1 className='text-lg font-bold'>케이크 제작</h1>
+          <span></span>
+        </header>
+        <section>
+          <ul className='py-3.5 flex justify-between items-center text-lg font-bold text-gray-400'>
+            {
+              tabList.map(({ id, text }) => (
+                <li 
+                  className={`${getTabTextColor(currentTab === id)} w-full text-center border-b-2 cursor-pointer`}
+                  key={id}
+                  onClick={() => updateCurrentTab(id)}
+                >
+                  {text}
+                </li>
+              ))
+            }
+          </ul>
+          {getTabContent()}
+        </section>
+      </div>
+    </CreateCakeProvider>
   )
 }

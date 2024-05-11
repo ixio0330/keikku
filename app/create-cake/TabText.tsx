@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { ChangeEvent, MouseEventHandler, useState } from 'react'
+import { useCreateCakeContext } from '@/context/useCreateCake';
 
 const editorList = [
   {
@@ -78,7 +79,7 @@ const fontStyleList = [
   },
 ];
 const textColors = [
-  { color: '#fff', className: 'bg-white' },
+  { color: 'white', className: 'bg-white' },
   { color: '#1F2227', className: 'bg-[#1F2227]' },
   { color: '#61666C', className: 'bg-[#61666C]' },
   { color: '#950E0E', className: 'bg-[#950E0E]' },
@@ -90,6 +91,7 @@ const isInclude = (isInclude: boolean) => isInclude ? "border-[#175428]" : "bord
 const getColorStyle = (isSelected: boolean) => isSelected ? "border-[#175428]" : "border-transparent";
 
 export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () => void, onClickNext: () => void }) {
+  const { cakeColor, textColor, setTextColor, textSize, setTextSize } = useCreateCakeContext();
   const [ editor, setEditor ] = useState<Set<string>>(new Set());
   const addEditorItem = (value: string) => {
     if (editor.has(value)) {
@@ -103,29 +105,26 @@ export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () 
     }
   }
 
-  const [textColor, setCakeColor] = useState('#fff');
   const updateTextColor = (color: string) => {
-    setCakeColor(color);
+    setTextColor(color);
   };
   const [customColor, setCustomColor] = useState('');
   const handleChangeCustomColor = (e: ChangeEvent<HTMLInputElement>) => {
     setCustomColor(e.target.value);
-    setCakeColor(e.target.value);
+    setTextColor(e.target.value);
   };
 
+  // hook으로 분리
   const [inputPosition, setInputPosition] = useState({ x: 0, y: 0 });
   const handleClickCake: MouseEventHandler<HTMLDivElement> = (e) => {
     const { clientX, clientY } = e.nativeEvent;
     setInputPosition({ x: clientX, y: clientY });
   };
 
-
   const [text, setText] = useState("");
   const updateText = (e: ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
-
-  const [fontSize, setFontSize] = useState(20);
 
   return (
     <div className="flex flex-col space-y-10">
@@ -133,11 +132,11 @@ export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () 
       <div className="m-auto border rounded-2xl w-80 h-80 bg-[#FFF8EB] flex justify-center items-center">
         <div 
           onClick={handleClickCake}
-          className="relative w-64 h-64 rounded-full bg-[#B0D5FF] overflow-hidden" 
+          className={`relative w-64 h-64 rounded-full overflow-hidden ${cakeColor === 'white' ? 'bg-white' : `bg-[${cakeColor}]`}`}
         >
           <textarea
             onClick={e => e.stopPropagation()}
-            className={`w-auto absolute resize-none bg-white border-transparent outline-none focus:border-black`} style={{ left: inputPosition.x - 644, top: inputPosition.y - 152, fontSize }} 
+            className={`w-auto absolute resize-none bg-white border-transparent outline-none focus:border-black`} style={{ left: inputPosition.x - 644, top: inputPosition.y - 152, fontSize: textSize }} 
           />
         </div>
       </div>
@@ -161,8 +160,8 @@ export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () 
           <li className="w-3/12">
             <select 
               className="bg-white border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-[#175428] focus:border-[#175428] block w-full p-2.5 outline-none"
-              value={fontSize}
-              onChange={e => setFontSize(Number(e.target.value))}
+              value={textSize}
+              onChange={e => setTextSize(Number(e.target.value))}
             >
               {
                 Array(11).fill(0).map((_, idx) => (

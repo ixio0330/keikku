@@ -2,9 +2,10 @@
 
 import { ChangeEvent, useState } from 'react'
 import Image from 'next/image'
+import { useCreateCakeContext, CakeShape } from '@/context/useCreateCake';
 
 const cakeColors = [
-  { color: '#fff', className: 'bg-white' },
+  { color: 'white', className: 'bg-white' },
   { color: '#CE8FFF', className: 'bg-[#CE8FFF]' },
   { color: '#EE9998', className: 'bg-[#EE9998]' },
   { color: '#98C5E8', className: 'bg-[#98C5E8]' },
@@ -12,19 +13,16 @@ const cakeColors = [
   { color: '#FFC416', className: 'bg-[#FFC416]' },
 ];
 
-type CakeShape = 'circle' | 'rectangle'
-
 const getShapeStyle = (isSelected: boolean) => isSelected ? "border-[#175428] bg-[#E6F6F4]" : "border-gray-300 bg-white";
 const getShapeCakeStyle = (isSelected: boolean) => isSelected ? "bg-white" : "bg-gray-300";
 const getColorStyle = (isSelected: boolean) => isSelected ? "border-[#175428]" : "border-transparent";
 
 export default function TabShape({ onClickNext }: { onClickNext: () => void }) {
-  const [cakeColor, setCakeColor] = useState('#fff');
+  const { cakeColor, setCakeColor, cakeShape, setCakeShape } = useCreateCakeContext();
   const updateCakeColor = (color: string) => {
     setCakeColor(color);
   };
 
-  const [cakeShape, setCakeShape] = useState<CakeShape>('circle');
   const getCakeFrame = (shape: CakeShape) => {
     switch (shape) {
       case 'circle':
@@ -89,7 +87,6 @@ export default function TabShape({ onClickNext }: { onClickNext: () => void }) {
           </filter>
           </defs>
         </svg>
-        
     }
   };
 

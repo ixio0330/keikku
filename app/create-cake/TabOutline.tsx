@@ -3,11 +3,10 @@
 import { ChangeEvent, useState } from "react";
 import Image from 'next/image'
 import CreamOne from "./(outline)/CreamOne";
-
-type Outline = 'cream1' | 'cream2' | 'cream3'
+import { useCreateCakeContext, CakeOutline } from '@/context/useCreateCake';
 
 const outlineColors = [
-  { color: '#fff', className: 'bg-white' },
+  { color: 'white', className: 'bg-white' },
   { color: '#CE8FFF', className: 'bg-[#CE8FFF]' },
   { color: '#EE9998', className: 'bg-[#EE9998]' },
   { color: '#98C5E8', className: 'bg-[#98C5E8]' },
@@ -15,20 +14,23 @@ const outlineColors = [
   { color: '#FFC416', className: 'bg-[#FFC416]' },
 ];
 
-const getShapeStyle = (isSelected: boolean) => isSelected ? "border-[#175428] bg-emerald-100" : "border-gray-300 bg-white";
-const getShapeCakeStyle = (isSelected: boolean) => isSelected ? "bg-white" : "bg-gray-300";
+const getOutlineStyle = (isSelected: boolean) => isSelected ? "border-[#175428] bg-emerald-100" : "border-gray-300 bg-white";
+
 const getColorStyle = (isSelected: boolean) => isSelected ? "border-[#175428]" : "border-transparent";
 
 export default function TabOutline({ onClickPrev, onClickNext }: { onClickPrev: () => void, onClickNext: () => void }) {
-  const [outline, setOutline] = useState<Outline>("cream1");
-  const getOutlineSvg = (outline: Outline) => {
+  const { cakeColor, outline, setOutline, outlineColor, setOutlineColor } = useCreateCakeContext();
+  const getOutlineSvg = (outline: CakeOutline) => {
     switch (outline) {
       case "cream1":
         return <CreamOne color={outlineColor} />
+      case "cream2":
+        return null
+      case "cream3":
+        return null
     }
   };
 
-  const [outlineColor, setOutlineColor] = useState('#fff');
   const updateOutlineColor = (color: string) => {
     setOutlineColor(color);
   };
@@ -42,7 +44,7 @@ export default function TabOutline({ onClickPrev, onClickNext }: { onClickPrev: 
   return (
     <div className="flex flex-col space-y-10">
       <div className="relative m-auto border rounded-2xl w-80 h-80 bg-[#FFF8EB] flex justify-center items-center">
-        <div className="w-64 h-64 rounded-full bg-[#B0D5FF]" />
+        <div className={`w-64 h-64 rounded-full ${cakeColor === 'white' ? 'bg-white' : `bg-[${cakeColor}]`}`} />
         { getOutlineSvg(outline) }
       </div>
 
@@ -51,7 +53,7 @@ export default function TabOutline({ onClickPrev, onClickNext }: { onClickPrev: 
         <h2 className="font-bold text-lg">모양</h2>
         <ul className="mt-3 flex space-x-5">
           <li 
-            className={`flex justify-center items-center border-2 rounded-2xl bg-white w-24 h-24 ${getShapeStyle(outline === "cream1")}`}
+            className={`flex justify-center items-center border-2 rounded-2xl bg-white w-24 h-24 ${getOutlineStyle(outline === "cream1")}`}
             onClick={() => setOutline("cream1")}
           >
             <svg width="98" height="86" viewBox="0 0 98 86" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -62,7 +64,7 @@ export default function TabOutline({ onClickPrev, onClickNext }: { onClickPrev: 
             </svg>
           </li>
           <li 
-            className={`flex justify-center items-center border-2 rounded-2xl bg-white w-24 h-24 ${getShapeStyle(outline === "cream2")}`}
+            className={`flex justify-center items-center border-2 rounded-2xl bg-white w-24 h-24 ${getOutlineStyle(outline === "cream2")}`}
             onClick={() => setOutline("cream2")}
           >
             <svg width="69" height="68" viewBox="0 0 69 68" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -70,7 +72,7 @@ export default function TabOutline({ onClickPrev, onClickNext }: { onClickPrev: 
             </svg>
           </li>
           <li 
-            className={`flex justify-center items-center border-2 rounded-2xl bg-white w-24 h-24 ${getShapeStyle(outline === "cream3")}`}
+            className={`flex justify-center items-center border-2 rounded-2xl bg-white w-24 h-24 ${getOutlineStyle(outline === "cream3")}`}
             onClick={() => setOutline("cream3")}
           >
             <svg width="127" height="58" viewBox="0 0 127 58" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -86,7 +88,7 @@ export default function TabOutline({ onClickPrev, onClickNext }: { onClickPrev: 
       {/* 색상 */}
       <div>
         <h2 className="font-bold text-lg">색상</h2>
-        <ul className="flex w-full justify-between">
+        <ul className="mt-3 flex w-full justify-between">
           {
             outlineColors.map(({ color, className }) => (
               <li
