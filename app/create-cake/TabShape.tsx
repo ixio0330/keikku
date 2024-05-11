@@ -1,5 +1,6 @@
 'use client'
 
+import CakeFrame from './CakeFrame';
 import ShapeList from './ShapeList';
 import ColorList from './ColorList';
 import { useCreateCakeContext, CakeShape } from '@/context/useCreateCake';
@@ -80,9 +81,9 @@ export default function TabShape({ onClickNext }: { onClickNext: () => void }) {
   return (
     <div className="flex flex-col space-y-10">
       {/* 케이크 틀 */}
-      <div className="m-auto border rounded-2xl w-80 h-80 bg-[#FFF8EB] flex justify-center items-center">
+      <CakeFrame>
         { getCakeFrame(cakeShape) }
-      </div>
+      </CakeFrame>
 
       {/* 모양 */}
       <div>

@@ -1,6 +1,6 @@
 'use client'
 
-import { ChangeEvent, useState } from "react";
+import CakeFrame from './CakeFrame';
 import ShapeList from './ShapeList';
 import ColorList from './ColorList';
 import CreamOne from "./(outline)/CreamOne";
@@ -22,10 +22,10 @@ export default function TabOutline({ onClickPrev, onClickNext }: { onClickPrev: 
 
   return (
     <div className="flex flex-col space-y-10">
-      <div className="relative m-auto border rounded-2xl w-80 h-80 bg-[#FFF8EB] flex justify-center items-center">
+      <CakeFrame>
         <div className={`w-64 h-64 rounded-full ${cakeColor === 'white' ? 'bg-white' : `bg-[${cakeColor}]`}`} />
         { getOutlineSvg(outline) }
-      </div>
+      </CakeFrame>
 
       {/* 모양 */}
       <div>
