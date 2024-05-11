@@ -4,6 +4,7 @@ import Image from "next/image";
 import ColorList from './ColorList';
 import { ChangeEvent, MouseEventHandler, useState } from 'react'
 import { useCreateCakeContext } from '@/context/useCreateCake';
+import { textColors } from "./colors";
 
 const editorList = [
   {
@@ -78,14 +79,6 @@ const fontStyleList = [
     value: "hand02-en",
     className: "",
   },
-];
-const textColors = [
-  { color: 'white', className: 'bg-white' },
-  { color: '#1F2227', className: 'bg-[#1F2227]' },
-  { color: '#61666C', className: 'bg-[#61666C]' },
-  { color: '#950E0E', className: 'bg-[#950E0E]' },
-  { color: '#175444', className: 'bg-[#175444]' },
-  { color: '#001582', className: 'bg-[#001582]' },
 ];
 
 const isInclude = (isInclude: boolean) => isInclude ? "border-[#175428]" : "border-transparent";

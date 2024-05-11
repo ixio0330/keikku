@@ -1,20 +1,11 @@
 'use client'
 
 import { ChangeEvent, useState } from "react";
-import Image from 'next/image'
 import ShapeList from './ShapeList';
 import ColorList from './ColorList';
 import CreamOne from "./(outline)/CreamOne";
 import { useCreateCakeContext, CakeOutline } from '@/context/useCreateCake';
-
-const outlineColors = [
-  { color: 'white', className: 'bg-white' },
-  { color: '#CE8FFF', className: 'bg-[#CE8FFF]' },
-  { color: '#EE9998', className: 'bg-[#EE9998]' },
-  { color: '#98C5E8', className: 'bg-[#98C5E8]' },
-  { color: '#86D180', className: 'bg-[#86D180]' },
-  { color: '#FFC416', className: 'bg-[#FFC416]' },
-];
+import { defaultColors } from "./colors";
 
 export default function TabOutline({ onClickPrev, onClickNext }: { onClickPrev: () => void, onClickNext: () => void }) {
   const { cakeColor, outline, setOutline, outlineColor, setOutlineColor } = useCreateCakeContext();
@@ -85,7 +76,7 @@ export default function TabOutline({ onClickPrev, onClickNext }: { onClickPrev: 
       {/* 색상 */}
       <div>
         <ColorList 
-          items={outlineColors} 
+          items={defaultColors} 
           selectColor={outlineColor} 
           setColor={setOutlineColor}
         />

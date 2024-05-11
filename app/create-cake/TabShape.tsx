@@ -3,15 +3,7 @@
 import ShapeList from './ShapeList';
 import ColorList from './ColorList';
 import { useCreateCakeContext, CakeShape } from '@/context/useCreateCake';
-
-const cakeColors = [
-  { color: 'white', className: 'bg-white' },
-  { color: '#CE8FFF', className: 'bg-[#CE8FFF]' },
-  { color: '#EE9998', className: 'bg-[#EE9998]' },
-  { color: '#98C5E8', className: 'bg-[#98C5E8]' },
-  { color: '#86D180', className: 'bg-[#86D180]' },
-  { color: '#FFC416', className: 'bg-[#FFC416]' },
-];
+import { defaultColors } from './colors';
 
 const getShapeCakeStyle = (isSelected: boolean) => isSelected ? "bg-white" : "bg-gray-300";
 
@@ -116,7 +108,7 @@ export default function TabShape({ onClickNext }: { onClickNext: () => void }) {
       {/* 색상 */}
       <div>
         <ColorList 
-          items={cakeColors} 
+          items={defaultColors} 
           selectColor={cakeColor} 
           setColor={setCakeColor}
         />
