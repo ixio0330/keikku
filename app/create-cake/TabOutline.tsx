@@ -20,16 +20,6 @@ export default function TabOutline({ onClickPrev, onClickNext }: { onClickPrev: 
     }
   };
 
-  const updateOutlineColor = (color: string) => {
-    setOutlineColor(color);
-  };
-
-  const [customColor, setCustomColor] = useState('');
-  const handleChangeCustomColor = (e: ChangeEvent<HTMLInputElement>) => {
-    setCustomColor(e.target.value);
-    setOutlineColor(e.target.value);
-  };
-
   return (
     <div className="flex flex-col space-y-10">
       <div className="relative m-auto border rounded-2xl w-80 h-80 bg-[#FFF8EB] flex justify-center items-center">

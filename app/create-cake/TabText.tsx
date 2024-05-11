@@ -82,7 +82,6 @@ const fontStyleList = [
 ];
 
 const isInclude = (isInclude: boolean) => isInclude ? "border-[#175428]" : "border-transparent";
-const getColorStyle = (isSelected: boolean) => isSelected ? "border-[#175428]" : "border-transparent";
 
 export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () => void, onClickNext: () => void }) {
   const { cakeColor, textColor, setTextColor, textSize, setTextSize } = useCreateCakeContext();
@@ -98,15 +97,6 @@ export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () 
       setEditor(newEditorItems);
     }
   }
-
-  const updateTextColor = (color: string) => {
-    setTextColor(color);
-  };
-  const [customColor, setCustomColor] = useState('');
-  const handleChangeCustomColor = (e: ChangeEvent<HTMLInputElement>) => {
-    setCustomColor(e.target.value);
-    setTextColor(e.target.value);
-  };
 
   // hook으로 분리
   const [inputPosition, setInputPosition] = useState({ x: 0, y: 0 });

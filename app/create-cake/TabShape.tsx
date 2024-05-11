@@ -77,8 +77,6 @@ export default function TabShape({ onClickNext }: { onClickNext: () => void }) {
     }
   };
 
-  
-
   return (
     <div className="flex flex-col space-y-10">
       {/* 케이크 틀 */}
