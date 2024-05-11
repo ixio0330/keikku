@@ -1,6 +1,7 @@
 'use client'
 
 import Image from "next/image";
+import ColorList from './ColorList';
 import { ChangeEvent, MouseEventHandler, useState } from 'react'
 import { useCreateCakeContext } from '@/context/useCreateCake';
 
@@ -195,47 +196,11 @@ export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () 
 
       {/* 색상  */}
       <div>
-        <h2 className="font-bold text-lg">색상</h2>
-        <ul className="mt-3 flex w-full justify-between">
-          {
-            textColors.map(({ color, className }) => (
-              <li
-                key={color} 
-                onClick={() => updateTextColor(color)}
-                className={`p-[2px] border-2 rounded-full ${getColorStyle(textColor === color)}`}
-              >
-                <div className={`rounded-full w-7 h-7 border ${className}`}/>
-              </li>
-            ))
-          }
-          <li className={`relative border-2 rounded-full p-[2px] ${getColorStyle(textColor === customColor)}`}>
-            {
-              !customColor && textColor !== customColor && 
-              <Image 
-                width={28}
-                height={28}
-                alt="사용자 정의 색상"
-                src="/custom-color.png"
-                className="w-7 h-7"
-              />
-            }
-            {
-              customColor ? 
-              <div className="relative z-20 border w-7 h-7 rounded-full overflow-hidden">
-                <input 
-                  className="bg-white h-10 absolute -top-2 -left-2" value="color"
-                  onChange={handleChangeCustomColor} 
-                />
-              </div> :
-              <div className="opacity-0 absolute top-0 left-0 z-20 border w-7 h-7 rounded-full overflow-hidden">
-                <input 
-                  className="bg-white h-10 absolute -top-2 -left-2" value="color"
-                  onChange={handleChangeCustomColor} 
-                />
-              </div>
-            }
-          </li>
-        </ul>
+        <ColorList 
+          items={textColors} 
+          selectColor={textColor} 
+          setColor={setTextColor}
+        />
       </div>
       
       {/* 버튼 */}

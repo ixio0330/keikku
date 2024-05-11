@@ -3,6 +3,7 @@
 import { ChangeEvent, useState } from "react";
 import Image from 'next/image'
 import ShapeList from './ShapeList';
+import ColorList from './ColorList';
 import CreamOne from "./(outline)/CreamOne";
 import { useCreateCakeContext, CakeOutline } from '@/context/useCreateCake';
 
@@ -14,10 +15,6 @@ const outlineColors = [
   { color: '#86D180', className: 'bg-[#86D180]' },
   { color: '#FFC416', className: 'bg-[#FFC416]' },
 ];
-
-const getOutlineStyle = (isSelected: boolean) => isSelected ? "border-[#175428] bg-emerald-100" : "border-gray-300 bg-white";
-
-const getColorStyle = (isSelected: boolean) => isSelected ? "border-[#175428]" : "border-transparent";
 
 export default function TabOutline({ onClickPrev, onClickNext }: { onClickPrev: () => void, onClickNext: () => void }) {
   const { cakeColor, outline, setOutline, outlineColor, setOutlineColor } = useCreateCakeContext();
@@ -87,47 +84,11 @@ export default function TabOutline({ onClickPrev, onClickNext }: { onClickPrev: 
 
       {/* 색상 */}
       <div>
-        <h2 className="font-bold text-lg">색상</h2>
-        <ul className="mt-3 flex w-full justify-between">
-          {
-            outlineColors.map(({ color, className }) => (
-              <li
-                key={color} 
-                onClick={() => updateOutlineColor(color)}
-                className={`p-[2px] border-2 rounded-full ${getColorStyle(outlineColor === color)}`}
-              >
-                <div className={`rounded-full w-7 h-7 border ${className}`}/>
-              </li>
-            ))
-          }
-          <li className={`relative border-2 rounded-full p-[2px] ${getColorStyle(outlineColor === customColor)}`}>
-            {
-              !customColor && outlineColor !== customColor && 
-              <Image
-                width={28}
-                height={28}
-                alt="사용자 정의 색상"
-                src="/custom-color.png"
-                className="w-7 h-7"
-              />
-            }
-            {
-              customColor ? 
-              <div className="relative z-20 border w-7 h-7 rounded-full overflow-hidden">
-                <input 
-                  className="bg-white h-10 absolute -top-2 -left-2" type="color"
-                  onChange={handleChangeCustomColor} 
-                />
-              </div> :
-              <div className="opacity-0 absolute top-0 left-0 z-20 border w-7 h-7 rounded-full overflow-hidden">
-                <input 
-                  className="bg-white h-10 absolute -top-2 -left-2" type="color"
-                  onChange={handleChangeCustomColor} 
-                />
-              </div>
-            }
-          </li>
-        </ul>
+        <ColorList 
+          items={outlineColors} 
+          selectColor={outlineColor} 
+          setColor={setOutlineColor}
+        />
       </div>
       <div className="flex w-full absolute bottom-0 left-0 py-4">
         <button

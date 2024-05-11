@@ -1,8 +1,7 @@
 'use client'
 
-import { ChangeEvent, useState } from 'react'
-import Image from 'next/image'
 import ShapeList from './ShapeList';
+import ColorList from './ColorList';
 import { useCreateCakeContext, CakeShape } from '@/context/useCreateCake';
 
 const cakeColors = [
@@ -14,15 +13,10 @@ const cakeColors = [
   { color: '#FFC416', className: 'bg-[#FFC416]' },
 ];
 
-const getShapeStyle = (isSelected: boolean) => isSelected ? "border-[#175428] bg-[#E6F6F4]" : "border-gray-300 bg-white";
 const getShapeCakeStyle = (isSelected: boolean) => isSelected ? "bg-white" : "bg-gray-300";
-const getColorStyle = (isSelected: boolean) => isSelected ? "border-[#175428]" : "border-transparent";
 
 export default function TabShape({ onClickNext }: { onClickNext: () => void }) {
   const { cakeColor, setCakeColor, cakeShape, setCakeShape } = useCreateCakeContext();
-  const updateCakeColor = (color: string) => {
-    setCakeColor(color);
-  };
 
   const getCakeFrame = (shape: CakeShape) => {
     switch (shape) {
@@ -91,11 +85,7 @@ export default function TabShape({ onClickNext }: { onClickNext: () => void }) {
     }
   };
 
-  const [customColor, setCustomColor] = useState('');
-  const handleChangeCustomColor = (e: ChangeEvent<HTMLInputElement>) => {
-    setCustomColor(e.target.value);
-    setCakeColor(e.target.value);
-  };
+  
 
   return (
     <div className="flex flex-col space-y-10">
@@ -125,47 +115,11 @@ export default function TabShape({ onClickNext }: { onClickNext: () => void }) {
 
       {/* 색상 */}
       <div>
-        <h2 className="font-bold text-lg">색상</h2>
-        <ul className="flex w-full justify-between">
-          {
-            cakeColors.map(({ color, className }) => (
-              <li
-                key={color} 
-                onClick={() => updateCakeColor(color)}
-                className={`p-[2px] border-2 rounded-full ${getColorStyle(cakeColor === color)}`}
-              >
-                <div className={`rounded-full w-7 h-7 border ${className}`}/>
-              </li>
-            ))
-          }
-          <li className={`relative border-2 rounded-full p-[2px] ${getColorStyle(cakeColor === customColor)}`}>
-            {
-              !customColor && cakeColor !== customColor && 
-              <Image 
-                width={28}
-                height={28}
-                alt="사용자 정의 색상"
-                src="/custom-color.png"
-                className="w-7 h-7"
-              />
-            }
-            {
-              customColor ? 
-              <div className="relative z-20 border w-7 h-7 rounded-full overflow-hidden">
-                <input 
-                  className="bg-white h-10 absolute -top-2 -left-2" type="color"
-                  onChange={handleChangeCustomColor} 
-                />
-              </div> :
-              <div className="opacity-0 absolute top-0 left-0 z-20 border w-7 h-7 rounded-full overflow-hidden">
-                <input 
-                  className="bg-white h-10 absolute -top-2 -left-2" type="color"
-                  onChange={handleChangeCustomColor} 
-                />
-              </div>
-            }
-          </li>
-        </ul>
+        <ColorList 
+          items={cakeColors} 
+          selectColor={cakeColor} 
+          setColor={setCakeColor}
+        />
       </div>
 
       {/* 버튼 */}
