@@ -10,7 +10,8 @@ export interface ColorListProps {
 }
 
 export default function ColorList({items, selectColor, setColor}: ColorListProps) {
-  const [customColor, setCustomColor] = useState('');
+  const isUsedCustomColor = !items.find(({ color }) => color === selectColor);
+  const [customColor, setCustomColor] = useState(isUsedCustomColor ? selectColor : '');
   const handleChangeCustomColor = (e: ChangeEvent<HTMLInputElement>) => {
     setCustomColor(e.target.value);
     setColor(e.target.value);
@@ -48,6 +49,7 @@ export default function ColorList({items, selectColor, setColor}: ColorListProps
               <input 
                 className="bg-white h-10 absolute -top-2 -left-2" type="color"
                 onChange={handleChangeCustomColor} 
+                defaultValue={customColor}
               />
             </div> :
             <div className="opacity-0 absolute top-0 left-0 z-20 border w-7 h-7 rounded-full overflow-hidden">
