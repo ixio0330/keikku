@@ -23,7 +23,10 @@ export default function TabOutline({ onClickPrev, onClickNext }: { onClickPrev: 
   return (
     <div className="flex flex-col space-y-10">
       <CakeFrame>
-        <div className={`w-64 h-64 rounded-full ${cakeColor === 'white' ? 'bg-white' : `bg-[${cakeColor}]`}`} />
+        <div 
+          className={`w-64 h-64 rounded-full`} 
+          style={{ backgroundColor: cakeColor }} 
+        />
         { getOutlineSvg(outline) }
       </CakeFrame>
 

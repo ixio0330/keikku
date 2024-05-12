@@ -116,7 +116,8 @@ export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () 
       <div className="m-auto border rounded-2xl w-80 h-80 bg-[#FFF8EB] flex justify-center items-center">
         <div 
           onClick={handleClickCake}
-          className={`relative w-64 h-64 rounded-full overflow-hidden ${cakeColor === 'white' ? 'bg-white' : `bg-[${cakeColor}]`}`}
+          className={`relative w-64 h-64 rounded-full overflow-hidden`}
+          style={{ backgroundColor: cakeColor }}
         >
           <textarea
             onClick={e => e.stopPropagation()}
