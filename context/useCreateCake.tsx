@@ -1,4 +1,7 @@
 import React, { createContext, useState, useContext } from 'react';
+import CreamOne from '@/app/create-cake/(outline)/CreamOne';
+import CreamTwo from '@/app/create-cake/(outline)/CreamTwo';
+import CreamThree from '@/app/create-cake/(outline)/CreamThree';
 
 export type CakeShape = 'circle' | 'rectangle';
 export type CakeOutline = 'cream1' | 'cream2' | 'cream3'
@@ -23,6 +26,7 @@ export interface CakeContextType {
   setDeco: React.Dispatch<React.SetStateAction<CakeDeco>>;
   decoColor: string;
   setDecoColor: React.Dispatch<React.SetStateAction<string>>;
+  getOutlineStyle: () => React.ReactNode;
 }
 
 const initialCakeContext: CakeContextType = {
@@ -44,6 +48,7 @@ const initialCakeContext: CakeContextType = {
   setDeco: () => {},
   decoColor: 'white',
   setDecoColor: () => {},
+  getOutlineStyle: () => null,
 };
 
 const CreateCakeContext = createContext<CakeContextType>(initialCakeContext);
@@ -60,6 +65,16 @@ export const CreateCakeProvider = ({ children }: React.PropsWithChildren ) => {
   const [outlineColor, setOutlineColor] = useState(initialCakeContext.outlineColor);
   const [deco, setDeco] = useState<CakeDeco>(initialCakeContext.deco);
   const [decoColor, setDecoColor] = useState(initialCakeContext.decoColor);
+  const getOutlineStyle = () => {
+    switch (outline) {
+      case "cream1":
+        return <CreamOne color={outlineColor} shape={cakeShape} />
+      case "cream2":
+        return <CreamTwo color={outlineColor} shape={cakeShape} />
+      case "cream3":
+        return <CreamThree color={outlineColor} shape={cakeShape} />
+    }
+  }
 
   const value: CakeContextType = {
     cakeShape,
@@ -80,7 +95,32 @@ export const CreateCakeProvider = ({ children }: React.PropsWithChildren ) => {
     setDeco,
     decoColor,
     setDecoColor,
+    getOutlineStyle,
   };
 
   return <CreateCakeContext.Provider value={value}>{children}</CreateCakeContext.Provider>;
 };
+
+export const cakeShapeStyle: { [key in CakeShape]: string } = {
+  circle: "w-64 h-64 rounded-full",
+  rectangle: "w-52 h-52 rounded-3xl",
+};
+
+export const defaultColors = [
+  { color: 'white', className: 'bg-white' },
+  { color: '#CE8FFF', className: 'bg-[#CE8FFF]' },
+  { color: '#EE9998', className: 'bg-[#EE9998]' },
+  { color: '#98C5E8', className: 'bg-[#98C5E8]' },
+  { color: '#86D180', className: 'bg-[#86D180]' },
+  { color: '#FFC416', className: 'bg-[#FFC416]' },
+];
+
+export const textColors = [
+  { color: 'white', className: 'bg-white' },
+  { color: '#1F2227', className: 'bg-[#1F2227]' },
+  { color: '#61666C', className: 'bg-[#61666C]' },
+  { color: '#950E0E', className: 'bg-[#950E0E]' },
+  { color: '#175444', className: 'bg-[#175444]' },
+  { color: '#001582', className: 'bg-[#001582]' },
+];
+

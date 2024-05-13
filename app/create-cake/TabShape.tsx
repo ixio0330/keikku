@@ -3,8 +3,7 @@
 import CakeFrame from './CakeFrame';
 import ShapeList from './ShapeList';
 import ColorList from './ColorList';
-import { useCreateCakeContext, CakeShape } from '@/context/useCreateCake';
-import { defaultColors } from './colors';
+import { useCreateCakeContext, CakeShape, defaultColors } from '@/context/useCreateCake';
 
 const getShapeCakeStyle = (isSelected: boolean) => isSelected ? "bg-white" : "bg-gray-300";
 

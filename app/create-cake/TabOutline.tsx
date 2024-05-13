@@ -3,31 +3,20 @@
 import CakeFrame from './CakeFrame';
 import ShapeList from './ShapeList';
 import ColorList from './ColorList';
-import CreamOne from "./(outline)/CreamOne";
-import { useCreateCakeContext, CakeOutline } from '@/context/useCreateCake';
-import { defaultColors } from "./colors";
+import { useCreateCakeContext, cakeShapeStyle, defaultColors } from '@/context/useCreateCake';
 
 export default function TabOutline({ onClickPrev, onClickNext }: { onClickPrev: () => void, onClickNext: () => void }) {
-  const { cakeColor, outline, setOutline, outlineColor, setOutlineColor } = useCreateCakeContext();
-  const getOutlineSvg = (outline: CakeOutline) => {
-    switch (outline) {
-      case "cream1":
-        return <CreamOne color={outlineColor} />
-      case "cream2":
-        return null
-      case "cream3":
-        return null
-    }
-  };
+  const { cakeShape, cakeColor, outline, setOutline, outlineColor, setOutlineColor, getOutlineStyle } = useCreateCakeContext();
+  
 
   return (
     <div className="flex flex-col space-y-10">
       <CakeFrame>
         <div 
-          className={`w-64 h-64 rounded-full`} 
+          className={`${cakeShapeStyle[cakeShape]}`} 
           style={{ backgroundColor: cakeColor }} 
         />
-        { getOutlineSvg(outline) }
+        { getOutlineStyle() }
       </CakeFrame>
 
       {/* 모양 */}

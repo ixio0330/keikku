@@ -3,8 +3,7 @@
 import Image from "next/image";
 import ColorList from './ColorList';
 import { ChangeEvent, MouseEventHandler, useState } from 'react'
-import { useCreateCakeContext } from '@/context/useCreateCake';
-import { textColors } from "./colors";
+import { useCreateCakeContext, textColors, cakeShapeStyle } from '@/context/useCreateCake';
 
 const editorList = [
   {
@@ -84,7 +83,7 @@ const fontStyleList = [
 const isInclude = (isInclude: boolean) => isInclude ? "border-[#175428]" : "border-transparent";
 
 export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () => void, onClickNext: () => void }) {
-  const { cakeColor, textColor, setTextColor, textSize, setTextSize } = useCreateCakeContext();
+  const { cakeShape, cakeColor, textColor, setTextColor, textSize, setTextSize } = useCreateCakeContext();
   const [ editor, setEditor ] = useState<Set<string>>(new Set());
   const addEditorItem = (value: string) => {
     if (editor.has(value)) {
@@ -116,7 +115,7 @@ export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () 
       <div className="m-auto border rounded-2xl w-80 h-80 bg-[#FFF8EB] flex justify-center items-center">
         <div 
           onClick={handleClickCake}
-          className={`relative w-64 h-64 rounded-full overflow-hidden`}
+          className={`relative overflow-hidden ${cakeShapeStyle[cakeShape]}`}
           style={{ backgroundColor: cakeColor }}
         >
           <textarea
