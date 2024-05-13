@@ -1,6 +1,6 @@
-import ColorList from "./ColorList";
+import ColorList from "../(components)/ColorList";
 import { useCreateCakeContext, defaultColors } from '@/context/useCreateCake';
-import ShapeList from "./ShapeList";
+import ShapeList from "../(components)/ShapeList";
 
 export default function TabDeco({ onClickPrev, onClickNext }: { onClickPrev: () => void, onClickNext: () => void }) {
   const { deco, setDeco, decoColor, setDecoColor } = useCreateCakeContext();

@@ -3,10 +3,10 @@
 import { CreateCakeProvider } from '@/context/useCreateCake'
 import { BsChevronLeft } from 'react-icons/bs'
 import { useState } from 'react'
-import TabShape from './TabShape'
-import TabText from './TabText'
-import TabOutline from './TabOutline'
-import TabDeco from './TabDeco'
+import TabShape from './(tab)/TabShape'
+import TabText from './(tab)/TabText'
+import TabOutline from './(tab)/TabOutline'
+import TabDeco from './(tab)/TabDeco'
 
 type TabList = 'shape' | 'text' | 'outline' | 'deco'
 const tabList: { id: TabList; text: string }[] = [

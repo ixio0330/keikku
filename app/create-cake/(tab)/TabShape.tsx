@@ -1,8 +1,8 @@
 'use client'
 
-import CakeFrame from './CakeFrame';
-import ShapeList from './ShapeList';
-import ColorList from './ColorList';
+import CakeFrame from '../(components)/CakeFrame';
+import ShapeList from '../(components)/ShapeList';
+import ColorList from '../(components)/ColorList';
 import { useCreateCakeContext, CakeShape, defaultColors } from '@/context/useCreateCake';
 
 const getShapeCakeStyle = (isSelected: boolean) => isSelected ? "bg-white" : "bg-gray-300";

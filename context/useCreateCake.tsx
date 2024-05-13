@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext } from 'react';
-import { ShapeListItem } from '@/app/create-cake/ShapeList';
+import { ShapeListItem } from '@/app/create-cake/(components)/ShapeList';
 import CreamOne from '@/app/create-cake/(outline)/CreamOne';
 import CreamTwo from '@/app/create-cake/(outline)/CreamTwo';
 import CreamThree from '@/app/create-cake/(outline)/CreamThree';

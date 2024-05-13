@@ -1,7 +1,7 @@
 'use client'
 
 import Image from "next/image";
-import ColorList from './ColorList';
+import ColorList from '../(components)/ColorList';
 import { ChangeEvent, MouseEventHandler, useState } from 'react'
 import { useCreateCakeContext, textColors, cakeShapeStyle } from '@/context/useCreateCake';
 
