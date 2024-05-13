@@ -6,6 +6,12 @@ import CreamThree from '@/app/create-cake/(outline)/CreamThree';
 import ShapeOne from '@/app/create-cake/(outline)/ShapeOne';
 import ShapeTwo from '@/app/create-cake/(outline)/ShapeTwo';
 import ShapeThree from '@/app/create-cake/(outline)/ShapeThree';
+import DecoCream from '@/app/create-cake/(deco)/DecoCream';
+import DecoLine from '@/app/create-cake/(deco)/DecoLine';
+import DecoSprinkles from '@/app/create-cake/(deco)/DecoSprinkles';
+import DecoHeart from '@/app/create-cake/(deco)/DecoHeart';
+import DecoFlower from '@/app/create-cake/(deco)/DecoFlower';
+import DecoCarrot from '@/app/create-cake/(deco)/DecoCarrot';
 
 export type CakeShape = 'circle' | 'rectangle';
 export type CakeOutline = 'cream1' | 'cream2' | 'cream3'
@@ -32,6 +38,7 @@ export interface CakeContextType {
   setDecoColor: React.Dispatch<React.SetStateAction<string>>;
   getOutlineStyle: () => React.ReactNode;
   outlineShapeList: ShapeListItem[];
+  decoShapeList: ShapeListItem[];
 }
 
 const initialCakeContext: CakeContextType = {
@@ -55,6 +62,7 @@ const initialCakeContext: CakeContextType = {
   setDecoColor: () => {},
   getOutlineStyle: () => null,
   outlineShapeList: [],
+  decoShapeList: [],
 };
 
 const CreateCakeContext = createContext<CakeContextType>(initialCakeContext);
@@ -98,6 +106,38 @@ export const CreateCakeProvider = ({ children }: React.PropsWithChildren ) => {
       Item: () => <ShapeThree isSelected={outline === "cream3"} />
     },
   ];
+  const decoShapeList = [
+    { 
+      onClick: () => setDeco("cream"),
+      isSelected: deco === "cream",
+      Item: () => <DecoCream isSelected={deco === "cream"} />
+    },
+    { 
+      onClick: () => setDeco("line"),
+      isSelected: deco === "line",
+      Item: () => <DecoLine isSelected={deco === "line"} />
+    },
+    { 
+      onClick: () => setDeco("sprinkles"),
+      isSelected: deco === "sprinkles",
+      Item: () => <DecoSprinkles isSelected={deco === "sprinkles"} />
+    },
+    { 
+      onClick: () => setDeco("heart"),
+      isSelected: deco === "heart",
+      Item: () => <DecoHeart isSelected={deco === "heart"} />
+    },
+    { 
+      onClick: () => setDeco("flower"),
+      isSelected: deco === "flower",
+      Item: () => <DecoFlower isSelected={deco === "flower"} />
+    },
+    { 
+      onClick: () => setDeco("carrot"),
+      isSelected: deco === "carrot",
+      Item: () => <DecoCarrot isSelected={deco === "carrot"} />
+    },
+  ];
 
   const value: CakeContextType = {
     cakeShape,
@@ -120,6 +160,7 @@ export const CreateCakeProvider = ({ children }: React.PropsWithChildren ) => {
     setDecoColor,
     getOutlineStyle,
     outlineShapeList,
+    decoShapeList,
   };
 
   return <CreateCakeContext.Provider value={value}>{children}</CreateCakeContext.Provider>;
