@@ -1,7 +1,11 @@
 import React, { createContext, useState, useContext } from 'react';
+import { ShapeListItem } from '@/app/create-cake/ShapeList';
 import CreamOne from '@/app/create-cake/(outline)/CreamOne';
 import CreamTwo from '@/app/create-cake/(outline)/CreamTwo';
 import CreamThree from '@/app/create-cake/(outline)/CreamThree';
+import ShapeOne from '@/app/create-cake/(outline)/ShapeOne';
+import ShapeTwo from '@/app/create-cake/(outline)/ShapeTwo';
+import ShapeThree from '@/app/create-cake/(outline)/ShapeThree';
 
 export type CakeShape = 'circle' | 'rectangle';
 export type CakeOutline = 'cream1' | 'cream2' | 'cream3'
@@ -27,6 +31,7 @@ export interface CakeContextType {
   decoColor: string;
   setDecoColor: React.Dispatch<React.SetStateAction<string>>;
   getOutlineStyle: () => React.ReactNode;
+  outlineShapeList: ShapeListItem[];
 }
 
 const initialCakeContext: CakeContextType = {
@@ -49,6 +54,7 @@ const initialCakeContext: CakeContextType = {
   decoColor: 'white',
   setDecoColor: () => {},
   getOutlineStyle: () => null,
+  outlineShapeList: [],
 };
 
 const CreateCakeContext = createContext<CakeContextType>(initialCakeContext);
@@ -74,7 +80,24 @@ export const CreateCakeProvider = ({ children }: React.PropsWithChildren ) => {
       case "cream3":
         return <CreamThree color={outlineColor} shape={cakeShape} />
     }
-  }
+  };
+  const outlineShapeList = [
+    { 
+      onClick: () => setOutline("cream1"),
+      isSelected: outline === "cream1",
+      Item: () => <ShapeOne isSelected={outline === "cream1"} />
+    },
+    { 
+      onClick: () => setOutline("cream2"),
+      isSelected: outline === "cream2",
+      Item: () => <ShapeTwo isSelected={outline === "cream2"} />
+    },
+    { 
+      onClick: () => setOutline("cream3"),
+      isSelected: outline === "cream3",
+      Item: () => <ShapeThree isSelected={outline === "cream3"} />
+    },
+  ];
 
   const value: CakeContextType = {
     cakeShape,
@@ -96,6 +119,7 @@ export const CreateCakeProvider = ({ children }: React.PropsWithChildren ) => {
     decoColor,
     setDecoColor,
     getOutlineStyle,
+    outlineShapeList,
   };
 
   return <CreateCakeContext.Provider value={value}>{children}</CreateCakeContext.Provider>;
@@ -123,4 +147,3 @@ export const textColors = [
   { color: '#175444', className: 'bg-[#175444]' },
   { color: '#001582', className: 'bg-[#001582]' },
 ];
-

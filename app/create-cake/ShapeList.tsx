@@ -1,8 +1,14 @@
 const getShapeOutlineStyle = (isSelected: boolean) => isSelected ? "border-[#175428] bg-[#E6F6F5]" : "border-gray-300 bg-white";
 
+export type ShapeListItem = { 
+  onClick: () => void;
+  isSelected: boolean;
+  Item: () => React.ReactNode;
+}
+
 export interface ShapeListProps {
   title: string;
-  items: { onClick: () => void; isSelected: boolean; Item: React.FC }[];
+  items: ShapeListItem[];
 }
 
 export default function ShapeList({ title, items }: ShapeListProps) {
