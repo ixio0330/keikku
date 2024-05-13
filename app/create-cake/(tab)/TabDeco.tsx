@@ -1,15 +1,22 @@
+import CakeFrame from '../(components)/CakeFrame';
 import ColorList from "../(components)/ColorList";
-import { useCreateCakeContext, defaultColors } from '@/context/useCreateCake';
 import ShapeList from "../(components)/ShapeList";
+import { useCreateCakeContext, cakeShapeStyle, defaultColors } from '@/context/useCreateCake';
 
 export default function TabDeco({ onClickPrev, onClickNext }: { onClickPrev: () => void, onClickNext: () => void }) {
-  const { deco, setDeco, decoColor, setDecoColor, decoShapeList } = useCreateCakeContext();
+  const { cakeShape, cakeColor, decoColor, setDecoColor, decoShapeList, getOutlineStyle, getDecoStyle } = useCreateCakeContext();
 
   return (
     <div className="flex flex-col space-y-10">
-      <div className="m-auto border rounded-2xl w-80 h-80 bg-[#FFF8EB] flex justify-center items-center">
-        {/* 케이크 세팅 */}
-      </div>
+      {/* 케이크 틀 */}
+      <CakeFrame>
+        <div 
+          className={`${cakeShapeStyle[cakeShape]}`} 
+          style={{ backgroundColor: cakeColor }} 
+        />
+        { getOutlineStyle() }
+        { getDecoStyle() }
+      </CakeFrame>
 
       {/* 모양 */}
       <div>

@@ -6,12 +6,12 @@ import CreamThree from '@/app/create-cake/(outline)/CreamThree';
 import ShapeOne from '@/app/create-cake/(outline)/ShapeOne';
 import ShapeTwo from '@/app/create-cake/(outline)/ShapeTwo';
 import ShapeThree from '@/app/create-cake/(outline)/ShapeThree';
-import DecoCream from '@/app/create-cake/(deco)/DecoCream';
-import DecoLine from '@/app/create-cake/(deco)/DecoLine';
-import DecoSprinkles from '@/app/create-cake/(deco)/DecoSprinkles';
-import DecoHeart from '@/app/create-cake/(deco)/DecoHeart';
-import DecoFlower from '@/app/create-cake/(deco)/DecoFlower';
-import DecoCarrot from '@/app/create-cake/(deco)/DecoCarrot';
+import DecoCream, { Cream } from '@/app/create-cake/(deco)/DecoCream';
+import DecoLine, { Line } from '@/app/create-cake/(deco)/DecoLine';
+import DecoSprinkles, { Sprinkles } from '@/app/create-cake/(deco)/DecoSprinkles';
+import DecoHeart, { Heart } from '@/app/create-cake/(deco)/DecoHeart';
+import DecoFlower, { Flower } from '@/app/create-cake/(deco)/DecoFlower';
+import DecoCarrot, { Carrot } from '@/app/create-cake/(deco)/DecoCarrot';
 
 export type CakeShape = 'circle' | 'rectangle';
 export type CakeOutline = 'cream1' | 'cream2' | 'cream3'
@@ -39,6 +39,7 @@ export interface CakeContextType {
   getOutlineStyle: () => React.ReactNode;
   outlineShapeList: ShapeListItem[];
   decoShapeList: ShapeListItem[];
+  getDecoStyle: () => React.ReactNode;
 }
 
 const initialCakeContext: CakeContextType = {
@@ -63,6 +64,7 @@ const initialCakeContext: CakeContextType = {
   getOutlineStyle: () => null,
   outlineShapeList: [],
   decoShapeList: [],
+  getDecoStyle: () => null,
 };
 
 const CreateCakeContext = createContext<CakeContextType>(initialCakeContext);
@@ -138,6 +140,22 @@ export const CreateCakeProvider = ({ children }: React.PropsWithChildren ) => {
       Item: () => <DecoCarrot isSelected={deco === "carrot"} />
     },
   ];
+  const getDecoStyle = () => {
+    switch (deco) {
+      case "cream":
+        return <Cream color={decoColor}  />
+      case "line":
+        return <Line  />
+      case "sprinkles":
+        return <Sprinkles  />
+      case "heart":
+        return <Heart color={decoColor}  />
+      case "flower":
+        return <Flower  />
+      case "carrot":
+        return <Carrot  />
+    }
+  };
 
   const value: CakeContextType = {
     cakeShape,
@@ -161,6 +179,7 @@ export const CreateCakeProvider = ({ children }: React.PropsWithChildren ) => {
     getOutlineStyle,
     outlineShapeList,
     decoShapeList,
+    getDecoStyle,
   };
 
   return <CreateCakeContext.Provider value={value}>{children}</CreateCakeContext.Provider>;
