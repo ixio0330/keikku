@@ -6,8 +6,7 @@ import ColorList from '../(components)/ColorList';
 import { useCreateCakeContext, cakeShapeStyle, defaultColors } from '@/context/useCreateCake';
 
 export default function TabOutline({ onClickPrev, onClickNext }: { onClickPrev: () => void, onClickNext: () => void }) {
-  const { cakeShape, cakeColor, outline, setOutline, outlineColor, setOutlineColor, getOutlineStyle, outlineShapeList } = useCreateCakeContext();
-  
+  const { cakeShape, cakeColor, outlineColor, setOutlineColor, getOutlineStyle, outlineShapeList } = useCreateCakeContext();
 
   return (
     <div className="flex flex-col space-y-10">
