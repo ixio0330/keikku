@@ -150,7 +150,7 @@ export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () 
             >
               {
                 Array(11).fill(0).map((_, idx) => (
-                  <option key={`font-size-${idx + 20}`} value={idx + 20}>{idx + 20}pt</option>
+                  <option key={`font-size-${idx * 2 + 20}`} value={idx * 2 + 20}>{idx * 2 + 20}pt</option>
                 ))
               }
             </select>
