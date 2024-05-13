@@ -28,7 +28,6 @@ const tabList: { id: TabList; text: string }[] = [
   },
 ];
 
-
 export default function CreateCake() {
   const [currentTab, setCurrentTab] = useState<TabList>('shape');
   const updateCurrentTab = (tab: TabList) => {

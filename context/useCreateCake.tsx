@@ -1,5 +1,7 @@
 import React, { createContext, useState, useContext } from 'react';
 import { ShapeListItem } from '@/app/create-cake/(components)/ShapeList';
+import Circle from '@/app/create-cake/(shape)/Circle';
+import Rectangle from '@/app/create-cake/(shape)/Rectangle';
 import CreamOne from '@/app/create-cake/(outline)/CreamOne';
 import CreamTwo from '@/app/create-cake/(outline)/CreamTwo';
 import CreamThree from '@/app/create-cake/(outline)/CreamThree';
@@ -36,9 +38,10 @@ export interface CakeContextType {
   setDeco: React.Dispatch<React.SetStateAction<CakeDeco>>;
   decoColor: string;
   setDecoColor: React.Dispatch<React.SetStateAction<string>>;
-  getOutlineStyle: () => React.ReactNode;
   outlineShapeList: ShapeListItem[];
   decoShapeList: ShapeListItem[];
+  getCakeFrame: () => React.ReactNode;
+  getOutlineStyle: () => React.ReactNode;
   getDecoStyle: () => React.ReactNode;
 }
 
@@ -61,9 +64,10 @@ const initialCakeContext: CakeContextType = {
   setDeco: () => {},
   decoColor: 'white',
   setDecoColor: () => {},
-  getOutlineStyle: () => null,
   outlineShapeList: [],
   decoShapeList: [],
+  getCakeFrame: () => null,
+  getOutlineStyle: () => null,
   getDecoStyle: () => null,
 };
 
@@ -81,16 +85,6 @@ export const CreateCakeProvider = ({ children }: React.PropsWithChildren ) => {
   const [outlineColor, setOutlineColor] = useState(initialCakeContext.outlineColor);
   const [deco, setDeco] = useState<CakeDeco>(initialCakeContext.deco);
   const [decoColor, setDecoColor] = useState(initialCakeContext.decoColor);
-  const getOutlineStyle = () => {
-    switch (outline) {
-      case "cream1":
-        return <CreamOne color={outlineColor} shape={cakeShape} />
-      case "cream2":
-        return <CreamTwo color={outlineColor} shape={cakeShape} />
-      case "cream3":
-        return <CreamThree color={outlineColor} shape={cakeShape} />
-    }
-  };
   const outlineShapeList = [
     { 
       onClick: () => setOutline("cream1"),
@@ -140,6 +134,25 @@ export const CreateCakeProvider = ({ children }: React.PropsWithChildren ) => {
       Item: () => <DecoCarrot isSelected={deco === "carrot"} />
     },
   ];
+  const getCakeFrame = () => {
+    switch (cakeShape) {
+      case 'circle':
+        return <Circle color={cakeColor} />
+      case 'rectangle':
+        return <Rectangle color={cakeColor} />
+    }
+  };
+
+  const getOutlineStyle = () => {
+    switch (outline) {
+      case "cream1":
+        return <CreamOne color={outlineColor} shape={cakeShape} />
+      case "cream2":
+        return <CreamTwo color={outlineColor} shape={cakeShape} />
+      case "cream3":
+        return <CreamThree color={outlineColor} shape={cakeShape} />
+    }
+  };
   const getDecoStyle = () => {
     switch (deco) {
       case "cream":
@@ -176,9 +189,10 @@ export const CreateCakeProvider = ({ children }: React.PropsWithChildren ) => {
     setDeco,
     decoColor,
     setDecoColor,
-    getOutlineStyle,
     outlineShapeList,
     decoShapeList,
+    getCakeFrame,
+    getOutlineStyle,
     getDecoStyle,
   };
 
