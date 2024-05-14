@@ -116,7 +116,7 @@ export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () 
         <div 
           onClick={handleClickCake}
           className={`relative overflow-hidden ${cakeShapeStyle[cakeShape]}`}
-          style={{ backgroundColor: cakeColor }}
+          style={{ ...cakeShapeStyle[cakeShape], backgroundColor: cakeColor }}
         >
           <textarea
             onClick={e => e.stopPropagation()}

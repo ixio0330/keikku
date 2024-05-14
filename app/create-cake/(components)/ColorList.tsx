@@ -4,7 +4,7 @@ import { ChangeEvent, useState } from 'react';
 const getColorStyle = (isSelected: boolean) => isSelected ? "border-[#175428]" : "border-transparent";
 
 export interface ColorListProps {
-  items: { color: string; className: string }[];
+  items: { color: string; }[];
   selectColor: string;
   setColor: React.Dispatch<React.SetStateAction<string>>;
 }
@@ -22,13 +22,13 @@ export default function ColorList({items, selectColor, setColor}: ColorListProps
       <h2 className="font-bold text-lg">색상</h2>
       <ul className="mt-3 flex w-full justify-between">
         {
-          items.map(({ color, className }: any) => (
+          items.map(({ color }: { color: string; }) => (
             <li
               key={color} 
               onClick={() => setColor(color)}
               className={`p-[2px] border-2 rounded-full ${getColorStyle(selectColor === color)}`}
             >
-              <div className={`rounded-full w-7 h-7 border ${className}`}/>
+              <div className="rounded-full w-7 h-7 border" style={{ backgroundColor: color }} />
             </li>
           ))
         }

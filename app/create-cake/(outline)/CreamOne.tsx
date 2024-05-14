@@ -1570,8 +1570,8 @@ export default function CreamOne({ shape = "circle", color }: { shape: CakeShape
       </svg>
     </div>
     case "rectangle":
-      return <div className="absolute top-5.5 left-4">
-        <svg width="280" height="240" viewBox="0 0 308 310" fill="none" xmlns="http://www.w3.org/2000/svg">
+      return <div className="absolute top-5.5 left-4.5">
+        <svg width="300" height="252" viewBox="0 0 308 310" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g filter="url(#filter0_d_641_1153)">
         <path d="M161.395 266.555C159.942 265.774 156.856 270.219 155.921 271.874L162.577 276.139C163.777 280.225 166.807 288.764 169.325 290.227C172.472 292.056 173.215 287.086 174.191 285.27C175.167 283.454 168.167 272.397 165.983 272.875C163.799 273.353 163.211 267.53 161.395 266.555Z" fill={color}/>
         </g>

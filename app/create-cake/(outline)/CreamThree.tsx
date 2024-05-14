@@ -334,7 +334,7 @@ export default function CreamThree({ shape = "circle", color }: { shape: CakeSha
       </div>
     case "rectangle":
       return <div className="absolute top-5.5 left-13">
-        <svg width="260" height="335" viewBox="0 0 338 335" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="264" height="335" viewBox="0 0 338 335" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g filter="url(#filter0_d_638_1358)">
         <path d="M129.687 296.634C135.503 287.312 142.214 288.975 149.399 292.767C151.844 295.093 159.388 292.436 163.809 301.837C167.085 305.684 170.271 306.393 168.873 313.007C175.279 319.885 168.314 326.774 159.329 329.691C138.918 336.315 107.391 311.994 107.391 311.994C107.391 311.994 113.247 308.274 118.314 302.029C121.245 298.417 127.555 300.051 129.687 296.634Z" fill={color}/>
         </g>

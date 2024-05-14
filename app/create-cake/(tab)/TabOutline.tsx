@@ -13,7 +13,7 @@ export default function TabOutline({ onClickPrev, onClickNext }: { onClickPrev: 
       <CakeFrame>
         <div 
           className={`${cakeShapeStyle[cakeShape]}`} 
-          style={{ backgroundColor: cakeColor }} 
+          style={{ ...cakeShapeStyle[cakeShape], backgroundColor: cakeColor }}
         />
         { getOutlineStyle() }
       </CakeFrame>

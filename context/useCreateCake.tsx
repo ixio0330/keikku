@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, CSSProperties } from 'react';
 import { ShapeListItem } from '@/app/create-cake/(components)/ShapeList';
 import Circle from '@/app/create-cake/(shape)/Circle';
 import Rectangle from '@/app/create-cake/(shape)/Rectangle';
@@ -199,25 +199,33 @@ export const CreateCakeProvider = ({ children }: React.PropsWithChildren ) => {
   return <CreateCakeContext.Provider value={value}>{children}</CreateCakeContext.Provider>;
 };
 
-export const cakeShapeStyle: { [key in CakeShape]: string } = {
-  circle: "w-64 h-64 rounded-full",
-  rectangle: "w-52 h-52 rounded-3xl",
+export const cakeShapeStyle: { [key in CakeShape]: CSSProperties } = {
+  circle: {
+    width: "256px",
+    height: "256px",
+    borderRadius: "50%",
+  },
+  rectangle: {
+    width: "224px",
+    height: "224px",
+    borderRadius: "30px",
+  },
 };
 
 export const defaultColors = [
-  { color: 'white', className: 'bg-white' },
-  { color: '#CE8FFF', className: 'bg-[#CE8FFF]' },
-  { color: '#EE9998', className: 'bg-[#EE9998]' },
-  { color: '#98C5E8', className: 'bg-[#98C5E8]' },
-  { color: '#86D180', className: 'bg-[#86D180]' },
-  { color: '#FFC416', className: 'bg-[#FFC416]' },
+  { color: 'white', },
+  { color: '#CE8FFF', },
+  { color: '#EE9998', },
+  { color: '#98C5E8', },
+  { color: '#86D180', },
+  { color: '#FFC416', },
 ];
 
 export const textColors = [
-  { color: 'white', className: 'bg-white' },
-  { color: '#1F2227', className: 'bg-[#1F2227]' },
-  { color: '#61666C', className: 'bg-[#61666C]' },
-  { color: '#950E0E', className: 'bg-[#950E0E]' },
-  { color: '#175444', className: 'bg-[#175444]' },
-  { color: '#001582', className: 'bg-[#001582]' },
+  { color: 'white', },
+  { color: '#1F2227', },
+  { color: '#61666C', },
+  { color: '#950E0E', },
+  { color: '#175444', },
+  { color: '#001582', },
 ];
