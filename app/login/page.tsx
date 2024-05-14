@@ -2,10 +2,13 @@
 
 import Image from 'next/image'
 import { Chela_One } from 'next/font/google'
+import useAuth from '../(hooks)/useAuth';
 
 const chelaOne = Chela_One({ weight: ['400'], subsets: ['latin'] });
 
 export default function Login() {
+  const { signInWithGoogle, signInWithKakao } = useAuth();
+
   return (
     <section className='bg-[#FFF8EB] min-h-screen flex flex-col w-full justify-center items-center'>
       <div className='relative w-96 mb-32'>
@@ -41,7 +44,10 @@ export default function Login() {
         />
       </div>
       <div className='text-sm'>
-        <button className='flex items-center justify-between w-80 border border-gray-200 rounded box-border p-1 bg-white font-xs mb-3'>
+        <button 
+          className='flex items-center justify-between w-80 border border-gray-200 rounded box-border p-1 bg-white font-xs mb-3'
+          onClick={signInWithGoogle}
+        >
           <Image 
             src="/google.png"
             width={30}
@@ -51,7 +57,10 @@ export default function Login() {
           <p>구글 계정으로 시작하기</p>
           <span></span>
         </button>
-        <button className='flex items-center justify-between w-80 border border-[#FAE11F] rounded box-border p-1 bg-[#FAE11F] font-xs'>
+        <button 
+          className='flex items-center justify-between w-80 border border-[#FAE11F] rounded box-border p-1 bg-[#FAE11F] font-xs'
+          onClick={signInWithKakao}
+        >
           <Image 
             src="/kakao.png"
             width={30}
