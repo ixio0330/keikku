@@ -1,6 +1,6 @@
 import supabase from "@/supabase";
 import { AuthChangeEvent, Session, Provider } from "@supabase/supabase-js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface AuthUser {
   provider: Provider;
@@ -70,6 +70,10 @@ const useAuth = () => {
   const initAuth = () => {
     supabase.auth.onAuthStateChange(authStateChange);
   };
+
+  useEffect(() => {
+    initAuth();
+  }, []);
 
   return {
     authUser,

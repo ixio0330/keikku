@@ -35,7 +35,7 @@ export default function Register() {
   };
 
   return (
-    <section className='bg-[#FFF8EB]'>
+    <section className='bg-background'>
       <div className='w-96 min-h-screen m-auto px-5 flex flex-col justify-between'>
         <div className='pt-12'>
           <h1 className='mb-9 text-2xl font-bold'>
@@ -44,12 +44,12 @@ export default function Register() {
             알려주세요
           </h1>
           <form>
-            <input className='w-full text-sm bg-transparent outline-none border-b border-[#175428] py-2 mb-4' type='text' placeholder='닉네임' />
+            <input className='w-full text-sm bg-transparent outline-none border-b border-primary py-2 mb-4' type='text' placeholder='닉네임' />
             <div className='flex flex-col space-y-2 text-xs [&>label]:flex [&>label]:items-center'>
               <label>
                 <input 
                   type='checkbox' 
-                  className='accent-[#175428]'
+                  className='accent-primary'
                   checked={checkAll}
                   onChange={handleCheckAll}
                 />
@@ -59,7 +59,7 @@ export default function Register() {
               <label>
                 <input 
                   type='checkbox' 
-                  className='accent-[#175428]'
+                  className='accent-primary'
                   checked={checkAge}
                   onChange={handleCheckAge}
                 />
@@ -69,7 +69,7 @@ export default function Register() {
               <label>
                 <input 
                   type='checkbox' 
-                  className='accent-[#175428]'
+                  className='accent-primary'
                   checked={checkTerms}
                   onChange={handleCheckTerms}
                 />
@@ -79,7 +79,7 @@ export default function Register() {
             </div>
           </form>
         </div>
-        <button className='w-full text-white font-semibold border border-[#175428] rounded-lg box-border p-2 bg-[#175428] font-xs mb-6'>
+        <button className='w-full text-white font-semibold border border-primary rounded-lg box-border p-2 bg-primary font-xs mb-6'>
           케이크 만들러 가기
         </button>
       </div>

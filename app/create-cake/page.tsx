@@ -33,7 +33,7 @@ export default function CreateCake() {
   const updateCurrentTab = (tab: TabList) => {
     setCurrentTab(tab);
   };
-  const getTabTextColor = (result: boolean) => result ? 'text-[#175428] border-[#175428]' : 'text-gray-400 border-transparent';
+  const getTabTextColor = (result: boolean) => result ? 'text-primary border-primary' : 'text-gray-400 border-transparent';
 
   const getTabContent = () => {
     switch (currentTab) {
