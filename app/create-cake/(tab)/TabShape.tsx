@@ -46,7 +46,7 @@ export default function TabShape({ onClickNext }: { onClickNext: () => void }) {
       </div>
 
       {/* 버튼 */}
-      <div className="flex w-full absolute bottom-0 left-0 py-4">
+      <div>
         <button 
           onClick={onClickNext}
           className='w-full text-white font-semibold border border-[#175428] rounded-lg box-border p-2 bg-[#175428] font-xs'
