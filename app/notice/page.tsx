@@ -25,7 +25,7 @@ const data = [
   },
 ];
 
-export default function ProfilePage() {
+export default function NoticePage() {
   return (
     <section className="bg-[#FFF8EB] min-h-screen">
       <div className="w-96 h-full m-auto flex flex-col">
