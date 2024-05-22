@@ -80,7 +80,7 @@ const fontStyleList = [
   },
 ];
 
-const isInclude = (isInclude: boolean) => isInclude ? "border-[#175428]" : "border-transparent";
+const isInclude = (isInclude: boolean) => isInclude ? "border-primary" : "border-transparent";
 
 export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () => void, onClickNext: () => void }) {
   const { cakeShape, cakeColor, textColor, setTextColor, textSize, setTextSize } = useCreateCakeContext();
@@ -112,7 +112,7 @@ export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () 
   return (
     <div className="flex flex-col space-y-10">
       {/* 케이크 틀 */}
-      <div className="m-auto border rounded-2xl w-80 h-80 bg-[#FFF8EB] flex justify-center items-center">
+      <div className="m-auto border rounded-2xl w-80 h-80 bg-background flex justify-center items-center">
         <div 
           onClick={handleClickCake}
           className={`relative overflow-hidden ${cakeShapeStyle[cakeShape]}`}
@@ -132,7 +132,7 @@ export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () 
         <ul className="flex justify-between items-center my-3">
           <li className="w-8/12">
             <select 
-              className="bg-white border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-[#175428] focus:border-[#175428] block w-full p-2.5 outline-none"
+              className="bg-white border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 outline-none"
               >
               {
                 fontStyleList.map(({ text, value, className }) => (
@@ -143,7 +143,7 @@ export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () 
           </li>
           <li className="w-3/12">
             <select 
-              className="bg-white border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-[#175428] focus:border-[#175428] block w-full p-2.5 outline-none"
+              className="bg-white border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 outline-none"
               value={textSize}
               onChange={e => setTextSize(Number(e.target.value))}
             >
@@ -190,13 +190,13 @@ export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () 
       <div className="flex">
         <button
           onClick={onClickPrev} 
-          className='w-3/5 text-[#175428] font-semibold border border-[#175428] rounded-lg box-border p-2 bg-white font-xs mr-4'
+          className='w-3/5 text-primary font-semibold border border-primary rounded-lg box-border p-2 bg-white font-xs mr-4'
         >
           이전
         </button>
         <button 
           onClick={onClickNext}
-          className='w-full text-white font-semibold border border-[#175428] rounded-lg box-border p-2 bg-[#175428] font-xs'
+          className='w-full text-white font-semibold border border-primary rounded-lg box-border p-2 bg-primary font-xs'
         >
           다음
         </button>

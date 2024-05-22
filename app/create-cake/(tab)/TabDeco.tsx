@@ -41,13 +41,13 @@ export default function TabDeco({ onClickPrev, onClickNext }: { onClickPrev: () 
       <div className="flex">
         <button
           onClick={onClickPrev} 
-          className='w-3/5 text-[#175428] font-semibold border border-[#175428] rounded-lg box-border p-2 bg-white font-xs mr-4'
+          className='w-3/5 text-primary font-semibold border border-primary rounded-lg box-border p-2 bg-white font-xs mr-4'
         >
           이전
         </button>
         <button 
           onClick={onClickNext}
-          className='w-full text-white font-semibold border border-[#175428] rounded-lg box-border p-2 bg-[#175428] font-xs'
+          className='w-full text-white font-semibold border border-primary rounded-lg box-border p-2 bg-primary font-xs'
         >
           다음
         </button>

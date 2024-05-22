@@ -1,6 +1,6 @@
 export default function CakeFrame({ children }: React.PropsWithChildren) {
   return (
-    <div className="relative m-auto border rounded-2xl w-80 h-80 bg-[#FFF8EB] flex justify-center items-center">
+    <div className="relative m-auto border rounded-2xl w-80 h-80 bg-background flex justify-center items-center">
       { children }
     </div>
   )

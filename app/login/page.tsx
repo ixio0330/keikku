@@ -10,7 +10,7 @@ export default function Login() {
   const { signInWithGoogle, signInWithKakao } = useAuth();
 
   return (
-    <section className='bg-[#FFF8EB] min-h-screen flex flex-col w-full justify-center items-center'>
+    <section className='bg-background min-h-screen flex flex-col w-full justify-center items-center'>
       <div className='relative w-96 mb-32'>
         <Image
           className='absolute -top-36 -left-8'
@@ -19,7 +19,7 @@ export default function Login() {
           height={290}
           alt="파란색 풍선"
         />
-        <h1 className='relative top-12 text-2xl text-center font-bold z-50 mb-28'>어서오세요! 특별한 날을 기록하는<br/> 케이크샵 <span className={`${chelaOne} text-[#175428]`}>keikku</span>입니다.</h1>
+        <h1 className='relative top-12 text-2xl text-center font-bold z-50 mb-28'>어서오세요! 특별한 날을 기록하는<br/> 케이크샵 <span className={`${chelaOne} text-primary`}>keikku</span>입니다.</h1>
         <div className='flex w-full justify-center'>
           <Image
             src="/cake.png"

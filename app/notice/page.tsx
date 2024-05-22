@@ -27,7 +27,7 @@ const data = [
 
 export default function NoticePage() {
   return (
-    <section className="bg-[#FFF8EB] min-h-screen">
+    <section className="bg-background min-h-screen">
       <div className="w-96 h-full m-auto flex flex-col">
         <ProfileHeader title="공지사항" className="border-b" href="/profile" />
         <ul>

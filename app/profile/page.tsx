@@ -24,7 +24,7 @@ export default function ProfilePage() {
   }
 
   return (
-    <section className="bg-[#FFF8EB] min-h-screen">
+    <section className="bg-background min-h-screen">
       <div className="w-96 h-full m-auto flex flex-col space-y-10">
         <ProfileHeader title="계정 설정" />
 

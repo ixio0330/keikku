@@ -22,7 +22,7 @@ const data = [
 
 export default function NoticePage() {
   return (
-    <section className="bg-[#FFF8EB] min-h-screen">
+    <section className="bg-background min-h-screen">
       <div className="w-96 h-full m-auto flex flex-col">
         <ProfileHeader title="자주 묻는 질문" className="border-b" href="/profile" />
 
@@ -36,7 +36,7 @@ export default function NoticePage() {
         {/* 1대1 문의 */}
         <div className="text-center py-20 flex flex-col space-y-3">
           <h3 className="text-gray-400">찾으시는 문의 내용이 없으신가요?</h3>
-          <Link target="_blank" href="google form link" className="text-[#175428] font-semibold underline">1:1 문의하기</Link>
+          <Link target="_blank" href="google form link" className="text-primary font-semibold underline">1:1 문의하기</Link>
         </div>
       </div>
     </section>

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { ChangeEvent, useState } from 'react';
 
-const getColorStyle = (isSelected: boolean) => isSelected ? "border-[#175428]" : "border-transparent";
+const getColorStyle = (isSelected: boolean) => isSelected ? "border-primary" : "border-transparent";
 
 export interface ColorListProps {
   items: { color: string; }[];
