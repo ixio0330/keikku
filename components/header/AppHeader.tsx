@@ -1,4 +1,4 @@
-import CakeStatus from "@/components/cake/CakeStatus";
+import CakeStatus from "@/components/svg/CakeStatus";
 import Logo from "@/components/logo/Logo";
 
 export default function AppHeader() {
