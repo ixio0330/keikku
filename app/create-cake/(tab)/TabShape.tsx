@@ -46,7 +46,7 @@ export default function TabShape({ onClickNext }: { onClickNext: () => void }) {
       </div>
 
       {/* 버튼 */}
-      <div>
+      <div className="pb-5">
         <button 
           onClick={onClickNext}
           className='w-full text-white font-semibold border border-primary rounded-lg box-border p-2 bg-primary font-xs'

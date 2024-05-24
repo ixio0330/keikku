@@ -187,7 +187,7 @@ export default function TabText({ onClickPrev, onClickNext }: { onClickPrev: () 
       </div>
       
       {/* 버튼 */}
-      <div className="flex">
+      <div className="flex pb-5">
         <button
           onClick={onClickPrev} 
           className='w-3/5 text-primary font-semibold border border-primary rounded-lg box-border p-2 bg-white font-xs mr-4'
