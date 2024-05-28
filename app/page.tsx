@@ -1,25 +1,28 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useState } from 'react'
 import useAuth from './(hooks)/useAuth'
-import { useRouter } from 'next/navigation'
-import AppHeader from '@/components/header/AppHeader'
-import Showcase from '@/components/svg/Showcase'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import AppHeader from '@/components/header/AppHeader'
+import AppSidebar from '@/components/sidebar/AppSidebar'
+import Showcase from '@/components/svg/Showcase'
+
 export default function Home() {
   const { authUser } = useAuth();
-  const router = useRouter();
-
-  const redirectToCreateCakePage = () => {
-    router.push('/create-cake');
-  };
+  const [sidebarToggle, setSidebarToggle] = useState(false);
 
   return (
     <section className="bg-background min-h-screen">
-      <div className="w-96 h-full m-auto flex flex-col">
-        <AppHeader />
+      <div className="relative w-96 h-full m-auto flex flex-col">
+        <AppHeader onClickMenu={() => setSidebarToggle(true)} />
+        <AppSidebar
+          nickname={authUser?.nickname}
+          sns={authUser?.provider ?? "google"}
+          open={sidebarToggle} 
+          onClickOutside={() => setSidebarToggle(false)} 
+        />
         <div className="mt-10 pb-10 relative overflow-hidden">
           <div className="text-2xl flex flex-col -space-y-1">
             {
