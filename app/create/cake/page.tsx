@@ -1,13 +1,15 @@
 'use client'
 
-import { CreateCakeProvider } from '@/context/useCreateCake'
-import { MdHomeFilled } from 'react-icons/md'
+import Link from 'next/link'
 import { useState } from 'react'
+import { MdHomeFilled } from 'react-icons/md'
+
+import CakeStatus from '@/components/svg/CakeStatus'
 import TabShape from './(tab)/TabShape'
 import TabText from './(tab)/TabText'
 import TabOutline from './(tab)/TabOutline'
 import TabDeco from './(tab)/TabDeco'
-import Link from 'next/link'
+import { CreateCakeProvider } from '@/context/useCreateCake'
 
 type TabList = 'shape' | 'text' | 'outline' | 'deco'
 const tabList: { id: TabList; text: string }[] = [
@@ -29,7 +31,7 @@ const tabList: { id: TabList; text: string }[] = [
   },
 ];
 
-export default function CreateCake() {
+export default function CreateCakePage() {
   const [currentTab, setCurrentTab] = useState<TabList>('shape');
   const updateCurrentTab = (tab: TabList) => {
     setCurrentTab(tab);
@@ -57,7 +59,7 @@ export default function CreateCake() {
             <MdHomeFilled size="30" />
           </Link>
           <h1 className='text-lg font-bold'>케이크 제작</h1>
-          <span></span>
+          <CakeStatus hasCake={false} />
         </header>
         <section>
           <ul className='py-3.5 flex justify-between items-center text-lg font-bold text-gray-400'>

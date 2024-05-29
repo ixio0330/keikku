@@ -1,19 +1,19 @@
 import React, { createContext, useState, useContext, CSSProperties } from 'react';
-import { ShapeListItem } from '@/app/create-cake/(components)/ShapeList';
-import Circle from '@/app/create-cake/(shape)/Circle';
-import Rectangle from '@/app/create-cake/(shape)/Rectangle';
-import CreamOne from '@/app/create-cake/(outline)/CreamOne';
-import CreamTwo from '@/app/create-cake/(outline)/CreamTwo';
-import CreamThree from '@/app/create-cake/(outline)/CreamThree';
-import ShapeOne from '@/app/create-cake/(outline)/ShapeOne';
-import ShapeTwo from '@/app/create-cake/(outline)/ShapeTwo';
-import ShapeThree from '@/app/create-cake/(outline)/ShapeThree';
-import DecoCream, { Cream } from '@/app/create-cake/(deco)/DecoCream';
-import DecoLine, { Line } from '@/app/create-cake/(deco)/DecoLine';
-import DecoSprinkles, { Sprinkles } from '@/app/create-cake/(deco)/DecoSprinkles';
-import DecoHeart, { Heart } from '@/app/create-cake/(deco)/DecoHeart';
-import DecoFlower, { Flower } from '@/app/create-cake/(deco)/DecoFlower';
-import DecoCarrot, { Carrot } from '@/app/create-cake/(deco)/DecoCarrot';
+import { ShapeListItem } from '@/app/create/cake/(components)/ShapeList';
+import Circle from '@/app/create/cake/(shape)/Circle';
+import Rectangle from '@/app/create/cake/(shape)/Rectangle';
+import CreamOne from '@/app/create/cake/(outline)/CreamOne';
+import CreamTwo from '@/app/create/cake/(outline)/CreamTwo';
+import CreamThree from '@/app/create/cake/(outline)/CreamThree';
+import ShapeOne from '@/app/create/cake/(outline)/ShapeOne';
+import ShapeTwo from '@/app/create/cake/(outline)/ShapeTwo';
+import ShapeThree from '@/app/create/cake/(outline)/ShapeThree';
+import DecoCream, { Cream } from '@/app/create/cake/(deco)/DecoCream';
+import DecoLine, { Line } from '@/app/create/cake/(deco)/DecoLine';
+import DecoSprinkles, { Sprinkles } from '@/app/create/cake/(deco)/DecoSprinkles';
+import DecoHeart, { Heart } from '@/app/create/cake/(deco)/DecoHeart';
+import DecoFlower, { Flower } from '@/app/create/cake/(deco)/DecoFlower';
+import DecoCarrot, { Carrot } from '@/app/create/cake/(deco)/DecoCarrot';
 
 export type CakeShape = 'circle' | 'rectangle';
 export type CakeOutline = 'cream1' | 'cream2' | 'cream3'
