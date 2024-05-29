@@ -21,7 +21,7 @@ export default function AppSidebar({ open, onClickOutside, nickname, sns }: AppS
     <article className="absolute top-0 left-0 min-h-screen w-full">
       <div
         onClick={() => onClickOutside(false)} 
-        className="w-full h-full bg-black bg-opacity-30 absolute top-0 left-0 z-10"
+        className="w-full h-full bg-black bg-opacity-30 fixed top-0 left-0 z-10"
       />
       <div className="w-8/12 h-full z-30 absolute top-0 left-0 z-20">
         <div className="h-1/5 bg-primary flex flex-col justify-center items-center text-white">
