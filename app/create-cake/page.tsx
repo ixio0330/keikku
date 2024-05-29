@@ -1,12 +1,13 @@
 'use client'
 
 import { CreateCakeProvider } from '@/context/useCreateCake'
-import { BsChevronLeft } from 'react-icons/bs'
+import { MdHomeFilled } from 'react-icons/md'
 import { useState } from 'react'
 import TabShape from './(tab)/TabShape'
 import TabText from './(tab)/TabText'
 import TabOutline from './(tab)/TabOutline'
 import TabDeco from './(tab)/TabDeco'
+import Link from 'next/link'
 
 type TabList = 'shape' | 'text' | 'outline' | 'deco'
 const tabList: { id: TabList; text: string }[] = [
@@ -52,7 +53,9 @@ export default function CreateCake() {
     <CreateCakeProvider>
       <div className='w-96 px-3 m-auto border-box min-h-screen relative'>
         <header className='py-3.5 flex justify-between items-center'>
-          <BsChevronLeft />
+          <Link href="/">
+            <MdHomeFilled size="30" />
+          </Link>
           <h1 className='text-lg font-bold'>케이크 제작</h1>
           <span></span>
         </header>

@@ -16,6 +16,9 @@ const config: Config = {
       colors: {
         primary: '#175428',
         background: '#FFF8EB',
+      },
+      fontFamily: {
+        pretendard: ['var(--font-pretendard)'],
       }
     },
   },
