@@ -1,10 +1,8 @@
 'use client'
 
-import Link from 'next/link'
 import { useState } from 'react'
-import { MdHomeFilled } from 'react-icons/md'
 
-import CakeStatus from '@/components/svg/CakeStatus'
+import CreateLayout from '@/components/layout/CreateLayout'
 import TabShape from './(tab)/TabShape'
 import TabText from './(tab)/TabText'
 import TabOutline from './(tab)/TabOutline'
@@ -53,14 +51,7 @@ export default function CreateCakePage() {
 
   return (
     <CreateCakeProvider>
-      <div className='w-96 px-3 m-auto border-box min-h-screen relative'>
-        <header className='py-3.5 flex justify-between items-center'>
-          <Link href="/">
-            <MdHomeFilled size="30" />
-          </Link>
-          <h1 className='text-lg font-bold'>케이크 제작</h1>
-          <CakeStatus hasCake={false} />
-        </header>
+      <CreateLayout title="케이크 제작">
         <section>
           <ul className='py-3.5 flex justify-between items-center text-lg font-bold text-gray-400'>
             {
@@ -77,7 +68,7 @@ export default function CreateCakePage() {
           </ul>
           {getTabContent()}
         </section>
-      </div>
+      </CreateLayout>
     </CreateCakeProvider>
   )
 }
