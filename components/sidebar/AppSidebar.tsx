@@ -39,10 +39,14 @@ export default function AppSidebar({ open, onClickOutside, nickname, sns }: AppS
             />
           </div>
         </div>
-        <ul className="h-4/5 bg-white flex flex-col">
+        <ul className="h-4/5 bg-white flex flex-col pt-10 font-medium">
           {
             menuData.map(({ text, href }, idx) => (
-              <Link key={text + idx} href={href} >
+              <Link 
+                key={text + idx} 
+                href={href}
+                className="p-5 text-xl text-gray-400" 
+              >
                 {text}
               </Link>
             ))
