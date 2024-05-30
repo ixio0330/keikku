@@ -31,7 +31,7 @@ export default function CreateEventPage() {
             type="date"
             value={date}
             onChange={e => setDate(e.target.value)} 
-            min={new Date().toISOString().split("T")[0]}
+            min={new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().split("T")[0]}
           />
         </label>
         <label className="flex flex-col">
