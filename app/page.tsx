@@ -100,10 +100,10 @@ export default function Home() {
           <Showcase />
         </div>
         <div className="flex flex-col text-center font-semibold space-y-3 mt-10">
-          <Link href="/create-cake" className="m-auto w-11/12 text-white border border-primary rounded-lg box-border p-2 bg-primary">
+          <Link href="/create/cake" className="m-auto w-11/12 text-white border border-primary rounded-lg box-border p-2 bg-primary">
             케이크 선물하기
           </Link>
-          <Link href="#" className="text-primary underline underline-primary">내 이벤트 만들기</Link>
+          <Link href={authUser?.nickname ? "/create/event" : "/login"} className="text-primary underline underline-primary">내 이벤트 만들기</Link>
         </div>
       </div>
     </section>

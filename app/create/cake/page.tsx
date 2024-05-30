@@ -1,13 +1,13 @@
 'use client'
 
-import { CreateCakeProvider } from '@/context/useCreateCake'
-import { MdHomeFilled } from 'react-icons/md'
 import { useState } from 'react'
+
+import CreateLayout from '@/components/layout/CreateLayout'
 import TabShape from './(tab)/TabShape'
 import TabText from './(tab)/TabText'
 import TabOutline from './(tab)/TabOutline'
 import TabDeco from './(tab)/TabDeco'
-import Link from 'next/link'
+import { CreateCakeProvider } from '@/context/useCreateCake'
 
 type TabList = 'shape' | 'text' | 'outline' | 'deco'
 const tabList: { id: TabList; text: string }[] = [
@@ -29,7 +29,7 @@ const tabList: { id: TabList; text: string }[] = [
   },
 ];
 
-export default function CreateCake() {
+export default function CreateCakePage() {
   const [currentTab, setCurrentTab] = useState<TabList>('shape');
   const updateCurrentTab = (tab: TabList) => {
     setCurrentTab(tab);
@@ -51,14 +51,7 @@ export default function CreateCake() {
 
   return (
     <CreateCakeProvider>
-      <div className='w-96 px-3 m-auto border-box min-h-screen relative'>
-        <header className='py-3.5 flex justify-between items-center'>
-          <Link href="/">
-            <MdHomeFilled size="30" />
-          </Link>
-          <h1 className='text-lg font-bold'>케이크 제작</h1>
-          <span></span>
-        </header>
+      <CreateLayout title="케이크 제작">
         <section>
           <ul className='py-3.5 flex justify-between items-center text-lg font-bold text-gray-400'>
             {
@@ -75,7 +68,7 @@ export default function CreateCake() {
           </ul>
           {getTabContent()}
         </section>
-      </div>
+      </CreateLayout>
     </CreateCakeProvider>
   )
 }
