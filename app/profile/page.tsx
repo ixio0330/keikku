@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import useAuth from "../(hooks)/useAuth";
+import useAuth from "../../hooks/useAuth";
 import { useRouter } from "next/navigation";
 import ProfileHeader from "@/components/header/ProfileHeader";
 

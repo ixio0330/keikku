@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { Chela_One } from 'next/font/google'
-import useAuth from '../(hooks)/useAuth';
+import useAuth from '../../hooks/useAuth';
 
 const chelaOne = Chela_One({ weight: ['400'], subsets: ['latin'] });
 
