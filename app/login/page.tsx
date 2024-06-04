@@ -6,7 +6,7 @@ import useAuth from '../../hooks/useAuth';
 
 const chelaOne = Chela_One({ weight: ['400'], subsets: ['latin'] });
 
-export default function Login() {
+export default function LoginPage() {
   const { signInWithGoogle, signInWithKakao } = useAuth();
 
   return (

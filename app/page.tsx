@@ -1,17 +1,22 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import useAuth from '../hooks/useAuth'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import LoginPage from './login/page'
 import AppHeader from '@/components/header/AppHeader'
 import AppSidebar from '@/components/sidebar/AppSidebar'
 import Showcase from '@/components/svg/Showcase'
 
-export default function Home() {
+export default function MainPage() {
   const { authUser } = useAuth();
   const [sidebarToggle, setSidebarToggle] = useState(false);
+
+  useEffect(() => {
+
+  }, []);
 
   return (
     <section className="bg-background min-h-screen">

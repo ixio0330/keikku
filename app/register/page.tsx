@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-export default function Register() {
+export default function RegisterPage() {
   const [checkAll, setCheckAll] = useState(false);
   const [checkAge, setCheckAge] = useState(false);
   const [checkTerms, setCheckTerms] = useState(false);
