@@ -6,6 +6,7 @@ interface AuthUser {
   id: string;
   provider: Provider;
   nickname: string;
+  uri: string;
 }
 
 const useAuth = () => {
@@ -50,20 +51,36 @@ const useAuth = () => {
 
     // 자동 로그인
     if (event === 'INITIAL_SESSION' && data?.length) {
-      setAuthUser({ id: data[0].id, nickname: data[0].nickname, provider: session.user?.app_metadata?.provider as Provider });
+      setAuthUser({ 
+        id: data[0].id, 
+        nickname: data[0].nickname, 
+        provider: session.user?.app_metadata?.provider as Provider,
+        uri: data[0].uri,
+      });
     }
 
     // 로그인
     if (event === 'SIGNED_IN') {
       if (data?.length) {
-        setAuthUser({ id: data[0].id, nickname: data[0].nickname, provider: session.user?.app_metadata?.provider as Provider });
+        setAuthUser({ 
+          id: data[0].id, 
+          nickname: data[0].nickname, 
+          provider: session.user?.app_metadata?.provider as Provider,
+          uri: data[0].uri,
+        });
         return;
       }
       
       // 회원가입
       if (session.user.identities) {
-        await supabase.from('users').insert({ id: session?.user.id, nickname: session.user.identities[0].identity_data?.name });
-        setAuthUser({ id: session?.user.id, nickname: session.user.identities[0].identity_data?.name, provider: session.user?.app_metadata?.provider as Provider });
+        const { data } = await supabase.from('users').insert({ id: session?.user.id, nickname: session.user.identities[0].identity_data?.name }).select("*");
+        if (data === null) return;
+        setAuthUser({ 
+          id: session?.user.id, 
+          nickname: session.user.identities[0].identity_data?.name, 
+          provider: session.user?.app_metadata?.provider as Provider,
+          uri: data[0].uri,
+        });
       }
     }
   };
