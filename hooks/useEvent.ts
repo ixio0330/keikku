@@ -72,7 +72,7 @@ export default function useEvent() {
       .eq('user_id', user.id);
 
     if (event === null) return null;
-    return isOverDate(event[0].date) ? event[0] : null;
+    return isOverDate(event[0]?.date) ? event[0] : null;
   };
 
   return {
