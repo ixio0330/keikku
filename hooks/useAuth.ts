@@ -3,6 +3,7 @@ import { AuthChangeEvent, Session, Provider } from "@supabase/supabase-js";
 import { useState, useEffect } from "react";
 
 interface AuthUser {
+  id: string;
   provider: Provider;
   nickname: string;
 }
@@ -49,20 +50,20 @@ const useAuth = () => {
 
     // 자동 로그인
     if (event === 'INITIAL_SESSION' && data?.length) {
-      setAuthUser({ nickname: data[0].nickname, provider: session.user?.app_metadata?.provider as Provider });
+      setAuthUser({ id: data[0].id, nickname: data[0].nickname, provider: session.user?.app_metadata?.provider as Provider });
     }
 
     // 로그인
     if (event === 'SIGNED_IN') {
       if (data?.length) {
-        setAuthUser({ nickname: data[0].nickname, provider: session.user?.app_metadata?.provider as Provider });
+        setAuthUser({ id: data[0].id, nickname: data[0].nickname, provider: session.user?.app_metadata?.provider as Provider });
         return;
       }
       
       // 회원가입
       if (session.user.identities) {
         await supabase.from('users').insert({ id: session?.user.id, nickname: session.user.identities[0].identity_data?.name });
-        setAuthUser({ nickname: session.user.identities[0].identity_data?.name, provider: session.user?.app_metadata?.provider as Provider });
+        setAuthUser({ id: session?.user.id, nickname: session.user.identities[0].identity_data?.name, provider: session.user?.app_metadata?.provider as Provider });
       }
     }
   };
