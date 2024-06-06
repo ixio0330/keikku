@@ -10,6 +10,8 @@ type User = {
 export const Page: React.FC = () => {
   const [user, setUser] = React.useState<User>();
 
+  // 테스트
+
   return (
     <article>
       <Header
