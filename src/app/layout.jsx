@@ -1,5 +1,5 @@
-import localFont from "next/font/local";
-import "./globals.css";
+import localFont from "next/font/local"
+import "./globals.css"
 
 const pretendard = localFont({
   src: "./fonts/PretendardVariable.woff2",
@@ -11,16 +11,12 @@ const pretendard = localFont({
 export const metadata = {
   title: "케이꾸",
   description: "케이꾸",
-};
+}
 
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
-      <body
-        className={`${pretendard.variable}`}
-      >
-        {children}
-      </body>
+      <body className={`${pretendard.variable}`}>{children}</body>
     </html>
-  );
+  )
 }
