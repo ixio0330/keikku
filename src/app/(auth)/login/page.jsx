@@ -3,7 +3,7 @@ import { Chela_One } from "next/font/google"
 import { oauthProvider } from "@/constants"
 
 // action
-import { loginInWithOauth } from "@/actions/auth"
+import { loginInWithOauth } from "@/db/auth"
 
 const chelaOne = Chela_One({ weight: ["400"], subsets: ["latin"] })
 

@@ -1,9 +1,23 @@
+"use client"
+import { useRouter } from "next/navigation"
+
+// action
+import { register } from "@/db/auth"
+
+// component
 import AgreementCheck from "./AgreementCheck"
 
 export default function RegisterPage() {
+  const router = useRouter()
+
   const actionRegister = async (formData) => {
-    "use server"
-    console.log(formData.get("name"))
+    const { success, data } = await register(formData.get("name"))
+    if (success === false) {
+      window.alert("회원가입 중 오류가 발생했어요. 잠시후 다시 시도해주세요.")
+      return
+    }
+
+    router.push(`/${data}`)
   }
 
   return (
