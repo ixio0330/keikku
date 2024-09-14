@@ -14,7 +14,7 @@ export default function LoginPage() {
   }
 
   return (
-    <section className="max-w-content m-auto h-full flex flex-col justify-center items-center gap-10">
+    <section className="max-w-content m-auto h-full flex flex-col justify-center items-center gap-10 px-content">
       <div className="relative">
         <Image
           className="absolute -top-20 -left-8"
