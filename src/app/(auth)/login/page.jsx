@@ -14,7 +14,7 @@ export default function LoginPage() {
   }
 
   return (
-    <section className="max-w-screen-sm m-auto h-full flex flex-col justify-center items-center gap-10">
+    <section className="max-w-content m-auto h-full flex flex-col justify-center items-center gap-10">
       <div className="relative">
         <Image
           className="absolute -top-20 -left-8"
@@ -47,30 +47,28 @@ export default function LoginPage() {
           alt="노란색 풍선"
         />
       </div>
-      <div className="text-sm">
-        <form action={actionLogin}>
-          <button
-            type="submit"
-            name="provider"
-            value={oauthProvider.google}
-            className="flex items-center justify-between w-80 border border-gray-200 rounded box-border p-1 bg-white font-xs mb-3"
-          >
-            <Image src="/google.png" width={30} height={30} alt="구글 로고" />
-            <p>구글 계정으로 시작하기</p>
-            <span></span>
-          </button>
-          <button
-            type="submit"
-            name="provider"
-            value={oauthProvider.kakao}
-            className="flex items-center justify-between w-80 border border-kakao rounded box-border p-1 bg-kakao font-xs"
-          >
-            <Image src="/kakao.png" width={30} height={30} alt="카카오 로고" />
-            <p>카카오 계정으로 시작하기</p>
-            <span></span>
-          </button>
-        </form>
-      </div>
+      <form action={actionLogin} className="w-full">
+        <button
+          type="submit"
+          name="provider"
+          value={oauthProvider.google}
+          className="flex items-center justify-between w-full border border-gray-200 rounded box-border p-1 bg-white font-xs mb-3"
+        >
+          <Image src="/google.png" width={30} height={30} alt="구글 로고" />
+          <p>구글 계정으로 시작하기</p>
+          <span></span>
+        </button>
+        <button
+          type="submit"
+          name="provider"
+          value={oauthProvider.kakao}
+          className="flex items-center justify-between w-full border border-kakao rounded box-border p-1 bg-kakao font-xs"
+        >
+          <Image src="/kakao.png" width={30} height={30} alt="카카오 로고" />
+          <p>카카오 계정으로 시작하기</p>
+          <span></span>
+        </button>
+      </form>
     </section>
   )
 }

@@ -12,6 +12,9 @@ module.exports = {
         background: "#FFF8EB",
         kakao: "#FAE11F",
       },
+      maxWidth: {
+        content: "400px",
+      },
     },
   },
   plugins: [],
