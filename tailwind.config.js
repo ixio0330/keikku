@@ -17,7 +17,7 @@ module.exports = {
       },
       padding: {
         content: "20px",
-      }
+      },
     },
   },
   plugins: [],
