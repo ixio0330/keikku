@@ -54,7 +54,12 @@ export default function LoginPage() {
           value={oauthProvider.google}
           className="flex items-center justify-between w-full border border-gray-200 rounded box-border p-1 bg-white font-xs mb-3"
         >
-          <Image src="/logo/google.png" width={30} height={30} alt="구글 로고" />
+          <Image
+            src="/logo/google.png"
+            width={30}
+            height={30}
+            alt="구글 로고"
+          />
           <p>구글 계정으로 시작하기</p>
           <span></span>
         </button>
@@ -64,7 +69,12 @@ export default function LoginPage() {
           value={oauthProvider.kakao}
           className="flex items-center justify-between w-full border border-kakao rounded box-border p-1 bg-kakao font-xs"
         >
-          <Image src="/logo/kakao.png" width={30} height={30} alt="카카오 로고" />
+          <Image
+            src="/logo/kakao.png"
+            width={30}
+            height={30}
+            alt="카카오 로고"
+          />
           <p>카카오 계정으로 시작하기</p>
           <span></span>
         </button>
