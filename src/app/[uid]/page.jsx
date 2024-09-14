@@ -11,14 +11,14 @@ export default function KeikkuPage() {
         <button className="text-primary">
           <IoMdMenu size={28} />
         </button>
-        <h2>
+        <h1>
           <Image
             src="/app/logo.png"
             alt="케이꾸 로고"
             width={127}
             height={35}
           />
-        </h2>
+        </h1>
         <Image src="/app/cake.png" alt="케이크" width={40} height={40} />
       </header>
 
@@ -108,7 +108,7 @@ export default function KeikkuPage() {
         <div className="flex flex-col text-center font-semibold space-y-3 mt-10">
           {activeEvent ? (
             <>
-              <button className="m-auto w-11/12 text-white border border-primary rounded-lg box-border p-2 bg-primary">
+              <button className="m-auto w-full text-white border border-primary rounded-lg box-border p-2 bg-primary">
                 내 이벤트 알리기
               </button>
             </>
@@ -116,7 +116,7 @@ export default function KeikkuPage() {
             <>
               <Link
                 href="/event/create"
-                className="m-auto w-11/12 text-white border border-primary rounded-lg box-border p-2 bg-primary"
+                className="m-auto w-full text-white border border-primary rounded-lg box-border p-2 bg-primary"
               >
                 내 이벤트 만들기
               </Link>
