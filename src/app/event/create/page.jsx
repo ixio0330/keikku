@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import { cookies } from "next/headers"
 
 // component
 import { MdHomeFilled } from "react-icons/md"
@@ -7,10 +8,12 @@ import Input from "@/components/Input"
 import Textarea from "@/components/Textarea"
 
 export default function CreateEventPage() {
+  const cookieStore = cookies()
+
   return (
     <>
       <header className="fixed top-0 inset-x-0 mx-auto max-w-content w-full px-content h-16 flex items-center justify-between bg-background z-50">
-        <Link href="/uri">
+        <Link href={`/${cookieStore.get("uri").value}`}>
           <MdHomeFilled size={28} />
         </Link>
         <h1 className="text-lg font-bold">새로운 이벤트</h1>
