@@ -1,7 +1,3 @@
 export default function RegisterPage() {
-  return (
-    <main>
-      회원가입 페이지에요
-    </main>
-  )
+  return <section>회원가입 페이지에요</section>
 }
