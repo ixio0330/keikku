@@ -3,6 +3,7 @@
 import createSupabase from "@/supabase"
 import { redirect } from "next/navigation"
 import { oauthProvider } from "@/constants"
+import { cookies } from "next/headers"
 
 const T_USERS = "users"
 
@@ -23,6 +24,7 @@ export const loginInWithOauth = async (provider = oauthProvider.google) => {
 
 export const register = async (name = "") => {
   const supabase = createSupabase()
+  const cookieStore = cookies()
 
   const {
     data: { user },
@@ -45,5 +47,6 @@ export const register = async (name = "") => {
     return { success: false }
   }
 
+  cookieStore.set("uri", data.uri)
   return { success: true, data: data.uri }
 }

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { cookies } from "next/headers"
 import createSupabase from "@/supabase"
 
 export async function GET(request) {
@@ -7,6 +8,7 @@ export async function GET(request) {
     const { searchParams, origin } = new URL(request.url)
     const code = searchParams.get("code")
     const next = searchParams.get("next") ?? "/"
+    const cookieStore = cookies()
 
     if (!code) {
       console.log(`Error: code가 존재하지 않음`)
@@ -21,7 +23,7 @@ export async function GET(request) {
     } = await supabase.auth.getUser()
     const { data, error: userError } = await supabase
       .from("users")
-      .select("id")
+      .select("uri")
       .eq("oauth_uuid", user.id)
       .single()
 
@@ -48,8 +50,9 @@ export async function GET(request) {
     }
 
     // 사용자 정보가 있을 경우, 로그인 처리
-    if (data?.id) {
-      return NextResponse.redirect(`${origin}/${next}`)
+    if (data.uri) {
+      cookieStore.set("uri", data.uri)
+      return NextResponse.redirect(`${origin}/${data.uri}`)
     }
   } catch (err) {
     console.log(`Error: ${err}`)
