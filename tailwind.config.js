@@ -10,6 +10,7 @@ module.exports = {
       colors: {
         primary: "#175428",
         background: "#FFF8EB",
+        kakao: "#FAE11F",
       },
     },
   },

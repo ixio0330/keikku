@@ -1,9 +1,18 @@
 import Image from "next/image"
 import { Chela_One } from "next/font/google"
+import { oauthProvider } from "@/constants"
+
+// action
+import { loginInWithOauth } from "@/actions/auth"
 
 const chelaOne = Chela_One({ weight: ["400"], subsets: ["latin"] })
 
 export default function LoginPage() {
+  const actionLogin = async (formData) => {
+    "use server"
+    await loginInWithOauth(formData.get("provider"))
+  }
+
   return (
     <main className="bg-background min-h-screen">
       <section className="max-w-screen-sm m-auto h-full flex flex-col justify-center items-center gap-10">
@@ -40,16 +49,33 @@ export default function LoginPage() {
           />
         </div>
         <div className="text-sm">
-          <button className="flex items-center justify-between w-80 border border-gray-200 rounded box-border p-1 bg-white font-xs mb-3">
-            <Image src="/google.png" width={30} height={30} alt="구글 로고" />
-            <p>구글 계정으로 시작하기</p>
-            <span></span>
-          </button>
-          <button className="flex items-center justify-between w-80 border border-[#FAE11F] rounded box-border p-1 bg-[#FAE11F] font-xs">
-            <Image src="/kakao.png" width={30} height={30} alt="카카오 로고" />
-            <p>카카오 계정으로 시작하기</p>
-            <span></span>
-          </button>
+          <form action={actionLogin}>
+            <button
+              type="submit"
+              name="provider"
+              value={oauthProvider.google}
+              className="flex items-center justify-between w-80 border border-gray-200 rounded box-border p-1 bg-white font-xs mb-3"
+            >
+              <Image src="/google.png" width={30} height={30} alt="구글 로고" />
+              <p>구글 계정으로 시작하기</p>
+              <span></span>
+            </button>
+            <button
+              type="submit"
+              name="provider"
+              value={oauthProvider.kakao}
+              className="flex items-center justify-between w-80 border border-kakao rounded box-border p-1 bg-kakao font-xs"
+            >
+              <Image
+                src="/kakao.png"
+                width={30}
+                height={30}
+                alt="카카오 로고"
+              />
+              <p>카카오 계정으로 시작하기</p>
+              <span></span>
+            </button>
+          </form>
         </div>
       </section>
     </main>
