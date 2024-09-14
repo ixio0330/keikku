@@ -10,7 +10,7 @@ export async function GET(request) {
 
     if (!code) {
       console.log(`Error: code가 존재하지 않음`)
-      return NextResponse.redirect(`/`)
+      return NextResponse.redirect(new URL('/'))
     }
 
     const { error: sessionError } =
@@ -25,24 +25,24 @@ export async function GET(request) {
       .eq("oauth_uuid", user.id)
       .single()
 
-    if (sessionError) {
-      console.log(`Error: ${sessionError}`)
-      return NextResponse.redirect(`/`)
-    }
+    // if (sessionError) {
+    //   console.log(`Error: ${sessionError}`)
+    //   return NextResponse.redirect(new URL('/'))
+    // }
 
-    if (authError) {
-      console.log(`Error: ${authError}`)
-      return NextResponse.redirect(`/`)
-    }
+    // if (authError) {
+    //   console.log(`Error: ${authError}`)
+    //   return NextResponse.redirect(new URL('/'))
+    // }
 
-    if (userError) {
-      console.log(`Error: ${userError}`)
-      return NextResponse.redirect(`/`)
-    }
+    // if (userError) {
+    //   console.log(`Error: ${userError}`)
+    //   return NextResponse.redirect(new URL('/'))
+    // }
 
     // 사용자 정보가 없을 경우, 회원가입 페이지로 이동
     if (!data) {
-      return NextResponse.redirect(`/`)
+      return NextResponse.redirect(new URL('/register', process.env.DOMAIN))
     }
 
     // 사용자 정보가 있을 경우, 로그인 처리
@@ -51,6 +51,6 @@ export async function GET(request) {
     }
   } catch (err) {
     console.log(`Error: ${err}`)
-    return NextResponse.redirect(`/`)
+    return NextResponse.redirect(new URL('/'))
   }
 }
