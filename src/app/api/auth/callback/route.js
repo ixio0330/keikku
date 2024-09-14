@@ -42,7 +42,7 @@ export async function GET(request) {
 
     // 사용자 정보가 없을 경우, 회원가입 페이지로 이동
     if (!data) {
-      return NextResponse.redirect(new URL("/register", process.env.DOMAIN))
+      return NextResponse.redirect(new URL("/auth/register", process.env.DOMAIN))
     }
 
     // 사용자 정보가 있을 경우, 로그인 처리
