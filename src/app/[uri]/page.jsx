@@ -10,8 +10,9 @@ import { getUriByCookie } from "@/utils/server"
 import { IoMdMenu, IoMdCalendar } from "react-icons/io"
 
 export default async function KeikkuPage({ params }) {
-  const activeEvent = await getActiveEventByUri(params.uri)
-  const isOwner = params.uri === getUriByCookie()
+  const uri = params.uri
+  const activeEvent = await getActiveEventByUri(uri)
+  const isOwner = uri === getUriByCookie()
 
   return (
     <>
@@ -126,7 +127,7 @@ export default async function KeikkuPage({ params }) {
               </button>
             ) : (
               <Link
-                href="/cake/create"
+                href="/cake/create/shape"
                 className="m-auto w-full text-white border border-primary rounded-lg box-border p-2 bg-primary"
               >
                 케이크 선물하기
