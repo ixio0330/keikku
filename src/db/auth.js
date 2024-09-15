@@ -31,7 +31,10 @@ export const register = async (name = "") => {
 
   if (authError) {
     console.log(`Error: ${authError}`)
-    return { success: false }
+    return {
+      success: false,
+      message: "회원가입 중 오류가 발생했어요 잠시후 시도해주세요",
+    }
   }
 
   const { data, error: userError } = await supabase
@@ -42,7 +45,10 @@ export const register = async (name = "") => {
 
   if (userError) {
     console.log(`Error: ${userError}`)
-    return { success: false }
+    return {
+      success: false,
+      message: "회원가입 중 오류가 발생했어요 잠시후 시도해주세요",
+    }
   }
 
   cookieStore.set("uri", data.uri)

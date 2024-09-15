@@ -11,9 +11,9 @@ export default function RegisterPage() {
   const router = useRouter()
 
   const actionRegister = async (formData) => {
-    const { success, data } = await register(formData.get("name"))
+    const { success, data, message } = await register(formData.get("name"))
     if (success === false) {
-      window.alert("회원가입 중 오류가 발생했어요. 잠시후 다시 시도해주세요.")
+      window.alert(message)
       return
     }
 
