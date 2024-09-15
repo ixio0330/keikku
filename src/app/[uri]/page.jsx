@@ -4,11 +4,14 @@ import Link from "next/link"
 // db
 import { getActiveEventByUri } from "@/db/event"
 
+// util
+import { getUriByCookie } from "@/utils/server"
+
 import { IoMdMenu, IoMdCalendar } from "react-icons/io"
 
 export default async function KeikkuPage({ params }) {
   const activeEvent = await getActiveEventByUri(params.uri)
-  console.log(activeEvent)
+  const isOwner = params.uri === getUriByCookie()
 
   return (
     <>
@@ -32,7 +35,7 @@ export default async function KeikkuPage({ params }) {
           {activeEvent ? (
             <div className="space-y-1">
               <p className="text-sm">
-                {activeEvent.username}님이 진행중인 기념일이에요!
+                {activeEvent.username}님이 진행중인 이벤트에요!
               </p>
               <p className="font-bold text-xl">{activeEvent.name}</p>
               <div className="text-gray-400 text-sm flex items-center gap-2">
@@ -117,11 +120,18 @@ export default async function KeikkuPage({ params }) {
         </div>
         <div className="flex flex-col text-center font-semibold space-y-3 mt-10">
           {activeEvent ? (
-            <>
+            isOwner ? (
               <button className="m-auto w-full text-white border border-primary rounded-lg box-border p-2 bg-primary">
                 내 이벤트 알리기
               </button>
-            </>
+            ) : (
+              <Link
+                href="/cake/create"
+                className="m-auto w-full text-white border border-primary rounded-lg box-border p-2 bg-primary"
+              >
+                케이크 선물하기
+              </Link>
+            )
           ) : (
             <>
               <Link
