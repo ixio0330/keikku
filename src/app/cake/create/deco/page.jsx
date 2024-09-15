@@ -6,12 +6,12 @@ import useCake from "@/stores/cake"
 // component
 import Tab from "../Tab"
 
-export default function CreateCakeShapePage() {
+export default function CreateCakeDecoPage() {
   const { cake } = useCake()
 
   return (
     <>
-      <Tab currentTab="모양" />
+      <Tab currentTab="데코" />
 
       <section></section>
     </>
