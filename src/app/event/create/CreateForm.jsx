@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation"
 import { createEvent } from "@/db/event"
 
 // component
-import Input from "@/components/Input"
-import Textarea from "@/components/Textarea"
+import Input from "@/components/common/Input"
+import Textarea from "@/components/common/Textarea"
 import EventCategories from "./EventCategories"
 
 export default function CreateForm({ list, uri }) {
