@@ -121,7 +121,7 @@ export default async function KeikkuPage({ params }) {
           />
         </div>
 
-        <ActionButton activeEvent={activeEvent} isOwner={isOwner} />
+        <ActionButton activeEvent={activeEvent} isOwner={isOwner} uri={uri} />
       </main>
     </>
   )

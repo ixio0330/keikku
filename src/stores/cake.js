@@ -1,6 +1,7 @@
 import { atom, useAtom } from "jotai"
 
 const cakeAtom = atom({
+  uri: null, // 사용자 uri
   event_id: null, // 이벤트 ID
   sender_id: null, // 보낸 사람: 로그인한 사용자는 id 입력
   sender_name: null, // 보낸 사람: 익명 사용자는 이름 입력
@@ -20,6 +21,13 @@ const cakeAtom = atom({
 export default function useCake() {
   const [cake, setCake] = useAtom(cakeAtom)
 
+  const updateUri = (uri) => {
+    setCake((prev) => ({
+      ...prev,
+      uri,
+    }))
+  }
+
   const updateEvent = (id) => {
     setCake((prev) => ({
       ...prev,
@@ -29,6 +37,7 @@ export default function useCake() {
 
   return {
     cake,
+    updateUri,
     updateEvent,
   }
 }
