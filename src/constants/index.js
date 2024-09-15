@@ -32,3 +32,34 @@ export const cakeTabs = [
     href: "/cake/create/deco",
   },
 ]
+
+export const cakeShapeStyle = {
+  circle: {
+    width: "256px",
+    height: "256px",
+    borderRadius: "50%",
+  },
+  rectangle: {
+    width: "224px",
+    height: "224px",
+    borderRadius: "30px",
+  },
+}
+
+export const cakeColors = [
+  { color: "white" },
+  { color: "#CE8FFF" },
+  { color: "#EE9998" },
+  { color: "#98C5E8" },
+  { color: "#86D180" },
+  { color: "#FFC416" },
+]
+
+export const cakeTextColors = [
+  { color: "white" },
+  { color: "#1F2227" },
+  { color: "#61666C" },
+  { color: "#950E0E" },
+  { color: "#175444" },
+  { color: "#001582" },
+]
