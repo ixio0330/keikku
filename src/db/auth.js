@@ -4,6 +4,7 @@ import createSupabase from "@/supabase"
 import { redirect } from "next/navigation"
 import { cookies } from "next/headers"
 import { oauthProvider, T_USERS } from "@/constants"
+import { getUriByCookie } from "@/utils/server"
 
 export const loginInWithOauth = async (provider = oauthProvider.google) => {
   const supabase = createSupabase()
@@ -59,8 +60,8 @@ export const autoLogin = async () => {
   const supabase = createSupabase()
   const cookieStore = cookies()
 
-  if (cookieStore.get("uri").value) {
-    return { success: true, data: cookieStore.get("uri").value }
+  if (getUriByCookie()) {
+    return { success: true, data: getUriByCookie() }
   }
 
   const {
