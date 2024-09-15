@@ -1,19 +1,24 @@
 import Image from "next/image"
 import Link from "next/link"
-import { cookies } from "next/headers"
+
+// db
+import { getEventCategories } from "@/db/event"
+
+// util
+import { getUriByCookie } from "@/utils/server"
 
 // component
 import { MdHomeFilled } from "react-icons/md"
-import Input from "@/components/Input"
-import Textarea from "@/components/Textarea"
+import CreateForm from "./CreateForm"
 
-export default function CreateEventPage() {
-  const cookieStore = cookies()
+export default async function CreateEventPage() {
+  const uri = getUriByCookie()
+  const eventCategories = await getEventCategories()
 
   return (
     <>
       <header className="fixed top-0 inset-x-0 mx-auto max-w-content w-full px-content h-16 flex items-center justify-between bg-background z-50">
-        <Link href={`/${cookieStore.get("uri").value}`}>
+        <Link href={`/${uri}`}>
           <MdHomeFilled size={28} />
         </Link>
         <h1 className="text-lg font-bold">새로운 이벤트</h1>
@@ -21,40 +26,7 @@ export default function CreateEventPage() {
       </header>
 
       <main className="max-w-content px-content m-auto mt-16 min-h-[calc(100vh-64px)] bg-background py-5">
-        <form className="flex flex-col gap-10">
-          <label>
-            <p className="text-lg font-bold">어떤 이벤트인가요?</p>
-            <Input
-              type="text"
-              name="name"
-              placeholder="디데이의 이름을 입력해주세요."
-              maxLength={16}
-            />
-          </label>
-
-          <label>
-            <p className="text-lg font-bold">이벤트 날짜를 알려 주세요.</p>
-            <Input type="date" name="date" />
-          </label>
-
-          <label className="space-y-2">
-            <p className="text-lg font-bold">
-              이벤트에 대해 간단하게 설명해 주세요.
-            </p>
-            <Textarea
-              name="description"
-              placeholder="다른 이용자들이 알 수 있도록 이벤트에 대해 알려 주세요."
-              maxLength={100}
-            />
-          </label>
-
-          <button
-            type="submit"
-            className="w-full font-semibold text-white border border-primary rounded-lg box-border p-2 bg-primary"
-          >
-            이벤트 만들기
-          </button>
-        </form>
+        <CreateForm list={eventCategories} uri={uri} />
       </main>
     </>
   )

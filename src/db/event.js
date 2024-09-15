@@ -2,9 +2,26 @@
 
 import createSupabase from "@/supabase"
 import { getUriByCookie } from "@/utils/server"
-import { T_USERS, T_EVENTS } from "@/constants"
+import { T_USERS, T_EVENTS, T_EVENT_CATEGORIES } from "@/constants"
 
-export const createEvent = async ({ name, description, date }) => {
+export const getEventCategories = async () => {
+  const supabase = createSupabase()
+
+  const { data, error } = await supabase
+    .from(T_EVENT_CATEGORIES)
+    .select("id, name")
+
+  if (error) {
+    return {
+      success: false,
+      message: "카테고리 목록을 가져오지 못했어요 새로고침을 해주세요",
+    }
+  }
+
+  return data
+}
+
+export const createEvent = async ({ name, date, description, category_id }) => {
   const uri = getUriByCookie()
   if (uri === null) {
     return { success: false, message: "로그인이 필요해요" }
@@ -23,7 +40,7 @@ export const createEvent = async ({ name, description, date }) => {
 
   const { error: eventError } = await supabase
     .from(T_EVENTS)
-    .insert([{ user_id: userData.id, category_id: 1, name, description, date }])
+    .insert([{ user_id: userData.id, category_id, name, description, date }])
   if (eventError) {
     return {
       success: false,
