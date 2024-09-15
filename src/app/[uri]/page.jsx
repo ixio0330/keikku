@@ -1,5 +1,4 @@
 import Image from "next/image"
-import Link from "next/link"
 
 // db
 import { getActiveEventByUri } from "@/db/event"
@@ -7,7 +6,9 @@ import { getActiveEventByUri } from "@/db/event"
 // util
 import { getUriByCookie } from "@/utils/server"
 
+// component
 import { IoMdMenu, IoMdCalendar } from "react-icons/io"
+import ActionButton from "./ActionButton"
 
 export default async function KeikkuPage({ params }) {
   const uri = params.uri
@@ -119,31 +120,8 @@ export default async function KeikkuPage({ params }) {
             src="/main/showcase.png"
           />
         </div>
-        <div className="flex flex-col text-center font-semibold space-y-3 mt-10">
-          {activeEvent ? (
-            isOwner ? (
-              <button className="m-auto w-full text-white border border-primary rounded-lg box-border p-2 bg-primary">
-                내 이벤트 알리기
-              </button>
-            ) : (
-              <Link
-                href="/cake/create/shape"
-                className="m-auto w-full text-white border border-primary rounded-lg box-border p-2 bg-primary"
-              >
-                케이크 선물하기
-              </Link>
-            )
-          ) : (
-            <>
-              <Link
-                href="/event/create"
-                className="m-auto w-full text-white border border-primary rounded-lg box-border p-2 bg-primary"
-              >
-                내 이벤트 만들기
-              </Link>
-            </>
-          )}
-        </div>
+
+        <ActionButton activeEvent={activeEvent} isOwner={isOwner} />
       </main>
     </>
   )
