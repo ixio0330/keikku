@@ -57,30 +57,9 @@ export const register = async (name = "") => {
 }
 
 export const autoLogin = async () => {
-  const supabase = createSupabase()
-  const cookieStore = cookies()
-
   if (getUriByCookie()) {
     return { success: true, data: getUriByCookie() }
   }
 
-  const {
-    data: { user },
-    error: authError,
-  } = await supabase.auth.getUser()
-  if (authError) {
-    return { success: false }
-  }
-
-  const { data, error: userError } = await supabase
-    .from(T_USERS)
-    .select("uri")
-    .eq("oauth_uuid", user.id)
-    .single()
-  if (userError) {
-    return { success: false }
-  }
-
-  cookieStore.set("uri", data.uri)
-  return { success: true, data: data.uri }
+  return { success: false }
 }
