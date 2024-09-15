@@ -1,9 +1,14 @@
 import Image from "next/image"
 import Link from "next/link"
+
+// db
+import { getActiveEventByUri } from "@/db/event"
+
 import { IoMdMenu, IoMdCalendar } from "react-icons/io"
 
-export default function KeikkuPage() {
-  const activeEvent = null
+export default async function KeikkuPage({ params }) {
+  const activeEvent = await getActiveEventByUri(params.uri)
+  console.log(activeEvent)
 
   return (
     <>
@@ -23,25 +28,30 @@ export default function KeikkuPage() {
       </header>
 
       <main className="max-w-content px-content m-auto mt-16 min-h-[calc(100vh-64px)] bg-background pb-10">
-        <div className="mt-10 pb-10 relative overflow-hidden">
-          <div className="text-2xl flex flex-col -space-y-1">
-            {activeEvent ? (
-              <>
-                <p>
-                  <b>{"닉네임"}</b> 님의 기념일의
-                </p>
-                <p>
-                  <span className="text-primary font-bold">{"n"}일</span>{" "}
-                  남았어요!
-                </p>
-              </>
-            ) : (
-              <>
-                <p>현재 진행 중인</p>
-                <p>이벤트가 없어요 ;(</p>
-              </>
-            )}
-          </div>
+        <div className="pt-5 pb-10 relative overflow-hidden">
+          {activeEvent ? (
+            <div className="space-y-1">
+              <p className="text-sm">
+                {activeEvent.username}님이 진행중인 기념일이에요!
+              </p>
+              <p className="font-bold text-xl">{activeEvent.name}</p>
+              <div className="text-gray-400 text-sm flex items-center gap-2">
+                <IoMdCalendar size={20} />
+                <p>{activeEvent.date}</p>
+                {activeEvent.category && (
+                  <>
+                    <div className="w-px h-4 bg-gray-400" />
+                    <p>{activeEvent.category}</p>
+                  </>
+                )}
+              </div>
+            </div>
+          ) : (
+            <div className="text-xl">
+              <p>현재 진행 중인</p>
+              <p>이벤트가 없어요 ;(</p>
+            </div>
+          )}
           <ul className="flex space-x-6 absolute -right-8 top-5">
             <li>
               <Image

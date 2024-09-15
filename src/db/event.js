@@ -21,6 +21,29 @@ export const getEventCategories = async () => {
   return data
 }
 
+export const getActiveEventByUri = async (uri = "") => {
+  const supabase = createSupabase()
+
+  const { data, error } = await supabase
+    .from(T_EVENTS)
+    .select("id, name, date, users!inner(name, uri), event_categories(name)")
+    .eq("users.uri", uri)
+    .gte("date", new Date().toISOString())
+    .single()
+
+  if (error) {
+    return null
+  }
+
+  return {
+    id: data.id,
+    name: data.name,
+    date: data.date,
+    category: data.event_categories?.name ?? null,
+    username: data.users.name,
+  }
+}
+
 export const createEvent = async ({ name, date, description, category_id }) => {
   const uri = getUriByCookie()
   if (uri === null) {
@@ -28,6 +51,8 @@ export const createEvent = async ({ name, date, description, category_id }) => {
   }
 
   const supabase = createSupabase()
+
+  // TODO 활성 이벤트 체크
 
   const { data: userData, error: userError } = await supabase
     .from(T_USERS)
