@@ -4,13 +4,24 @@ import Image from "next/image"
 import { useState } from "react"
 
 export default function ColorList({ items, selectColor, setColor }) {
-  const isUsedCustomColor = !items.find(({ color }) => color === selectColor)
+  const isUsedCustomColor =
+    selectColor && !items.find(({ color }) => color === selectColor)
   const [customColor, setCustomColor] = useState(
     isUsedCustomColor ? selectColor : "",
   )
+
   const handleChangeCustomColor = (e) => {
     setCustomColor(e.target.value)
     setColor(e.target.value)
+  }
+
+  const handleColorSelection = (color) => {
+    setColor(color)
+    if (!items.find(({ color: itemColor }) => itemColor === color)) {
+      setCustomColor(color)
+    } else {
+      setCustomColor("")
+    }
   }
 
   return (
@@ -20,8 +31,10 @@ export default function ColorList({ items, selectColor, setColor }) {
         {items.map(({ color }) => (
           <li
             key={color}
-            onClick={() => setColor(color)}
-            className={`p-[2px] border-2 rounded-full ${selectColor === color ? "border-primary" : "border-transparent"}`}
+            onClick={() => handleColorSelection(color)}
+            className={`p-[2px] border-2 rounded-full ${
+              selectColor === color ? "border-primary" : "border-transparent"
+            }`}
           >
             <div
               className="rounded-full w-7 h-7 border"
@@ -30,7 +43,11 @@ export default function ColorList({ items, selectColor, setColor }) {
           </li>
         ))}
         <li
-          className={`relative border-2 rounded-full p-[2px] ${selectColor === customColor ? "border-primary" : "border-transparent"}`}
+          className={`relative border-2 rounded-full p-[2px] ${
+            customColor && selectColor === customColor
+              ? "border-primary"
+              : "border-transparent"
+          }`}
         >
           {!customColor && selectColor !== customColor && (
             <Image
