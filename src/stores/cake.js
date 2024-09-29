@@ -1,13 +1,15 @@
 import { atom, useAtom } from "jotai"
 
+import { cakeColors, cakeShape } from "@/constants"
+
 const cakeAtom = atom({
   uri: null, // 사용자 uri
   event_id: null, // 이벤트 ID
   sender_id: null, // 보낸 사람: 로그인한 사용자는 id 입력
   sender_name: null, // 보낸 사람: 익명 사용자는 이름 입력
   message: null, // 작성한 메시지
-  cake_shape: null, // 케이크 모양
-  cake_color: null, // 케이크 색상
+  cake_shape: cakeShape.circle, // 케이크 모양
+  cake_color: cakeColors[0].color, // 케이크 색상
   text_size: null, // 텍스트 크기
   text_styles: [], // 텍스트 스타일 배열
   text_color: null, // 텍스트 색상
@@ -35,9 +37,25 @@ export default function useCake() {
     }))
   }
 
+  const updateCakeShape = (shape = "circle") => {
+    setCake((prev) => ({
+      ...prev,
+      cake_shape: shape,
+    }))
+  }
+
+  const updateCakeColor = (color) => {
+    setCake((prev) => ({
+      ...prev,
+      cake_color: color,
+    }))
+  }
+
   return {
     cake,
     updateUri,
     updateEvent,
+    updateCakeShape,
+    updateCakeColor,
   }
 }

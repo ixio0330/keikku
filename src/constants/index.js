@@ -33,7 +33,27 @@ export const cakeTabs = [
   },
 ]
 
-export const cakeShapeStyle = {
+export const cakeShape = Object.freeze({
+  circle: "circle",
+  rectangle: "rectangle",
+})
+
+export const cakeOutlineShape = Object.freeze({
+  cream1: "cream1",
+  cream2: "cream2",
+  cream3: "cream3",
+})
+
+export const cakeDecoShape = Object.freeze({
+  cream: "cream",
+  line: "line",
+  sprinkles: "sprinkles",
+  heart: "heart",
+  flower: "flower",
+  carrot: "carrot",
+})
+
+export const cakeShapeStyle = Object.freeze({
   circle: {
     width: "256px",
     height: "256px",
@@ -44,8 +64,9 @@ export const cakeShapeStyle = {
     height: "224px",
     borderRadius: "30px",
   },
-}
+})
 
+// 케이크, 테두리, 데코, 색상
 export const cakeColors = [
   { color: "white" },
   { color: "#CE8FFF" },
@@ -55,6 +76,7 @@ export const cakeColors = [
   { color: "#FFC416" },
 ]
 
+// 텍스트 색상
 export const cakeTextColors = [
   { color: "white" },
   { color: "#1F2227" },

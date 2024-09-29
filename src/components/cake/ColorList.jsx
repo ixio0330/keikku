@@ -30,14 +30,14 @@ export default function ColorList({ items, selectColor, setColor }) {
           </li>
         ))}
         <li
-          className={`relative border-2 rounded-full p-[2px] ${selectColor === color ? "border-primary" : "border-transparent"}`}
+          className={`relative border-2 rounded-full p-[2px] ${selectColor === customColor ? "border-primary" : "border-transparent"}`}
         >
           {!customColor && selectColor !== customColor && (
             <Image
               width={28}
               height={28}
               alt="사용자 정의 색상"
-              src="/custom-color.png"
+              src="/cake/custom-color.png"
               className="w-7 h-7"
             />
           )}

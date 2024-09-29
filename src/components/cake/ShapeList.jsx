@@ -14,9 +14,9 @@ export default function ShapeList({ title, items }) {
     <div>
       <h2 className="font-bold text-lg">{title}</h2>
       <ul className="mt-3 flex space-x-5 overflow-hidden overflow-x-auto">
-        {items.map(({ onClick, isSelected, Item }) => (
+        {items.map(({ onClick, isSelected, Item }, idx) => (
           <li
-            key={index}
+            key={"shape" + idx}
             className="flex justify-center items-center border-2 rounded-2xl bg-white min-w-24 w-24 h-24"
             onClick={onClick}
             style={getShapeOutlineStyle(isSelected)}
