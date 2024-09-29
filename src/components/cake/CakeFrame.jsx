@@ -1,3 +1,6 @@
+// store
+import useCake from "@/stores/cake"
+
 import DecoCarrot from "./deco/DecoCarrot"
 import DecoCream from "./deco/DecoCream"
 import DecoFlower from "./deco/DecoFlower"
@@ -9,32 +12,39 @@ import CreamOne from "./outline/CreamOne"
 import CreamThree from "./outline/CreamThree"
 import CreamTwo from "./outline/CreamTwo"
 
-import { cakeShape, cakeOutlineShape, cakeDecoShape } from "@/constants"
+import {
+  cakeShape,
+  cakeShapeStyle,
+  cakeOutlineShape,
+  cakeDecoShape,
+} from "@/constants"
 
-export default function CakeFrame({ cakeColor, outline, deco }) {
+export default function CakeFrame() {
+  const { cake } = useCake()
+
   const getOutlineStyle = () => {
-    switch (outline) {
+    switch (cake.outline_shape) {
       case cakeOutlineShape.cream1:
-        return <CreamOne color={outlineColor} shape={cakeShape} />
+        return <CreamOne color={cake.outline_color} shape={cake.cake_shape} />
       case cakeOutlineShape.cream2:
-        return <CreamTwo color={outlineColor} shape={cakeShape} />
+        return <CreamTwo color={cake.outline_color} shape={cake.cake_shape} />
       case cakeOutlineShape.cream3:
-        return <CreamThree color={outlineColor} shape={cakeShape} />
+        return <CreamThree color={cake.outline_color} shape={cake.cake_shape} />
       default:
         return null
     }
   }
 
   const getDecoStyle = () => {
-    switch (deco) {
+    switch (cake.deco_shape) {
       case cakeDecoShape.cream:
-        return <DecoCream color={decoColor} />
+        return <DecoCream color={cake.deco_color} />
       case cakeDecoShape.line:
         return <DecoLine />
       case cakeDecoShape.sprinkles:
         return <DecoSprinkles />
       case cakeDecoShape.heart:
-        return <DecoHeart color={decoColor} />
+        return <DecoHeart color={cake.deco_color} />
       case cakeDecoShape.flower:
         return <DecoFlower />
       case cakeDecoShape.carrot:
@@ -47,8 +57,10 @@ export default function CakeFrame({ cakeColor, outline, deco }) {
   return (
     <section className="relative m-auto border rounded-2xl w-80 h-80 bg-background flex justify-center items-center my-10">
       <div
-        className={`${cakeShapeStyle[cakeShape]}`}
-        style={{ ...cakeShapeStyle[cakeShape], backgroundColor: cakeColor }}
+        style={{
+          ...cakeShapeStyle[cake.cake_shape],
+          backgroundColor: cake.cake_color,
+        }}
       />
       {getOutlineStyle()}
       {getDecoStyle()}
