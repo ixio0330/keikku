@@ -1,6 +1,3 @@
-import Circle from "./shape/Circle"
-import Rectangle from "./shape/Rectangle"
-
 import DecoCarrot from "./deco/DecoCarrot"
 import DecoCream from "./deco/DecoCream"
 import DecoFlower from "./deco/DecoFlower"
@@ -14,16 +11,7 @@ import CreamTwo from "./outline/CreamTwo"
 
 import { cakeShape, cakeOutlineShape, cakeDecoShape } from "@/constants"
 
-export default function CakeFrame({ shape, color }) {
-  const genCakeFrame = () => {
-    switch (shape) {
-      case cakeShape.circle:
-        return <Circle color={color} />
-      case cakeShape.rectangle:
-        return <Rectangle color={color} />
-    }
-  }
-
+export default function CakeFrame({ cakeColor, outline, deco }) {
   const getOutlineStyle = () => {
     switch (outline) {
       case cakeOutlineShape.cream1:
@@ -32,8 +20,11 @@ export default function CakeFrame({ shape, color }) {
         return <CreamTwo color={outlineColor} shape={cakeShape} />
       case cakeOutlineShape.cream3:
         return <CreamThree color={outlineColor} shape={cakeShape} />
+      default:
+        return null
     }
   }
+
   const getDecoStyle = () => {
     switch (deco) {
       case cakeDecoShape.cream:
@@ -48,12 +39,19 @@ export default function CakeFrame({ shape, color }) {
         return <DecoFlower />
       case cakeDecoShape.carrot:
         return <DecoCarrot />
+      default:
+        return null
     }
   }
 
   return (
     <section className="relative m-auto border rounded-2xl w-80 h-80 bg-background flex justify-center items-center my-10">
-      {genCakeFrame()}
+      <div
+        className={`${cakeShapeStyle[cakeShape]}`}
+        style={{ ...cakeShapeStyle[cakeShape], backgroundColor: cakeColor }}
+      />
+      {getOutlineStyle()}
+      {getDecoStyle()}
     </section>
   )
 }

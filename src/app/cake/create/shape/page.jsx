@@ -6,15 +6,27 @@ import useCake from "@/stores/cake"
 
 // component
 import Tab from "../Tab"
-import CakeFrame from "@/components/cake/CakeFrame"
+import Circle from "@/components/cake/shape/Circle"
+import Rectangle from "@/components/cake/shape/Rectangle"
 import ShapeList from "@/components/cake/ShapeList"
 import ColorList from "@/components/cake/ColorList"
 
 // constants
-import { cakeColors } from "@/constants"
+import { cakeShape, cakeColors } from "@/constants"
 
 export default function CreateCakeShapePage() {
   const { cake, updateCakeShape, updateCakeColor } = useCake()
+
+  const genCakeFrame = () => {
+    switch (cake.cake_shape) {
+      case cakeShape.circle:
+        return <Circle color={cake.cake_color} />
+      case cakeShape.rectangle:
+        return <Rectangle color={cake.cake_color} />
+      default:
+        return null
+    }
+  }
 
   return (
     <>
@@ -22,7 +34,9 @@ export default function CreateCakeShapePage() {
       <Tab currentTab="모양" />
 
       {/* 케이크 틀 */}
-      <CakeFrame shape={cake.cake_shape} color={cake.cake_color} />
+      <section className="relative m-auto border rounded-2xl w-80 h-80 bg-background flex justify-center items-center my-10">
+        {genCakeFrame()}
+      </section>
 
       {/* 선택 */}
       <section className="space-y-10">
