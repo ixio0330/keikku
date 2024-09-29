@@ -1,6 +1,11 @@
 import { atom, useAtom } from "jotai"
 
-import { cakeColors, cakeShape, cakeOutlineShape } from "@/constants"
+import {
+  cakeColors,
+  cakeShape,
+  cakeOutlineShape,
+  cakeDecoShape,
+} from "@/constants"
 
 const cakeAtom = atom({
   uri: null, // 사용자 uri
@@ -65,6 +70,20 @@ export default function useCake() {
     }))
   }
 
+  const updateCakeDecoShape = (shape = cakeDecoShape.cream) => {
+    setCake((prev) => ({
+      ...prev,
+      deco_shape: shape,
+    }))
+  }
+
+  const updateCakeDecoColor = (color) => {
+    setCake((prev) => ({
+      ...prev,
+      deco_color: color,
+    }))
+  }
+
   return {
     cake,
     updateUri,
@@ -73,5 +92,7 @@ export default function useCake() {
     updateCakeColor,
     updateCakeOutlineShape,
     updateCakeOutlineColor,
+    updateCakeDecoShape,
+    updateCakeDecoColor,
   }
 }

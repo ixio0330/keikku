@@ -1,23 +1,18 @@
 // store
 import useCake from "@/stores/cake"
 
-import DecoCarrot from "./deco/DecoCarrot"
-import DecoCream from "./deco/DecoCream"
-import DecoFlower from "./deco/DecoFlower"
-import DecoHeart from "./deco/DecoHeart"
-import DecoLine from "./deco/DecoLine"
-import DecoSprinkles from "./deco/DecoSprinkles"
+import DecoCarrot, { Carrot } from "./deco/DecoCarrot"
+import DecoCream, { Cream } from "./deco/DecoCream"
+import DecoFlower, { Flower } from "./deco/DecoFlower"
+import DecoHeart, { Heart } from "./deco/DecoHeart"
+import DecoLine, { Line } from "./deco/DecoLine"
+import DecoSprinkles, { Sprinkles } from "./deco/DecoSprinkles"
 
 import CreamOne from "./outline/CreamOne"
 import CreamThree from "./outline/CreamThree"
 import CreamTwo from "./outline/CreamTwo"
 
-import {
-  cakeShape,
-  cakeShapeStyle,
-  cakeOutlineShape,
-  cakeDecoShape,
-} from "@/constants"
+import { cakeShapeStyle, cakeOutlineShape, cakeDecoShape } from "@/constants"
 
 export default function CakeFrame() {
   const { cake } = useCake()
@@ -38,19 +33,17 @@ export default function CakeFrame() {
   const getDecoStyle = () => {
     switch (cake.deco_shape) {
       case cakeDecoShape.cream:
-        return <DecoCream color={cake.deco_color} />
+        return <Cream color={cake.deco_color} />
       case cakeDecoShape.line:
-        return <DecoLine />
+        return <Line />
       case cakeDecoShape.sprinkles:
-        return <DecoSprinkles />
+        return <Sprinkles />
       case cakeDecoShape.heart:
-        return <DecoHeart color={cake.deco_color} />
+        return <Heart color={cake.deco_color} />
       case cakeDecoShape.flower:
-        return <DecoFlower />
+        return <Flower />
       case cakeDecoShape.carrot:
-        return <DecoCarrot />
-      default:
-        return null
+        return <Carrot />
     }
   }
 

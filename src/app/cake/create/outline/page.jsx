@@ -68,10 +68,17 @@ export default function CreateCakeShapePage() {
           setColor={updateCakeOutlineColor}
         />
 
-        <div className="pb-10">
+        <div className="flex gap-5 pb-10">
           <Link
             href="/cake/create/text"
-            className="block w-full text-center text-white font-semibold border border-primary rounded-lg box-border p-2 bg-primary font-xs"
+            className="w-2/5 text-center text-primary bg-white font-semibold border border-primary rounded-lg box-border p-2 bg-primary font-xs"
+          >
+            이전
+          </Link>
+
+          <Link
+            href="/cake/create/deco"
+            className="w-full text-center text-white font-semibold border border-primary rounded-lg box-border p-2 bg-primary font-xs"
           >
             다음
           </Link>
