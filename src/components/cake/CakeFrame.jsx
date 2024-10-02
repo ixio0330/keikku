@@ -25,7 +25,7 @@ export default function CakeFrame({ children }) {
   const getTextStyle = () =>
     cake.message && (
       <div
-        className={`overflow-hidden absolute w-full h-full flex justify-center items-center ${cakeTextFonts.find(({ value }) => cake.text_font === value).className}`}
+        className={`overflow-hidden absolute z-20 w-full h-full flex justify-center items-center ${cakeTextFonts.find(({ value }) => cake.text_font === value).className}`}
         style={{
           ...cakeShapeStyle[cake.cake_shape],
           color: cake.text_color,

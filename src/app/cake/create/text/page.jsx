@@ -37,7 +37,7 @@ export default function CreateCakeShapePage() {
       {/* 케이크 틀 */}
       <CakeFrame>
         <div
-          className="overflow-hidden absolute w-full h-full flex justify-center items-center"
+          className="overflow-hidden absolute z-20 w-full h-full flex justify-center items-center"
           style={{ ...cakeShapeStyle[cake.cake_shape] }}
         >
           <textarea
