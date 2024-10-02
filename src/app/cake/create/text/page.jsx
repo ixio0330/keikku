@@ -36,13 +36,13 @@ export default function CreateCakeShapePage() {
       {/* 케이크 틀 */}
       <CakeFrame>
         <div
-          className="z-20 overflow-hidden absolute w-full h-full flex justify-center items-center"
+          className="overflow-hidden absolute w-full h-full flex justify-center items-center"
           style={{ ...cakeShapeStyle[cake.cake_shape] }}
         >
           <textarea
             className="p-5 rounded-full bg-transparent focus:outline-none resize-none text-center"
             placeholder="메시지 작성하기"
-            row={1}
+            rows={1}
             style={{
               color: cake.text_color,
               fontSize: `${cake.text_size}px`,
