@@ -23,6 +23,7 @@ export const oauthProvider = {
 export const T_EVENT_CATEGORIES = "event_categories"
 export const T_EVENTS = "events"
 export const T_USERS = "users"
+export const T_CAKES = "cakes"
 
 // 케이크 탭
 export const cakeTabs = [

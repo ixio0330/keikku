@@ -13,7 +13,6 @@ import {
 const cakeAtom = atom({
   uri: null, // 사용자 uri
   event_id: null, // 이벤트 ID
-  sender_id: null, // 보낸 사람: 로그인한 사용자는 id 입력
   sender_name: null, // 보낸 사람: 익명 사용자는 이름 입력
   message: null, // 작성한 메시지
   cake_shape: cakeShape.circle, // 케이크 모양
@@ -31,6 +30,25 @@ const cakeAtom = atom({
 
 export default function useCake() {
   const [cake, setCake] = useAtom(cakeAtom)
+
+  const resetCake = () => {
+    setCake((prev) => ({
+      ...prev,
+      sender_name: null,
+      message: null,
+      cake_shape: cakeShape.circle,
+      cake_color: cakeColors[0].color,
+      text_size: 20,
+      text_font: cakeTextFonts[0].value,
+      text_styles: [],
+      text_color: cakeTextColors[0].color,
+      text_align: cakeTextAligns[1].value,
+      outline_shape: null,
+      outline_color: null,
+      deco_shape: null,
+      deco_color: null,
+    }))
+  }
 
   const updateUri = (uri) => {
     setCake((prev) => ({
@@ -143,6 +161,7 @@ export default function useCake() {
 
   return {
     cake,
+    resetCake,
     updateUri,
     updateEvent,
     updateCakeShape,

@@ -1,3 +1,5 @@
+"use client"
+
 // store
 import useCake from "@/stores/cake"
 
