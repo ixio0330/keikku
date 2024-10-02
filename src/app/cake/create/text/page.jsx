@@ -40,9 +40,9 @@ export default function CreateCakeShapePage() {
           style={{ ...cakeShapeStyle[cake.cake_shape] }}
         >
           <textarea
-            className="p-5 rounded-full bg-transparent focus:outline-none resize-none text-center"
+            className="p-5 rounded-full focus:outline-none resize-none text-center"
+            rows={cake.message ? undefined : 1}
             placeholder="메시지 작성하기"
-            rows={1}
             style={{
               color: cake.text_color,
               fontSize: `${cake.text_size}px`,

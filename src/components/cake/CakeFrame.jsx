@@ -21,26 +21,23 @@ export default function CakeFrame({ children }) {
     cake.message && (
       <div
         className="overflow-hidden absolute w-full h-full flex justify-center items-center"
-        style={{ ...cakeShapeStyle[cake.cake_shape] }}
+        style={{
+          ...cakeShapeStyle[cake.cake_shape],
+          color: cake.text_color,
+          fontSize: `${cake.text_size}px`,
+          textAlign: cake.text_align,
+          fontWeight: cake.text_styles.includes("bold") ? "bold" : "normal",
+          textDecoration: cake.text_styles.includes("underline")
+            ? "underline"
+            : "none",
+          fontStyle: cake.text_styles.includes("italic") ? "italic" : "normal",
+        }}
       >
-        <textarea
-          className="p-5 rounded-full bg-transparent focus:outline-none resize-none text-center"
-          placeholder="메시지 작성하기"
-          rows={1}
-          style={{
-            color: cake.text_color,
-            fontSize: `${cake.text_size}px`,
-            textAlign: cake.text_align,
-            fontWeight: cake.text_styles.includes("bold") ? "bold" : "normal",
-            textDecoration: cake.text_styles.includes("underline")
-              ? "underline"
-              : "none",
-            fontStyle: cake.text_styles.includes("italic")
-              ? "italic"
-              : "normal",
-          }}
-          defaultValue={cake.message ?? ""}
-        />
+        <div className="w-full p-5">
+          {cake.message?.split("\n").map((sentence, idx) => (
+            <p key={`message-${idx}`}>{sentence}</p>
+          ))}
+        </div>
       </div>
     )
 
