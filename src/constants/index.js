@@ -1,3 +1,11 @@
+import { MdOutlineTextFormat, MdFormatBold } from "react-icons/md"
+import {
+  LuItalic,
+  LuAlignLeft,
+  LuAlignJustify,
+  LuAlignRight,
+} from "react-icons/lu"
+
 export const oauthProvider = {
   google: "google",
   kakao: "kakao",
@@ -78,10 +86,64 @@ export const cakeColors = [
 
 // 텍스트 색상
 export const cakeTextColors = [
-  { color: "white" },
   { color: "#1F2227" },
+  { color: "white" },
   { color: "#61666C" },
   { color: "#950E0E" },
   { color: "#175444" },
   { color: "#001582" },
+]
+
+export const cakeTextStyles = [
+  {
+    Icon: <MdFormatBold size={20} />,
+    value: "bold",
+  },
+  {
+    Icon: <MdOutlineTextFormat size={20} />,
+    value: "underline",
+  },
+  {
+    Icon: <LuItalic />,
+    value: "italic",
+  },
+]
+
+export const cakeTextAligns = [
+  {
+    Icon: <LuAlignLeft />,
+    value: "start",
+  },
+  {
+    Icon: <LuAlignJustify />,
+    value: "center",
+  },
+  {
+    Icon: <LuAlignRight />,
+    value: "end",
+  },
+]
+
+// 텍스트 폰트
+export const cakeTextFonts = [
+  {
+    text: "고딕1 (한국어)",
+    value: "gothic01-ko",
+    className: "",
+  },
+  {
+    text: "고딕2 (한국어)",
+    value: "gothic02-ko",
+    className: "",
+  },
+  {
+    text: "손글씨1 (한국어)",
+    value: "hand01-ko",
+    className: "",
+  },
+  {
+    text: "손글씨2 (한국어)",
+    value: "hand02-ko",
+    className: "",
+  },
 ]

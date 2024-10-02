@@ -5,6 +5,8 @@ import {
   cakeShape,
   cakeOutlineShape,
   cakeDecoShape,
+  cakeTextColors,
+  cakeTextAligns,
 } from "@/constants"
 
 const cakeAtom = atom({
@@ -15,10 +17,11 @@ const cakeAtom = atom({
   message: null, // 작성한 메시지
   cake_shape: cakeShape.circle, // 케이크 모양
   cake_color: cakeColors[0].color, // 케이크 색상
-  text_size: null, // 텍스트 크기
+  text_size: 20, // 텍스트 크기
+  text_font: null, // 텍스트 폰트
   text_styles: [], // 텍스트 스타일 배열
-  text_color: null, // 텍스트 색상
-  text_align: null, // 텍스트 정렬
+  text_color: cakeTextColors[0].color, // 텍스트 색상
+  text_align: cakeTextAligns[1].value, // 텍스트 정렬
   outline_shape: null, // 테두리 모양
   outline_color: null, // 테두리 색상
   deco_shape: null, // 데코 모양
@@ -42,6 +45,7 @@ export default function useCake() {
     }))
   }
 
+  // 모양
   const updateCakeShape = (shape = cakeShape.circle) => {
     setCake((prev) => ({
       ...prev,
@@ -56,6 +60,50 @@ export default function useCake() {
     }))
   }
 
+  // 텍스트
+  const updateCakeTextColor = (color) => {
+    setCake((prev) => ({
+      ...prev,
+      text_color: color,
+    }))
+  }
+
+  const updateCakeTextSize = (size) => {
+    setCake((prev) => ({
+      ...prev,
+      text_size: size,
+    }))
+  }
+
+  const toggleCakeTextStyles = (style) => {
+    setCake((prev) => {
+      const isStyleIncluded = prev.text_styles.includes(style)
+
+      return {
+        ...prev,
+        text_styles: isStyleIncluded
+          ? prev.text_styles.filter((s) => s !== style)
+          : [...prev.text_styles, style],
+      }
+    })
+  }
+
+  const updateCakeTextAlign = (align) => {
+    setCake((prev) => ({
+      ...prev,
+      text_align: align,
+    }))
+  }
+
+  // 메시지
+  const updateCakeMessage = (message) => {
+    setCake((prev) => ({
+      ...prev,
+      message,
+    }))
+  }
+
+  // 테두리
   const updateCakeOutlineShape = (shape = cakeOutlineShape.cream1) => {
     setCake((prev) => ({
       ...prev,
@@ -70,6 +118,7 @@ export default function useCake() {
     }))
   }
 
+  // 데코
   const updateCakeDecoShape = (shape = cakeDecoShape.cream) => {
     setCake((prev) => ({
       ...prev,
@@ -90,6 +139,11 @@ export default function useCake() {
     updateEvent,
     updateCakeShape,
     updateCakeColor,
+    updateCakeTextColor,
+    updateCakeTextSize,
+    updateCakeTextAlign,
+    toggleCakeTextStyles,
+    updateCakeMessage,
     updateCakeOutlineShape,
     updateCakeOutlineColor,
     updateCakeDecoShape,
