@@ -12,7 +12,7 @@ export async function GET(request) {
 
     if (!code) {
       console.log(`Error: code가 존재하지 않음`)
-      return NextResponse.redirect(new URL("/"))
+      return NextResponse.redirect(`${origin}/auth/login`)
     }
 
     const { error: sessionError } =
