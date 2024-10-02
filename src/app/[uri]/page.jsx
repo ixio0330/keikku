@@ -9,9 +9,16 @@ import { getUriByCookie } from "@/utils/server"
 // component
 import { IoMdMenu, IoMdCalendar } from "react-icons/io"
 import ActionButton from "./ActionButton"
+import { isExistUser } from "@/db/auth"
 
 export default async function KeikkuPage({ params }) {
   const uri = params.uri
+  const isActiveUser = await isExistUser(uri)
+
+  if (isActiveUser === false) {
+    return <div>존재하지 않는 사용자에요.</div>
+  }
+
   const activeEvent = await getActiveEventByUri(uri)
   const isOwner = uri === getUriByCookie()
 

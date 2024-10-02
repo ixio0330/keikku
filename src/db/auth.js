@@ -63,3 +63,15 @@ export const autoLogin = async () => {
 
   return { success: false }
 }
+
+export const isExistUser = async (uri = "") => {
+  const supabase = createSupabase()
+
+  const { data } = await supabase
+    .from(T_USERS)
+    .select("id")
+    .eq("uri", uri)
+    .single()
+
+  return !!data
+}
