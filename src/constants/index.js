@@ -5,6 +5,13 @@ import {
   LuAlignJustify,
   LuAlignRight,
 } from "react-icons/lu"
+import {
+  Nanum_Pen_Script,
+  Nanum_Gothic,
+  Dongle,
+  Gowun_Dodum,
+  Single_Day,
+} from "next/font/google"
 
 export const oauthProvider = {
   google: "google",
@@ -124,26 +131,37 @@ export const cakeTextAligns = [
   },
 ]
 
+const nanumPen = Nanum_Pen_Script({ subsets: ["latin"], weight: ["400"] })
+const dongle = Dongle({ subsets: ["latin"], weight: ["400", "700"] })
+const singleDay = Single_Day({ subsets: ["latin"], weight: ["400"] })
+const nanumGothic = Nanum_Gothic({ subsets: ["latin"], weight: ["400", "700"] })
+const gowunDodum = Gowun_Dodum({ subsets: ["latin"], weight: ["400"] })
+
 // 텍스트 폰트
 export const cakeTextFonts = [
   {
-    text: "고딕1 (한국어)",
-    value: "gothic01-ko",
-    className: "",
+    text: "나눔펜체",
+    value: "nanum-pen",
+    className: nanumPen.className,
   },
   {
-    text: "고딕2 (한국어)",
-    value: "gothic02-ko",
-    className: "",
+    text: "동글",
+    value: "dongle",
+    className: dongle.className,
   },
   {
-    text: "손글씨1 (한국어)",
-    value: "hand01-ko",
-    className: "",
+    text: "싱글데이",
+    value: "single-day",
+    className: singleDay.className,
   },
   {
-    text: "손글씨2 (한국어)",
-    value: "hand02-ko",
-    className: "",
+    text: "나눔고딕",
+    value: "nanum-gothic",
+    className: nanumGothic.className,
+  },
+  {
+    text: "고운돋움",
+    value: "gowun-dodum",
+    className: gowunDodum.className,
   },
 ]

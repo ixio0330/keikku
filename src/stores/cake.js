@@ -7,6 +7,7 @@ import {
   cakeDecoShape,
   cakeTextColors,
   cakeTextAligns,
+  cakeTextFonts,
 } from "@/constants"
 
 const cakeAtom = atom({
@@ -18,7 +19,7 @@ const cakeAtom = atom({
   cake_shape: cakeShape.circle, // 케이크 모양
   cake_color: cakeColors[0].color, // 케이크 색상
   text_size: 20, // 텍스트 크기
-  text_font: null, // 텍스트 폰트
+  text_font: cakeTextFonts[0].value, // 텍스트 폰트
   text_styles: [], // 텍스트 스타일 배열
   text_color: cakeTextColors[0].color, // 텍스트 색상
   text_align: cakeTextAligns[1].value, // 텍스트 정렬
@@ -88,6 +89,13 @@ export default function useCake() {
     })
   }
 
+  const updateCakeTextFont = (font) => {
+    setCake((prev) => ({
+      ...prev,
+      text_font: font,
+    }))
+  }
+
   const updateCakeTextAlign = (align) => {
     setCake((prev) => ({
       ...prev,
@@ -142,6 +150,7 @@ export default function useCake() {
     updateCakeTextColor,
     updateCakeTextSize,
     updateCakeTextAlign,
+    updateCakeTextFont,
     toggleCakeTextStyles,
     updateCakeMessage,
     updateCakeOutlineShape,

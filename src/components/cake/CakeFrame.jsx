@@ -12,7 +12,12 @@ import CreamOne from "./outline/CreamOne"
 import CreamThree from "./outline/CreamThree"
 import CreamTwo from "./outline/CreamTwo"
 
-import { cakeShapeStyle, cakeOutlineShape, cakeDecoShape } from "@/constants"
+import {
+  cakeShapeStyle,
+  cakeOutlineShape,
+  cakeDecoShape,
+  cakeTextFonts,
+} from "@/constants"
 
 export default function CakeFrame({ children }) {
   const { cake } = useCake()
@@ -20,7 +25,7 @@ export default function CakeFrame({ children }) {
   const getTextStyle = () =>
     cake.message && (
       <div
-        className="overflow-hidden absolute w-full h-full flex justify-center items-center"
+        className={`overflow-hidden absolute w-full h-full flex justify-center items-center ${cakeTextFonts.find(({ value }) => cake.text_font === value).className}`}
         style={{
           ...cakeShapeStyle[cake.cake_shape],
           color: cake.text_color,

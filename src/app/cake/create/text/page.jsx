@@ -25,6 +25,7 @@ export default function CreateCakeShapePage() {
     updateCakeTextSize,
     updateCakeMessage,
     updateCakeTextAlign,
+    updateCakeTextFont,
     toggleCakeTextStyles,
   } = useCake()
 
@@ -40,7 +41,7 @@ export default function CreateCakeShapePage() {
           style={{ ...cakeShapeStyle[cake.cake_shape] }}
         >
           <textarea
-            className="p-5 rounded-full focus:outline-none resize-none text-center"
+            className={`p-5 rounded-full focus:outline-none resize-none text-center ${cakeTextFonts.find(({ value }) => cake.text_font === value).className}`}
             rows={cake.message ? undefined : 1}
             placeholder="메시지 작성하기"
             style={{
@@ -97,8 +98,11 @@ export default function CreateCakeShapePage() {
           {/* 서체 / 사이즈 */}
           <ul className="flex justify-between items-center my-3">
             <li className="w-8/12">
-              <select className="bg-white border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 outline-none">
-                {cakeTextFonts.map(({ text, value, className }) => (
+              <select
+                onChange={(e) => updateCakeTextFont(e.target.value)}
+                className="bg-white border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 outline-none"
+              >
+                {cakeTextFonts.map(({ text, value }) => (
                   <option key={`font-family-${value}`} value={value}>
                     {text}
                   </option>
