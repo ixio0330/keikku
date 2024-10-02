@@ -2,8 +2,13 @@
 
 import { useState } from "react"
 
-export default function Input({ maxLength, className, ...props }) {
-  const [value, setValue] = useState("")
+export default function Input({
+  defaultValue,
+  maxLength,
+  className,
+  ...props
+}) {
+  const [value, setValue] = useState(defaultValue ?? "")
 
   return (
     <div className="relative">

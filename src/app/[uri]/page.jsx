@@ -1,7 +1,9 @@
+import Link from "next/link"
 import Image from "next/image"
 
 // db
 import { getActiveEventByUri } from "@/db/event"
+import { isExistUser } from "@/db/auth"
 
 // util
 import { getUriByCookie } from "@/utils/server"
@@ -9,8 +11,6 @@ import { getUriByCookie } from "@/utils/server"
 // component
 import { IoMdMenu, IoMdCalendar } from "react-icons/io"
 import ActionButton from "./ActionButton"
-import { isExistUser } from "@/db/auth"
-
 export default async function KeikkuPage({ params }) {
   const uri = params.uri
   const isActiveUser = await isExistUser(uri)
@@ -57,6 +57,17 @@ export default async function KeikkuPage({ params }) {
                   </>
                 )}
               </div>
+              {isOwner && (
+                <Link
+                  href={{
+                    pathname: "/event/update",
+                    query: { id: activeEvent.id },
+                  }}
+                  className="inline-block text-white bg-primary px-2 py-px rounded-full"
+                >
+                  수정하기
+                </Link>
+              )}
             </div>
           ) : (
             <div className="text-xl">

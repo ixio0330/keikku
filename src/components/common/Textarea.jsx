@@ -2,8 +2,13 @@
 
 import { useState } from "react"
 
-export default function Textarea({ maxLength, className, ...props }) {
-  const [value, setValue] = useState("")
+export default function Textarea({
+  defaultValue,
+  maxLength,
+  className,
+  ...props
+}) {
+  const [value, setValue] = useState(defaultValue ?? "")
 
   return (
     <div className="relative">

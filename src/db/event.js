@@ -21,6 +21,18 @@ export const getEventCategories = async () => {
   return data
 }
 
+export const getEventDetail = async (event_id) => {
+  const supabase = createSupabase()
+
+  const { data } = await supabase
+    .from(T_EVENTS)
+    .select("*")
+    .eq("id", event_id)
+    .single()
+
+  return data
+}
+
 export const getActiveEventByUri = async (uri = "") => {
   const supabase = createSupabase()
 
@@ -66,6 +78,43 @@ export const createEvent = async ({ name, date, description, category_id }) => {
   const { error: eventError } = await supabase
     .from(T_EVENTS)
     .insert([{ user_id: userData.id, category_id, name, description, date }])
+  if (eventError) {
+    return {
+      success: false,
+      message: "오류가 발생했어요 잠시후 다시 시도해주세요",
+    }
+  }
+
+  return { success: true }
+}
+
+export const updateEvent = async ({
+  id,
+  name,
+  date,
+  description,
+  category_id,
+}) => {
+  const uri = getUriByCookie()
+  if (uri === null) {
+    return { success: false, message: "로그인이 필요해요" }
+  }
+
+  const supabase = createSupabase()
+
+  const { error: userError } = await supabase
+    .from(T_USERS)
+    .select("id")
+    .eq("uri", uri)
+    .single()
+  if (userError) {
+    return { success: false, message: "존재하지 않는 사용자에요" }
+  }
+
+  const { error: eventError } = await supabase
+    .from(T_EVENTS)
+    .update({ category_id, name, description, date })
+    .eq("id", id)
   if (eventError) {
     return {
       success: false,
