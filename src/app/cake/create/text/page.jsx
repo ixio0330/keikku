@@ -41,7 +41,7 @@ export default function CreateCakeShapePage() {
           style={{ ...cakeShapeStyle[cake.cake_shape] }}
         >
           <textarea
-            className={`p-5 rounded-full focus:outline-none resize-none text-center ${cakeTextFonts.find(({ value }) => cake.text_font === value).className}`}
+            className={`p-5 rounded-full focus:outline-none bg-transparent resize-none text-center ${cakeTextFonts.find(({ value }) => cake.text_font === value).className}`}
             rows={cake.message ? undefined : 1}
             placeholder="메시지 작성하기"
             style={{
