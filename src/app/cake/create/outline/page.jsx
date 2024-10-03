@@ -6,15 +6,15 @@ import useCake from "@/stores/cake"
 
 // component
 import Tab from "../Tab"
-import CakeFrame from "@/components/cake/CakeFrame"
-import ShapeList from "@/components/cake/ShapeList"
-import ColorList from "@/components/cake/ColorList"
+import CakeFrame from "@/components/cake/make/CakeFrame"
+import ShapeList from "@/components/cake/make/ShapeList"
+import ColorList from "@/components/cake/make/ColorList"
 
 // constants
 import { cakeColors, cakeOutlineShape } from "@/constants"
-import ShapeOne from "@/components/cake/outline/ShapeOne"
-import ShapeTwo from "@/components/cake/outline/ShapeTwo"
-import ShapeThree from "@/components/cake/outline/ShapeThree"
+import ShapeOne from "@/components/cake/make/outline/ShapeOne"
+import ShapeTwo from "@/components/cake/make/outline/ShapeTwo"
+import ShapeThree from "@/components/cake/make/outline/ShapeThree"
 
 export default function CreateCakeShapePage() {
   const { cake, updateCakeOutlineShape, updateCakeOutlineColor } = useCake()

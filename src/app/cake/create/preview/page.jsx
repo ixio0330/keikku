@@ -2,7 +2,7 @@
 import { getUriFromCookie } from "@/utils/cookie"
 
 // component
-import CakeFrame from "@/components/cake/CakeFrame"
+import CakeFrame from "@/components/cake/make/CakeFrame"
 import CreateForm from "./CreateForm"
 
 export default function CreateCakeShapePage() {

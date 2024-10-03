@@ -1,13 +1,13 @@
-import { Carrot } from "./deco/DecoCarrot"
-import { Cream } from "./deco/DecoCream"
-import { Flower } from "./deco/DecoFlower"
-import { Heart } from "./deco/DecoHeart"
-import { Line } from "./deco/DecoLine"
-import { Sprinkles } from "./deco/DecoSprinkles"
+import { Carrot } from "../make/deco/DecoCarrot"
+import { Cream } from "../make/deco/DecoCream"
+import { Flower } from "../make/deco/DecoFlower"
+import { Heart } from "../make/deco/DecoHeart"
+import { Line } from "../make/deco/DecoLine"
+import { Sprinkles } from "../make/deco/DecoSprinkles"
 
-import CreamOne from "./outline/CreamOne"
-import CreamThree from "./outline/CreamThree"
-import CreamTwo from "./outline/CreamTwo"
+import CreamOne from "../make/outline/CreamOne"
+import CreamThree from "../make/outline/CreamThree"
+import CreamTwo from "../make/outline/CreamTwo"
 
 import {
   miniCakeShapeStyle,

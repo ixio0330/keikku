@@ -11,7 +11,7 @@ import { getUriFromCookie } from "@/utils/cookie"
 // component
 import { IoMdMenu, IoMdCalendar } from "react-icons/io"
 import ActionButton from "./ActionButton"
-import Cake from "@/components/cake/Cake"
+import Cake from "@/components/cake/view/Cake"
 export default async function KeikkuPage({ params }) {
   const uri = params.uri
   const isActiveUser = await isExistUser(uri)

@@ -6,8 +6,8 @@ import useCake from "@/stores/cake"
 
 // component
 import Tab from "../Tab"
-import CakeFrame from "@/components/cake/CakeFrame"
-import ColorList from "@/components/cake/ColorList"
+import CakeFrame from "@/components/cake/make/CakeFrame"
+import ColorList from "@/components/cake/make/ColorList"
 
 // constants
 import {

@@ -6,18 +6,18 @@ import useCake from "@/stores/cake"
 
 // component
 import Tab from "../Tab"
-import CakeFrame from "@/components/cake/CakeFrame"
-import ShapeList from "@/components/cake/ShapeList"
-import ColorList from "@/components/cake/ColorList"
+import CakeFrame from "@/components/cake/make/CakeFrame"
+import ShapeList from "@/components/cake/make/ShapeList"
+import ColorList from "@/components/cake/make/ColorList"
 
 // constants
 import { cakeColors, cakeDecoShape } from "@/constants"
-import DecoCream from "@/components/cake/deco/DecoCream"
-import DecoLine from "@/components/cake/deco/DecoLine"
-import DecoSprinkles from "@/components/cake/deco/DecoSprinkles"
-import DecoHeart from "@/components/cake/deco/DecoHeart"
-import DecoFlower from "@/components/cake/deco/DecoFlower"
-import DecoCarrot from "@/components/cake/deco/DecoCarrot"
+import DecoCream from "@/components/cake/make/deco/DecoCream"
+import DecoLine from "@/components/cake/make/deco/DecoLine"
+import DecoSprinkles from "@/components/cake/make/deco/DecoSprinkles"
+import DecoHeart from "@/components/cake/make/deco/DecoHeart"
+import DecoFlower from "@/components/cake/make/deco/DecoFlower"
+import DecoCarrot from "@/components/cake/make/deco/DecoCarrot"
 
 export default function CreateCakeShapePage() {
   const { cake, updateCakeDecoShape, updateCakeDecoColor } = useCake()

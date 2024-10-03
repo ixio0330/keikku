@@ -6,10 +6,10 @@ import useCake from "@/stores/cake"
 
 // component
 import Tab from "../Tab"
-import Circle from "@/components/cake/shape/Circle"
-import Rectangle from "@/components/cake/shape/Rectangle"
-import ShapeList from "@/components/cake/ShapeList"
-import ColorList from "@/components/cake/ColorList"
+import Circle from "@/components/cake/make/shape/Circle"
+import Rectangle from "@/components/cake/make/shape/Rectangle"
+import ShapeList from "@/components/cake/make/ShapeList"
+import ColorList from "@/components/cake/make/ColorList"
 
 // constants
 import { cakeShape, cakeColors } from "@/constants"
