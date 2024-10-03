@@ -69,6 +69,7 @@ export const cakeDecoShape = Object.freeze({
   carrot: "carrot",
 })
 
+// 케이크 사이즈
 export const cakeShapeStyle = Object.freeze({
   circle: {
     width: "256px",
@@ -79,6 +80,20 @@ export const cakeShapeStyle = Object.freeze({
     width: "224px",
     height: "224px",
     borderRadius: "30px",
+  },
+})
+
+// 미니 케이크 사이즈
+export const miniCakeShapeStyle = Object.freeze({
+  circle: {
+    width: "80px",
+    height: "80px",
+    borderRadius: "50%",
+  },
+  rectangle: {
+    width: "64px",
+    height: "64px",
+    borderRadius: "8px",
   },
 })
 

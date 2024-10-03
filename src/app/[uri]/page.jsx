@@ -11,6 +11,7 @@ import { getUriFromCookie } from "@/utils/cookie"
 // component
 import { IoMdMenu, IoMdCalendar } from "react-icons/io"
 import ActionButton from "./ActionButton"
+import Cake from "@/components/cake/Cake"
 export default async function KeikkuPage({ params }) {
   const uri = params.uri
   const isActiveUser = await isExistUser(uri)
@@ -19,7 +20,11 @@ export default async function KeikkuPage({ params }) {
     return <div>존재하지 않는 사용자에요.</div>
   }
 
-  const activeEvent = await getActiveEventByUri(uri)
+  const { success, data: activeEvent, message } = await getActiveEventByUri(uri)
+  if (!success) {
+    return <div>{message}</div>
+  }
+
   const isOwner = uri === getUriFromCookie()
 
   return (
@@ -40,7 +45,7 @@ export default async function KeikkuPage({ params }) {
       </header>
 
       <main className="max-w-content px-content m-auto mt-16 min-h-[calc(100vh-64px)] bg-background pb-10">
-        <div className="pt-5 pb-10 relative overflow-hidden">
+        <section className="pt-5 pb-10 relative overflow-hidden">
           {activeEvent ? (
             <div className="space-y-1">
               <p className="text-sm">
@@ -93,8 +98,9 @@ export default async function KeikkuPage({ params }) {
               />
             </li>
           </ul>
-        </div>
-        <div className="relative pt-[118px]">
+        </section>
+
+        <section className="relative pt-[118px]">
           <ul className="absolute -top-5 left-0 flex items-end justify-between">
             <Image
               width={61}
@@ -131,13 +137,21 @@ export default async function KeikkuPage({ params }) {
           </ul>
 
           {/* 쇼케이스 */}
-          <Image
-            width={392}
-            height={413}
-            alt="쇼케이스 사진"
-            src="/main/showcase.png"
-          />
-        </div>
+          <div className="relative">
+            <Image
+              width={392}
+              height={413}
+              alt="쇼케이스 사진"
+              src="/main/showcase.png"
+            />
+
+            <ul className="absolute left-0 top-0">
+              {activeEvent.cakes?.map((props, idx) => (
+                <Cake key={`cake-${props.id}-${idx}`} cake={props} />
+              ))}
+            </ul>
+          </div>
+        </section>
 
         <ActionButton activeEvent={activeEvent} isOwner={isOwner} uri={uri} />
       </main>
