@@ -5,9 +5,9 @@ import { Heart } from "../make/deco/DecoHeart"
 import { Line } from "../make/deco/DecoLine"
 import { Sprinkles } from "../make/deco/DecoSprinkles"
 
-import CreamOne from "../make/outline/CreamOne"
-import CreamThree from "../make/outline/CreamThree"
-import CreamTwo from "../make/outline/CreamTwo"
+import CreamOne from "./outline/CreamOne"
+import CreamThree from "./outline/CreamThree"
+import CreamTwo from "./outline/CreamTwo"
 
 import {
   miniCakeShapeStyle,
@@ -24,7 +24,7 @@ export default function Cake({ cake }) {
         style={{
           ...miniCakeShapeStyle[cake.cake_shape],
           color: cake.text_color,
-          fontSize: `${cake.text_size}px`,
+          fontSize: `${cake.text_size / 3}px`,
           textAlign: cake.text_align,
           fontWeight: cake.text_styles.includes("bold") ? "bold" : "normal",
           textDecoration: cake.text_styles.includes("underline")
@@ -72,7 +72,7 @@ export default function Cake({ cake }) {
   }
 
   return (
-    <li className="relative m-auto border rounded-2xl w-80 h-80 bg-background flex justify-center items-center my-10">
+    <li className="relative m-auto border rounded-2xl w-24 h-24 bg-background flex justify-center items-center">
       <div
         style={{
           ...miniCakeShapeStyle[cake.cake_shape],
