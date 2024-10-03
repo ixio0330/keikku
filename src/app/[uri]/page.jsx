@@ -145,7 +145,7 @@ export default async function KeikkuPage({ params }) {
               src="/main/showcase.png"
             />
 
-            <ul className="absolute left-0 top-0">
+            <ul className="absolute left-0 top-0 grid grid-cols-3 gap-5 px-6 py-4">
               {activeEvent.cakes?.map((props, idx) => (
                 <Cake key={`cake-${props.id}-${idx}`} cake={props} />
               ))}

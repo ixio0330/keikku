@@ -1,9 +1,9 @@
-import { Carrot } from "../make/deco/DecoCarrot"
-import { Cream } from "../make/deco/DecoCream"
-import { Flower } from "../make/deco/DecoFlower"
-import { Heart } from "../make/deco/DecoHeart"
-import { Line } from "../make/deco/DecoLine"
-import { Sprinkles } from "../make/deco/DecoSprinkles"
+import Carrot from "./deco/Carrot"
+import Cream from "./deco/Cream"
+import Flower from "./deco/Flower"
+import Heart from "./deco/Heart"
+import Line from "./deco/Line"
+import Sprinkles from "./deco/Sprinkles"
 
 import CreamOne from "./outline/CreamOne"
 import CreamThree from "./outline/CreamThree"
@@ -72,7 +72,7 @@ export default function Cake({ cake }) {
   }
 
   return (
-    <li className="relative m-auto border rounded-2xl w-24 h-24 bg-background flex justify-center items-center">
+    <li className="relative m-auto border rounded-2xl w-[90px] h-[90px] bg-white flex justify-center items-center">
       <div
         style={{
           ...miniCakeShapeStyle[cake.cake_shape],
