@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation"
 
 // db
-import { updateEvent } from "@/db/event"
+import { deleteEvent, updateEvent } from "@/db/event"
 
 // component
 import Input from "@/components/common/Input"
@@ -15,7 +15,7 @@ export default function UpdateForm({ list, uri, detail }) {
     const name = formData.get("name")
     const date = formData.get("date")
     const description = formData.get("description")
-    const category_id = Number(formData.get("category_id"))
+    const category_id = Number(formData.get("category_id")) || null
     const { success, message } = await updateEvent({
       id: detail?.id,
       name,
@@ -31,6 +31,19 @@ export default function UpdateForm({ list, uri, detail }) {
 
     router.push(`/${uri}`)
     router.refresh()
+  }
+
+  const handleRemoveEvent = async () => {
+    if (
+      window.confirm(
+        "이벤트를 삭제하면 선물받은 케이크도 전부 삭제돼요. 이벤트를 삭제할까요?",
+      )
+    ) {
+      const { success } = await deleteEvent(detail?.id)
+
+      router.push(`/${uri}`)
+      router.refresh()
+    }
   }
 
   return (
@@ -70,7 +83,7 @@ export default function UpdateForm({ list, uri, detail }) {
 
       <div className="flex gap-5">
         <button
-          onClick={() => console.log("삭제")}
+          onClick={handleRemoveEvent}
           className="w-2/5 text-center text-red-500 bg-white font-semibold border border-red-500 rounded-lg box-border p-2 bg-white font-xs"
         >
           삭제

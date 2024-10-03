@@ -61,7 +61,7 @@ export const createEvent = async ({ name, date, description, category_id }) => {
   if (uri === null) {
     return { success: false, message: "로그인이 필요해요" }
   }
-  
+
   const supabase = createSupabase()
 
   // TODO 활성 이벤트 체크
@@ -116,6 +116,23 @@ export const updateEvent = async ({
     .update({ category_id, name, description, date })
     .eq("id", id)
   if (eventError) {
+    return {
+      success: false,
+      message: "오류가 발생했어요 잠시후 다시 시도해주세요",
+    }
+  }
+
+  return { success: true }
+}
+
+export const deleteEvent = async (event_id) => {
+  const supabase = createSupabase()
+
+  const { error: deleteEventError } = await supabase
+    .from(T_EVENTS)
+    .delete()
+    .eq("id", event_id)
+  if (deleteEventError) {
     return {
       success: false,
       message: "오류가 발생했어요 잠시후 다시 시도해주세요",
