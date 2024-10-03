@@ -1,12 +1,12 @@
 // util
-import { getUriByCookie } from "@/utils/server"
+import { getUriFromCookie } from "@/utils/cookie"
 
 // component
 import CakeFrame from "@/components/cake/CakeFrame"
 import CreateForm from "./CreateForm"
 
 export default function CreateCakeShapePage() {
-  const isGuest = !getUriByCookie()
+  const isGuest = !getUriFromCookie()
 
   return (
     <>

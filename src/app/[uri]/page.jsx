@@ -6,7 +6,7 @@ import { getActiveEventByUri } from "@/db/event"
 import { isExistUser } from "@/db/auth"
 
 // util
-import { getUriByCookie } from "@/utils/server"
+import { getUriFromCookie } from "@/utils/cookie"
 
 // component
 import { IoMdMenu, IoMdCalendar } from "react-icons/io"
@@ -20,7 +20,7 @@ export default async function KeikkuPage({ params }) {
   }
 
   const activeEvent = await getActiveEventByUri(uri)
-  const isOwner = uri === getUriByCookie()
+  const isOwner = uri === getUriFromCookie()
 
   return (
     <>

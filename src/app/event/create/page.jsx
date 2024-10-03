@@ -5,14 +5,14 @@ import Link from "next/link"
 import { getEventCategories } from "@/db/event"
 
 // util
-import { getUriByCookie } from "@/utils/server"
+import { getUriFromCookie } from "@/utils/cookie"
 
 // component
 import { MdHomeFilled } from "react-icons/md"
 import CreateForm from "./CreateForm"
 
 export default async function CreateEventPage() {
-  const uri = getUriByCookie()
+  const uri = getUriFromCookie()
   const eventCategories = await getEventCategories()
 
   return (
