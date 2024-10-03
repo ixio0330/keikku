@@ -61,7 +61,7 @@ export const createEvent = async ({ name, date, description, category_id }) => {
   if (uri === null) {
     return { success: false, message: "로그인이 필요해요" }
   }
-
+  
   const supabase = createSupabase()
 
   // TODO 활성 이벤트 체크

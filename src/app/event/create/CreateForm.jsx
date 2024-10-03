@@ -15,7 +15,7 @@ export default function CreateForm({ list, uri }) {
     const name = formData.get("name")
     const date = formData.get("date")
     const description = formData.get("description")
-    const category_id = Number(formData.get("category_id"))
+    const category_id = Number(formData.get("category_id")) || null
     const { success, message } = await createEvent({
       name,
       date,
@@ -29,6 +29,7 @@ export default function CreateForm({ list, uri }) {
     }
 
     router.push(`/${uri}`)
+    router.refresh()
   }
 
   return (
