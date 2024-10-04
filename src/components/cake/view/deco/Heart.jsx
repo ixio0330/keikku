@@ -1,6 +1,6 @@
 export default function Heart({ color }) {
   return (
-    <div className="absolute top-20">
+    <div className="absolute top-5">
       <svg
         width="60"
         height="60"

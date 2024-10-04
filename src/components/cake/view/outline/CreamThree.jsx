@@ -4,8 +4,8 @@ export default function CreamThree({ shape = "circle", color }) {
       return (
         <div className="absolute top-5.5 left-4.5">
           <svg
-            width="92"
-            height="91"
+            width="94"
+            height="93"
             viewBox="0 0 92 91"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
