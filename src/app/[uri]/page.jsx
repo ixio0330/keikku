@@ -4,15 +4,15 @@ import Image from "next/image"
 // db
 import { isExistUser } from "@/db/auth"
 import { getActiveEventByUri } from "@/db/event"
-import { getCakesWithPagination } from "@/db/cake"
 
 // util
 import { getUriFromCookie } from "@/utils/cookie"
 
 // component
 import { IoMdMenu, IoMdCalendar } from "react-icons/io"
+import ActiveCakeList from "@/components/cake/view/ActiveCakeList"
 import ActionButton from "./ActionButton"
-import Cake from "@/components/cake/view/Cake"
+
 export default async function KeikkuPage({ params }) {
   const uri = params.uri
   const isActiveUser = await isExistUser(uri)
@@ -28,15 +28,6 @@ export default async function KeikkuPage({ params }) {
   } = await getActiveEventByUri(uri)
   if (!activeEventResult) {
     return <div>{activeEventErrorMessage}</div>
-  }
-
-  const {
-    success: cakesResult,
-    data: cakes,
-    message: cakesErrorMessage,
-  } = await getCakesWithPagination({ event_id: activeEvent.id })
-  if (!cakesResult) {
-    return <div>{cakesErrorMessage}</div>
   }
 
   const isOwner = uri === getUriFromCookie()
@@ -151,20 +142,7 @@ export default async function KeikkuPage({ params }) {
           </ul>
 
           {/* 쇼케이스 */}
-          <div className="relative">
-            <Image
-              width={392}
-              height={413}
-              alt="쇼케이스 사진"
-              src="/main/showcase.png"
-            />
-
-            <ul className="absolute left-0 top-0 grid grid-cols-3 gap-5 px-6 py-4">
-              {cakes?.map((props, idx) => (
-                <Cake key={`cake-${props.id}-${idx}`} cake={props} />
-              ))}
-            </ul>
-          </div>
+          <ActiveCakeList eventId={activeEvent.id} />
         </section>
 
         <ActionButton activeEvent={activeEvent} isOwner={isOwner} uri={uri} />
