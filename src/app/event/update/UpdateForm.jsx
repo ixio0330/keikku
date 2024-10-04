@@ -33,7 +33,9 @@ export default function UpdateForm({ list, uri, detail }) {
     router.refresh()
   }
 
-  const handleRemoveEvent = async () => {
+  const handleRemoveEvent = async (e) => {
+    e.preventDefault()
+
     if (
       window.confirm(
         "이벤트를 삭제하면 선물받은 케이크도 전부 삭제돼요. 이벤트를 삭제할까요?",
