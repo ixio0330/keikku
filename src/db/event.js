@@ -36,43 +36,28 @@ export const getEventDetail = async (event_id) => {
 export const getActiveEventByUri = async (uri = "") => {
   const supabase = createSupabase()
 
-  const { data: eventData, error: eventError } = await supabase
+  const { data, error } = await supabase
     .from(T_EVENTS)
     .select("id, name, date, users!inner(name, uri), event_categories(name)")
     .eq("users.uri", uri)
     .gte("date", new Date().toISOString())
     .single()
 
-  if (eventError) {
+  if (error) {
     return {
       success: false,
       message: "이벤트 조회 중 오류가 발생했어요",
     }
   }
 
-  const { data: cakeData, error: cakeError } = await supabase
-    .from(T_CAKES)
-    .select(
-      "id, sender_id, sender_name, message, cake_shape, cake_color, text_size, text_styles, text_color, text_align, text_font, outline_shape, outline_color, deco_shape, deco_color, created_at",
-    )
-    .eq("event_id", eventData.id)
-
-  if (cakeError) {
-    return {
-      success: false,
-      message: "케이크 조회 중 오류가 발생했어요",
-    }
-  }
-
   return {
     success: true,
     data: {
-      id: eventData.id,
-      name: eventData.name,
-      date: eventData.date,
-      category: eventData.event_categories?.name ?? null,
-      username: eventData.users.name,
-      cakes: cakeData,
+      id: data.id,
+      name: data.name,
+      date: data.date,
+      category: data.event_categories?.name ?? null,
+      username: data.users.name,
     },
   }
 }

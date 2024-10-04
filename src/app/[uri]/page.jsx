@@ -2,8 +2,9 @@ import Link from "next/link"
 import Image from "next/image"
 
 // db
-import { getActiveEventByUri } from "@/db/event"
 import { isExistUser } from "@/db/auth"
+import { getActiveEventByUri } from "@/db/event"
+import { getCakesWithPagination } from "@/db/cake"
 
 // util
 import { getUriFromCookie } from "@/utils/cookie"
@@ -20,9 +21,22 @@ export default async function KeikkuPage({ params }) {
     return <div>존재하지 않는 사용자에요.</div>
   }
 
-  const { success, data: activeEvent, message } = await getActiveEventByUri(uri)
-  if (!success) {
-    return <div>{message}</div>
+  const {
+    success: activeEventResult,
+    data: activeEvent,
+    message: activeEventErrorMessage,
+  } = await getActiveEventByUri(uri)
+  if (!activeEventResult) {
+    return <div>{activeEventErrorMessage}</div>
+  }
+
+  const {
+    success: cakesResult,
+    data: cakes,
+    message: cakesErrorMessage,
+  } = await getCakesWithPagination({ event_id: activeEvent.id })
+  if (!cakesResult) {
+    return <div>{cakesErrorMessage}</div>
   }
 
   const isOwner = uri === getUriFromCookie()
@@ -146,7 +160,7 @@ export default async function KeikkuPage({ params }) {
             />
 
             <ul className="absolute left-0 top-0 grid grid-cols-3 gap-5 px-6 py-4">
-              {activeEvent.cakes?.map((props, idx) => (
+              {cakes?.map((props, idx) => (
                 <Cake key={`cake-${props.id}-${idx}`} cake={props} />
               ))}
             </ul>
