@@ -188,18 +188,18 @@ export const appMenus = [
     href: "/profile",
     name: "마이페이지",
     isRequiredAuth: true,
-    Icon: <PiUser />,
+    Icon: PiUser,
   },
   {
     href: "/give",
     name: "받은 케이크",
     isRequiredAuth: true,
-    Icon: <PiCake />,
+    Icon: PiCake,
   },
   {
     href: "/receive",
     name: "선물한 케이크",
     isRequiredAuth: true,
-    Icon: <PiGift />,
+    Icon: PiGift,
   },
 ]
