@@ -16,7 +16,7 @@ export default function AppSidebar({ userInfo }) {
         ) : (
           <>
             <Avatar provider={null} />
-            <p>로그인이 필요해요</p>
+            <Link href="/auth/login">로그인하기</Link>
           </>
         )}
       </div>
@@ -24,13 +24,23 @@ export default function AppSidebar({ userInfo }) {
       <ul className="py-5">
         {appMenus.map(({ href, name, isRequiredAuth, Icon }) => (
           <li key={name}>
-            <Link
-              href={href}
-              className="flex items-center gap-3 py-3 px-5 font-semibold hover:text-primary"
-            >
-              <Icon />
-              <p>{name}</p>
-            </Link>
+            {isRequiredAuth && userInfo ? (
+              <Link
+                href={href}
+                className="flex items-center gap-3 py-3 px-5 font-semibold hover:text-primary"
+              >
+                <Icon />
+                <p>{name}</p>
+              </Link>
+            ) : (
+              <div
+                href={href}
+                className="flex items-center gap-3 py-3 px-5 font-semibold text-stone-400"
+              >
+                <Icon />
+                <p>{name}</p>
+              </div>
+            )}
           </li>
         ))}
       </ul>
