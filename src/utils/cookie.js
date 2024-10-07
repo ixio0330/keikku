@@ -37,3 +37,14 @@ export const getUserIdFromCookie = () => {
     return false
   }
 }
+
+export const resetCookie = () => {
+  try {
+    const cookieStore = cookies()
+    cookieStore.delete("keikku-uri")
+    cookieStore.delete("keikku-user")
+    return true
+  } catch (err) {
+    return false
+  }
+}

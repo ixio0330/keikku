@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 // db
-import { getUserInfo } from "@/db/auth"
+import { getUserInfo, logout } from "@/db/auth"
 
 // component
 import { PiPencilSimple } from "react-icons/pi"
@@ -44,7 +44,9 @@ export default async function KeikkuPage() {
         </ul>
 
         <div className="flex justify-end items-center py-3 gap-2 font-light text-sm text-stone-500">
-          <button>로그아웃</button>
+          <form action={logout}>
+            <button type="submit">로그아웃</button>
+          </form>
           <div className="w-px h-4 bg-stone-200" />
           <button>회원탈퇴</button>
         </div>
