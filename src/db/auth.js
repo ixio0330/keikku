@@ -40,7 +40,9 @@ export const register = async (name = "") => {
 
   const { data, error: userError } = await supabase
     .from(T_USERS)
-    .insert([{ name, oauth_uuid: user.id }])
+    .insert([
+      { name, oauth_uuid: user.id, provider: user.app_metadata.provider },
+    ])
     .select("uri")
     .single()
 
@@ -74,4 +76,25 @@ export const isExistUser = async (uri = "") => {
     .single()
 
   return !!data
+}
+
+export const getUserInfo = async () => {
+  if (!getUserIdFromCookie()) {
+    return null
+  }
+
+  const supabase = createSupabase()
+
+  const { data, error } = await supabase
+    .from(T_USERS)
+    .select("name, provider")
+    .eq("id", Number(getUserIdFromCookie()))
+    .single()
+
+  if (error) {
+    console.log(error)
+    return null
+  }
+
+  return data
 }

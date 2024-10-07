@@ -6,7 +6,7 @@ import { useState } from "react"
 import { IoMdMenu } from "react-icons/io"
 import AppSidebar from "./Sidebar"
 
-export default function AppHeader() {
+export default function AppHeader({ userInfo }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 
   const handleOutsideClick = () => {
@@ -33,7 +33,7 @@ export default function AppHeader() {
       {isSidebarOpen && (
         <div className="fixed inset-0 z-50 flex max-w-content m-auto">
           <div className="w-3/4 bg-white">
-            <AppSidebar />
+            <AppSidebar userInfo={userInfo} />
           </div>
           <div
             className="w-1/4 bg-black bg-opacity-40"

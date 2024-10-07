@@ -1,22 +1,33 @@
-import { PiUserCircle } from "react-icons/pi"
-
 import { appMenus } from "@/constants"
 import Link from "next/link"
 
-export default function AppSidebar() {
+// component
+import Avatar from "../common/Avatar"
+
+export default function AppSidebar({ userInfo }) {
   return (
     <aside>
-      <div>
-        <div></div>
-        <p>사용자 이름</p>
-
-        <p>로그인이 필요해요</p>
+      <div className="bg-primary p-10 text-white flex flex-col justify-center items-center gap-2">
+        {userInfo ? (
+          <>
+            <Avatar provider={userInfo.provider} />
+            <p>{userInfo.name}님</p>
+          </>
+        ) : (
+          <>
+            <Avatar provider={null} />
+            <p>로그인이 필요해요</p>
+          </>
+        )}
       </div>
 
-      <ul>
+      <ul className="py-5">
         {appMenus.map(({ href, name, isRequiredAuth, Icon }) => (
           <li key={name}>
-            <Link href={href}>
+            <Link
+              href={href}
+              className="flex items-center gap-3 py-3 px-5 font-semibold hover:text-primary"
+            >
               <Icon />
               <p>{name}</p>
             </Link>

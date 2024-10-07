@@ -2,7 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 
 // db
-import { isExistUser } from "@/db/auth"
+import { getUserInfo, isExistUser } from "@/db/auth"
 import { getActiveEventByUri } from "@/db/event"
 
 // util
@@ -32,10 +32,11 @@ export default async function KeikkuPage({ params }) {
   }
 
   const isOwner = uri === getUriFromCookie()
+  const userInfo = await getUserInfo()
 
   return (
     <>
-      <AppHeader />
+      <AppHeader userInfo={userInfo} />
       <main className="max-w-content px-content m-auto mt-16 min-h-[calc(100vh-64px)] bg-background pb-10">
         <section className="pt-5 pb-10 relative overflow-hidden">
           {activeEvent ? (
