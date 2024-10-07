@@ -33,3 +33,26 @@ export default function Avatar({ provider }) {
       )
   }
 }
+
+export function BigAvatar({ provider }) {
+  switch (provider) {
+    case oauthProvider.google:
+      return (
+        <div className="bg-white w-16 h-16 rounded-full flex justify-center items-center">
+          <FcGoogle size={32} />
+        </div>
+      )
+    case oauthProvider.kakao:
+      return (
+        <div className="bg-[#FFE300] w-16 h-16 rounded-full flex justify-center items-center">
+          <SiKakao color="#1E1E1E" size={32} />
+        </div>
+      )
+    case oauthProvider.twitter:
+      return (
+        <div className="bg-black w-16 h-16 rounded-full flex justify-center items-center text-white">
+          <RiTwitterXFill size={28} />
+        </div>
+      )
+  }
+}

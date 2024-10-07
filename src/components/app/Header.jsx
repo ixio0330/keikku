@@ -7,7 +7,7 @@ import { IoMdMenu } from "react-icons/io"
 import AppSidebar from "./Sidebar"
 
 export default function AppHeader({ userInfo }) {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
   const handleOutsideClick = () => {
     setIsSidebarOpen(false)

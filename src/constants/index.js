@@ -203,3 +203,22 @@ export const appMenus = [
     Icon: PiGift,
   },
 ]
+
+export const profileMenus = [
+  {
+    href: "/profile/notice",
+    name: "공지사항",
+  },
+  {
+    href: "/profile/policy",
+    name: "개인정보 처리방침 / 이용약관",
+  },
+  {
+    href: "/profile/faq",
+    name: "자주 묻는 질문",
+  },
+  {
+    href: "/profile/app",
+    name: "앱정보",
+  },
+]
