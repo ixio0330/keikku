@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { redirect } from "next/navigation"
 
 // db
 import { getUserInfo, logout } from "@/db/auth"
@@ -13,6 +14,10 @@ import { profileMenus } from "@/constants"
 
 export default async function KeikkuPage() {
   const userInfo = await getUserInfo()
+
+  if (!userInfo) {
+    redirect("/")
+  }
 
   return (
     <>
