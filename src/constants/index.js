@@ -5,6 +5,7 @@ import {
   LuAlignJustify,
   LuAlignRight,
 } from "react-icons/lu"
+import { PiCake, PiGift, PiUser } from "react-icons/pi"
 import {
   Nanum_Pen_Script,
   Nanum_Gothic,
@@ -179,5 +180,26 @@ export const cakeTextFonts = [
     text: "고운돋움",
     value: "gowun-dodum",
     className: gowunDodum.className,
+  },
+]
+
+export const appMenus = [
+  {
+    href: "/profile",
+    name: "마이페이지",
+    isRequiredAuth: true,
+    Icon: <PiUser />,
+  },
+  {
+    href: "/give",
+    name: "받은 케이크",
+    isRequiredAuth: true,
+    Icon: <PiCake />,
+  },
+  {
+    href: "/receive",
+    name: "선물한 케이크",
+    isRequiredAuth: true,
+    Icon: <PiGift />,
   },
 ]

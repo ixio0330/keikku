@@ -9,7 +9,8 @@ import { getActiveEventByUri } from "@/db/event"
 import { getUriFromCookie } from "@/utils/cookie"
 
 // component
-import { IoMdMenu, IoMdCalendar } from "react-icons/io"
+import { IoMdCalendar } from "react-icons/io"
+import AppHeader from "@/components/app/Header"
 import ActiveCakeList from "@/components/cake/view/ActiveCakeList"
 import ActionButton from "./ActionButton"
 
@@ -34,21 +35,7 @@ export default async function KeikkuPage({ params }) {
 
   return (
     <>
-      <header className="fixed top-0 inset-x-0 mx-auto max-w-content w-full px-content h-16 flex items-center justify-between bg-background z-50">
-        <button className="text-primary">
-          <IoMdMenu size={28} />
-        </button>
-        <h1>
-          <Image
-            src="/app/logo.png"
-            alt="케이꾸 로고"
-            width={127}
-            height={35}
-          />
-        </h1>
-        <Image src="/app/cake.png" alt="케이크" width={40} height={40} />
-      </header>
-
+      <AppHeader />
       <main className="max-w-content px-content m-auto mt-16 min-h-[calc(100vh-64px)] bg-background pb-10">
         <section className="pt-5 pb-10 relative overflow-hidden">
           {activeEvent ? (
