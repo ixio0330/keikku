@@ -24,7 +24,7 @@ export default function Cake({ cake }) {
         style={{
           ...miniCakeShapeStyle[cake.cake_shape],
           color: cake.text_color,
-          fontSize: `${cake.text_size / 3}px`,
+          fontSize: `${cake.text_size / 5}px`,
           textAlign: cake.text_align,
           fontWeight: cake.text_styles.includes("bold") ? "bold" : "normal",
           textDecoration: cake.text_styles.includes("underline")
@@ -72,16 +72,21 @@ export default function Cake({ cake }) {
   }
 
   return (
-    <li className="relative m-auto border rounded-2xl w-[90px] h-[90px] bg-white flex justify-center items-center">
-      <div
-        style={{
-          ...miniCakeShapeStyle[cake.cake_shape],
-          backgroundColor: cake.cake_color,
-        }}
-      />
-      {getTextStyle()}
-      {getOutlineStyle()}
-      {getDecoStyle()}
+    <li className="relative">
+      <div className="relative m-auto border rounded-2xl w-[90px] h-[90px] bg-white flex justify-center items-center">
+        <div
+          style={{
+            ...miniCakeShapeStyle[cake.cake_shape],
+            backgroundColor: cake.cake_color,
+          }}
+        />
+        {getTextStyle()}
+        {getOutlineStyle()}
+        {getDecoStyle()}
+      </div>
+      <p className="absolute -bottom-3 bg-white rounded-full shadow w-full max-w-36 text-center py-1">
+        {cake.sender_name}
+      </p>
     </li>
   )
 }
