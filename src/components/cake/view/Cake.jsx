@@ -16,6 +16,8 @@ import {
   cakeTextFonts,
 } from "@/constants"
 
+import { shortenString } from "@/utils/string"
+
 export default function Cake({ cake }) {
   const getTextStyle = () =>
     cake.message && (
@@ -84,8 +86,8 @@ export default function Cake({ cake }) {
         {getOutlineStyle()}
         {getDecoStyle()}
       </div>
-      <p className="absolute -bottom-3 bg-white rounded-full shadow w-full max-w-36 text-center py-1">
-        {cake.sender_name}
+      <p className="absolute -bottom-3 bg-white rounded-full shadow w-full max-w-36 text-center py-1 border border-stone-400">
+        {shortenString(cake.sender_name)}
       </p>
     </li>
   )
