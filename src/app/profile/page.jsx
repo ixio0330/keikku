@@ -53,7 +53,7 @@ export default async function KeikkuPage() {
             <button type="submit">로그아웃</button>
           </form>
           <div className="w-px h-4 bg-stone-200" />
-          <button>회원탈퇴</button>
+          <Link href="/profile/leave">회원탈퇴</Link>
         </div>
       </main>
     </>
