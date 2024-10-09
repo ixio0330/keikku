@@ -1,8 +1,8 @@
 "use server"
 
 import createSupabase from "@/supabase"
-import { getUriFromCookie } from "@/utils/cookie"
-import { T_USERS, T_EVENTS, T_EVENT_CATEGORIES, T_CAKES } from "@/constants"
+import { getUserInfoFromCookie } from "@/utils/cookie"
+import { T_USERS, T_EVENTS, T_EVENT_CATEGORIES } from "@/constants"
 
 export const getEventCategories = async () => {
   const supabase = createSupabase()
@@ -63,7 +63,7 @@ export const getActiveEventByUri = async (uri = "") => {
 }
 
 export const createEvent = async ({ name, date, category_id }) => {
-  const uri = getUriFromCookie()
+  const uri = getUserInfoFromCookie()?.uri
   if (uri === null) {
     return { success: false, message: "로그인이 필요해요" }
   }
@@ -101,7 +101,7 @@ export const updateEvent = async ({
   description,
   category_id,
 }) => {
-  const uri = getUriFromCookie()
+  const uri = getUserInfoFromCookie()?.uri
   if (uri === null) {
     return { success: false, message: "로그인이 필요해요" }
   }

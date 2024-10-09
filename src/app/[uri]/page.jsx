@@ -6,7 +6,7 @@ import { getUserInfo, isExistUser } from "@/db/auth"
 import { getActiveEventByUri } from "@/db/event"
 
 // util
-import { getUriFromCookie } from "@/utils/cookie"
+import { getUserInfoFromCookie } from "@/utils/cookie"
 
 // component
 import { IoMdCalendar } from "react-icons/io"
@@ -22,10 +22,10 @@ export default async function KeikkuPage({ params }) {
     return <div>존재하지 않는 사용자에요.</div>
   }
 
-  const { success: activeEventResult, data: activeEvent } =
-    await getActiveEventByUri(uri)
+  const { data: activeEvent } = await getActiveEventByUri(uri)
 
-  const isOwner = uri === getUriFromCookie()
+  const isOwner = uri === getUserInfoFromCookie()?.uri
+  console.log(getUserInfoFromCookie())
   const userInfo = await getUserInfo()
 
   return (

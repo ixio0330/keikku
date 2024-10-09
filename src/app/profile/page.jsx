@@ -2,7 +2,7 @@ import Link from "next/link"
 import { redirect } from "next/navigation"
 
 // db
-import { getUserInfo, logout } from "@/db/auth"
+import { logout } from "@/db/auth"
 
 // component
 import { PiPencilSimple } from "react-icons/pi"
@@ -12,8 +12,11 @@ import { BigAvatar } from "@/components/common/Avatar"
 // constant
 import { profileMenus } from "@/constants"
 
+// util
+import { getUserInfoFromCookie } from "@/utils/cookie"
+
 export default async function KeikkuPage() {
-  const userInfo = await getUserInfo()
+  const userInfo = getUserInfoFromCookie()
 
   if (!userInfo) {
     redirect("/")

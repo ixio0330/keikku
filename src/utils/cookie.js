@@ -1,48 +1,34 @@
 import { cookies } from "next/headers"
+import { genToken, getVerifyToken } from "@/libs/jwt"
 
-export const setUriInCookie = (uri = "") => {
+export const setUserInfoInCookie = (userInfo) => {
   try {
+    const token = genToken(userInfo)
     const cookieStore = cookies()
-    cookieStore.set("keikku-uri", uri)
+    cookieStore.set("keikku-token", token)
     return true
   } catch (err) {
     return false
   }
 }
 
-export const getUriFromCookie = () => {
+export const getUserInfoFromCookie = () => {
   try {
     const cookieStore = cookies()
-    return cookieStore.get("keikku-uri")?.value ?? null
+    const token = cookieStore.get("keikku-token")?.value
+    if (!token) {
+      return null
+    }
+    return getVerifyToken(token)
   } catch (err) {
     return null
-  }
-}
-
-export const setUserIdInCookie = (id = 0) => {
-  try {
-    const cookieStore = cookies()
-    cookieStore.set("keikku-user", id)
-    return true
-  } catch (err) {
-    return false
-  }
-}
-
-export const getUserIdFromCookie = () => {
-  try {
-    const cookieStore = cookies()
-    return cookieStore.get("keikku-user")?.value ?? null
-  } catch (err) {
-    return false
   }
 }
 
 export const resetCookie = () => {
   try {
     const cookieStore = cookies()
-    cookieStore.delete("keikku-uri")
-    cookieStore.delete("keikku-user")
+    cookieStore.delete("keikku-token")
     return true
   } catch (err) {
     return false

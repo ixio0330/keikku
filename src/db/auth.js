@@ -2,14 +2,11 @@
 
 import createSupabase from "@/supabase"
 import { redirect } from "next/navigation"
-import { cookies } from "next/headers"
 import { oauthProvider, T_USERS } from "@/constants"
 import {
-  getUserIdFromCookie,
-  getUriFromCookie,
+  getUserInfoFromCookie,
   resetCookie,
-  setUserIdInCookie,
-  setUriInCookie,
+  setUserInfoInCookie,
 } from "@/utils/cookie"
 
 export const loginInWithOauth = async (provider = oauthProvider.google) => {
@@ -48,7 +45,7 @@ export const register = async (name = "") => {
     .insert([
       { name, oauth_uuid: user.id, provider: user.app_metadata.provider },
     ])
-    .select("id, uri")
+    .select("id, uri, name, provider")
     .single()
 
   if (userError) {
@@ -59,14 +56,14 @@ export const register = async (name = "") => {
     }
   }
 
-  setUserIdInCookie(data.id)
-  setUriInCookie(data.uri)
+  setUserInfoInCookie(data)
   return { success: true, data: data.uri }
 }
 
 export const autoLogin = async () => {
-  if (getUserIdFromCookie() && getUriFromCookie()) {
-    return { success: true, data: getUriFromCookie() }
+  const userInfo = getUserInfoFromCookie()
+  if (userInfo) {
+    return { success: true, data: userInfo.uri }
   }
 
   return { success: false }
@@ -97,7 +94,8 @@ export const isExistUser = async (uri = "") => {
 }
 
 export const getUserInfo = async () => {
-  if (!getUserIdFromCookie()) {
+  const userInfo = getUserInfoFromCookie()
+  if (!userInfo) {
     return null
   }
 
@@ -106,7 +104,7 @@ export const getUserInfo = async () => {
   const { data, error } = await supabase
     .from(T_USERS)
     .select("name, provider")
-    .eq("id", Number(getUserIdFromCookie()))
+    .eq("id", Number(userInfo.id))
     .single()
 
   if (error) {

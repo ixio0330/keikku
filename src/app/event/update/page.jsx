@@ -1,4 +1,3 @@
-import { redirect } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -6,7 +5,7 @@ import Link from "next/link"
 import { getEventCategories, getEventDetail } from "@/db/event"
 
 // util
-import { getUriFromCookie } from "@/utils/cookie"
+import { getUserInfoFromCookie } from "@/utils/cookie"
 
 // component
 import { MdHomeFilled } from "react-icons/md"
@@ -14,7 +13,7 @@ import UpdateForm from "./UpdateForm"
 
 export default async function UpdateEventPage({ searchParams }) {
   const eventDetail = await getEventDetail(searchParams?.id)
-  const uri = getUriFromCookie()
+  const uri = getUserInfoFromCookie()?.uri
 
   if (eventDetail === null) {
     return <div>존재하지 않는 이벤트에요</div>

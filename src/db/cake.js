@@ -1,7 +1,7 @@
 "use server"
 
 import createSupabase from "@/supabase"
-import { getUserIdFromCookie } from "@/utils/cookie"
+import { getUserInfoFromCookie } from "@/utils/cookie"
 import { T_CAKES } from "@/constants"
 
 export const createCake = async (data) => {
@@ -12,7 +12,7 @@ export const createCake = async (data) => {
     }
   }
 
-  const sender_id = getUserIdFromCookie()
+  const sender_id = getUserInfoFromCookie()?.id
   if (String(data?.sender_name) === "" && !sender_id) {
     return { success: false, message: "이름을 입력하거나 로그인을 해주세요" }
   }
