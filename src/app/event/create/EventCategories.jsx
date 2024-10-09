@@ -3,7 +3,7 @@
 import { useState } from "react"
 
 export default function EventCategories({ list, name = "category_id" }) {
-  const [selectedCategory, setSelectedCategory] = useState(null)
+  const [selectedCategory, setSelectedCategory] = useState(list[0].id)
 
   return (
     <div className="flex flex-wrap gap-2 text-sm text-primary">

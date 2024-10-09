@@ -62,7 +62,7 @@ export const getActiveEventByUri = async (uri = "") => {
   }
 }
 
-export const createEvent = async ({ name, date, description, category_id }) => {
+export const createEvent = async ({ name, date, category_id }) => {
   const uri = getUriFromCookie()
   if (uri === null) {
     return { success: false, message: "로그인이 필요해요" }
@@ -83,7 +83,7 @@ export const createEvent = async ({ name, date, description, category_id }) => {
 
   const { error: eventError } = await supabase
     .from(T_EVENTS)
-    .insert([{ user_id: userData.id, category_id, name, description, date }])
+    .insert([{ user_id: userData.id, category_id, name, date }])
   if (eventError) {
     return {
       success: false,
