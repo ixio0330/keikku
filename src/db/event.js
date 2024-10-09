@@ -46,7 +46,7 @@ export const getActiveEventByUri = async (uri = "") => {
   if (error) {
     return {
       success: false,
-      message: "이벤트 조회 중 오류가 발생했어요",
+      data: null,
     }
   }
 

@@ -22,14 +22,8 @@ export default async function KeikkuPage({ params }) {
     return <div>존재하지 않는 사용자에요.</div>
   }
 
-  const {
-    success: activeEventResult,
-    data: activeEvent,
-    message: activeEventErrorMessage,
-  } = await getActiveEventByUri(uri)
-  if (!activeEventResult) {
-    return <div>{activeEventErrorMessage}</div>
-  }
+  const { success: activeEventResult, data: activeEvent } =
+    await getActiveEventByUri(uri)
 
   const isOwner = uri === getUriFromCookie()
   const userInfo = await getUserInfo()
@@ -130,7 +124,7 @@ export default async function KeikkuPage({ params }) {
           </ul>
 
           {/* 쇼케이스 */}
-          <ActiveCakeList eventId={activeEvent.id} />
+          <ActiveCakeList eventId={activeEvent?.id} />
         </section>
 
         <ActionButton activeEvent={activeEvent} isOwner={isOwner} uri={uri} />

@@ -54,27 +54,29 @@ export default function ActiveCakeList({ eventId }) {
         ))}
       </ul>
 
-      <div className="flex justify-center items-center pt-5">
-        <div className="bg-primary text-white flex items-center rounded-full p-1 text-sm">
-          <button
-            className="p-1"
-            onClick={handlePreviousPage}
-            disabled={currentPage === 1}
-          >
-            <IoIosArrowBack size={20} />
-          </button>
-          <p className="w-8 text-center">
-            {currentPage}/{totalPages}
-          </p>
-          <button
-            className="p-1"
-            onClick={handleNextPage}
-            disabled={currentPage === totalPages}
-          >
-            <IoIosArrowForward size={20} />
-          </button>
+      {eventId && (
+        <div className="flex justify-center items-center pt-5">
+          <div className="bg-primary text-white flex items-center rounded-full p-1 text-sm">
+            <button
+              className="p-1"
+              onClick={handlePreviousPage}
+              disabled={currentPage === 1}
+            >
+              <IoIosArrowBack size={20} />
+            </button>
+            <p className="w-8 text-center">
+              {currentPage}/{totalPages}
+            </p>
+            <button
+              className="p-1"
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+            >
+              <IoIosArrowForward size={20} />
+            </button>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   )
 }
