@@ -1,9 +1,9 @@
-"use client"
-
-import Select from "@/components/common/Select"
-import Submit from "./Submit"
+import { getUserInfoFromCookie } from "@/utils/cookie"
+import Form from "./Form"
 
 export default function LeavePage() {
+  const userInfo = getUserInfoFromCookie()
+
   return (
     <div className="max-w-content px-content m-auto min-h-screen bg-background pb-10">
       <header className="h-16 flex justify-center items-center font-bold text-xl">
@@ -12,7 +12,8 @@ export default function LeavePage() {
       <main className="space-y-5">
         <h1 className="font-bold text-lg">
           <p>
-            <span className="text-primary">{"사용자"}</span>님을 볼 수 있는{" "}
+            <span className="text-primary">{userInfo?.name}</span>님을 볼 수
+            있는{" "}
           </p>
           <p>마지막이라니 아쉬워요😢</p>
         </h1>
@@ -27,14 +28,7 @@ export default function LeavePage() {
           </p>
         </div>
 
-        <form className="space-y-5">
-          <label>
-            <p>{"사용자"}님의 탈퇴 이유가 궁금해요.</p>
-            <Select name="reason" required />
-          </label>
-
-          <Submit />
-        </form>
+        <Form username={userInfo?.name} />
       </main>
     </div>
   )
