@@ -8,6 +8,8 @@ import {
   getUserIdFromCookie,
   getUriFromCookie,
   resetCookie,
+  setUserIdInCookie,
+  setUriInCookie,
 } from "@/utils/cookie"
 
 export const loginInWithOauth = async (provider = oauthProvider.google) => {
@@ -27,7 +29,6 @@ export const loginInWithOauth = async (provider = oauthProvider.google) => {
 
 export const register = async (name = "") => {
   const supabase = createSupabase()
-  const cookieStore = cookies()
 
   const {
     data: { user },
@@ -47,7 +48,7 @@ export const register = async (name = "") => {
     .insert([
       { name, oauth_uuid: user.id, provider: user.app_metadata.provider },
     ])
-    .select("uri")
+    .select("id, uri")
     .single()
 
   if (userError) {
@@ -58,7 +59,8 @@ export const register = async (name = "") => {
     }
   }
 
-  cookieStore.set("uri", data.uri)
+  setUserIdInCookie(data.id)
+  setUriInCookie(data.uri)
   return { success: true, data: data.uri }
 }
 
