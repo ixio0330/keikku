@@ -114,3 +114,35 @@ export const getUserInfo = async () => {
 
   return data
 }
+
+export const updateUsername = async (name) => {
+  const userInfo = getUserInfoFromCookie()
+  if (!userInfo) {
+    return {
+      success: false,
+      message: "로그인을 해주세요.",
+    }
+  }
+
+  const supabase = createSupabase()
+
+  const { data, error } = await supabase
+    .from(T_USERS)
+    .update({ name })
+    .eq("id", Number(userInfo.id))
+    .select("id, name, uri, provider")
+    .single()
+
+  setUserInfoInCookie(data)
+
+  if (error) {
+    return {
+      success: false,
+      message: "이름을 수정하던중 오류가 발생했어요.",
+    }
+  }
+
+  return {
+    success: true,
+  }
+}

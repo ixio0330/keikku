@@ -25,7 +25,6 @@ export default async function KeikkuPage({ params }) {
   const { data: activeEvent } = await getActiveEventByUri(uri)
 
   const isOwner = uri === getUserInfoFromCookie()?.uri
-  console.log(getUserInfoFromCookie())
   const userInfo = await getUserInfo()
 
   return (

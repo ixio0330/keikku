@@ -5,9 +5,8 @@ import { redirect } from "next/navigation"
 import { logout } from "@/db/auth"
 
 // component
-import { PiPencilSimple } from "react-icons/pi"
 import AppHeader from "@/components/app/Header"
-import { BigAvatar } from "@/components/common/Avatar"
+import UserAvatar from "./UserAvatar"
 
 // constant
 import { profileMenus } from "@/constants"
@@ -26,17 +25,7 @@ export default async function KeikkuPage() {
     <>
       <AppHeader userInfo={userInfo} />
       <main className="max-w-content px-content m-auto mt-16 min-h-[calc(100vh-64px)] bg-background pb-10">
-        <div className="flex items-center gap-3 py-5">
-          <BigAvatar provider={userInfo.provider} />
-          <div className="flex items-center gap-3">
-            <p className="text-xl">
-              <b>{userInfo.name}</b>님
-            </p>
-            <button>
-              <PiPencilSimple size={20} />
-            </button>
-          </div>
-        </div>
+        <UserAvatar userInfo={userInfo} />
 
         <ul>
           {profileMenus.map(({ href, name }) => (
