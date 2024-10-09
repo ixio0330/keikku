@@ -1,5 +1,6 @@
 "use client"
 import Image from "next/image"
+import Link from "next/link"
 import { useState } from "react"
 
 // component
@@ -20,12 +21,14 @@ export default function AppHeader({ userInfo }) {
           <IoMdMenu size={28} />
         </button>
         <h1>
-          <Image
-            src="/app/logo.png"
-            alt="케이꾸 로고"
-            width={127}
-            height={35}
-          />
+          <Link href={userInfo?.uri ?? "/"}>
+            <Image
+              src="/app/logo.png"
+              alt="케이꾸 로고"
+              width={127}
+              height={35}
+            />
+          </Link>
         </h1>
         <Image src="/app/cake.png" alt="케이크" width={40} height={40} />
       </header>
