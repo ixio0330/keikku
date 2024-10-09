@@ -1,7 +1,7 @@
 import { FcGoogle } from "react-icons/fc"
 import { RiTwitterXFill } from "react-icons/ri"
 import { SiKakao } from "react-icons/si"
-import { PiUserCircle } from "react-icons/pi"
+import { BiSolidUser } from "react-icons/bi"
 
 import { oauthProvider } from "@/constants"
 
@@ -27,8 +27,8 @@ export default function Avatar({ provider }) {
       )
     default:
       return (
-        <div className="bg-black w-10 h-10 rounded-full flex justify-center items-center">
-          <PiUserCircle size={40} />
+        <div className="bg-stone-400 w-10 h-10 rounded-full flex justify-center items-center">
+          <BiSolidUser size={20} />
         </div>
       )
   }
