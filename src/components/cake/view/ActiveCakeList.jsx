@@ -54,7 +54,7 @@ export default function ActiveCakeList({ eventId }) {
         ))}
       </ul>
 
-      {eventId && (
+      {eventId && 0 < totalPages && (
         <div className="flex justify-center items-center pt-5">
           <div className="bg-primary text-white flex items-center rounded-full p-1 text-sm">
             <button
