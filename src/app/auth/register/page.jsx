@@ -6,11 +6,12 @@ import { register } from "@/db/auth"
 
 // component
 import AgreementCheck from "./AgreementCheck"
+import Submit from "./Submit"
 
 export default function RegisterPage() {
   const router = useRouter()
 
-  const actionRegister = async (formData) => {
+  async function actionRegister(formData) {
     const { success, data, message } = await register(formData.get("name"))
     if (success === false) {
       window.alert(message)
@@ -28,7 +29,7 @@ export default function RegisterPage() {
           당신의 이름을 <br />
           알려주세요
         </h1>
-        <form action={actionRegister} className="space-y-5">
+        <form action={actionRegister} className="flex flex-col gap-5">
           <input
             className="w-full text-sm bg-transparent outline-none border-b border-primary py-2"
             type="text"
@@ -37,9 +38,7 @@ export default function RegisterPage() {
             required
           />
           <AgreementCheck />
-          <button className="w-full text-white font-semibold border border-primary rounded-lg box-border p-2 bg-primary font-xs mb-6">
-            케이크 만들러 가기
-          </button>
+          <Submit />
         </form>
       </div>
     </section>
