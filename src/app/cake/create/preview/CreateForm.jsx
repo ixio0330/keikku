@@ -8,6 +8,7 @@ import { createCake } from "@/db/cake"
 
 // store
 import useCake from "@/stores/cake"
+import useActiveCakes from "@/stores/activeCakes"
 
 // component
 import Input from "@/components/common/Input"
@@ -15,12 +16,13 @@ import Input from "@/components/common/Input"
 export default function CreateForm({ isGuest = true }) {
   const router = useRouter()
   const { cake, resetCake } = useCake()
+  const { addNewCake } = useActiveCakes()
 
   const actionCreateCake = async (formData) => {
     const createForm = { ...cake }
     delete createForm.uri
 
-    const { success, message } = await createCake({
+    const { success, message, data } = await createCake({
       ...createForm,
       sender_name: formData.get("sender_name"),
     })
@@ -30,8 +32,9 @@ export default function CreateForm({ isGuest = true }) {
       return
     }
 
-    router.push(`/${cake.uri}`)
+    addNewCake(data)
     resetCake()
+    router.push(`/${cake.uri}`)
   }
 
   return (

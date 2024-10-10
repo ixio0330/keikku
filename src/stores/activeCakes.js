@@ -8,6 +8,7 @@ const activeCakesAtom = atom({
     1: null,
   },
   totalPages: 0,
+  totalCakes: 0,
   loading: true,
   pageSize: 9,
 })
@@ -27,6 +28,7 @@ export default function useActiveCakes() {
       setActiveCakes((prev) => ({
         ...prev,
         totalPages: Math.ceil(count / pageSize),
+        totalCakes: count,
       }))
     } catch (err) {
       window.alert(err.data)
@@ -90,6 +92,26 @@ export default function useActiveCakes() {
     })
   }
 
+  // 케이크 추가
+  const addNewCake = (newCake) => {
+    setActiveCakes((prev) => {
+      const newTotalCakes = prev.totalCakes + 1
+      const newTotalPages = Math.ceil(newTotalCakes / pageSize)
+
+      const allCakes = [newCake].concat(...Object.values(prev.page))
+      const newPages = {
+        1: allCakes.slice(0, pageSize),
+      }
+
+      return {
+        totalCakes: newTotalCakes,
+        totalPages: newTotalPages,
+        currentPage: 1,
+        page: newPages,
+      }
+    })
+  }
+
   return {
     page,
     currentPage,
@@ -99,5 +121,6 @@ export default function useActiveCakes() {
     fetchActiveCakes,
     fetchTotalPages,
     resetActiveCakes,
+    addNewCake,
   }
 }

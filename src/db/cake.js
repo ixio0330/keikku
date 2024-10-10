@@ -19,18 +19,22 @@ export const createCake = async (data) => {
 
   const supabase = createSupabase()
 
-  const { error: eventError } = await supabase
+  const { data: cakeData, error: cakeError } = await supabase
     .from(T_CAKES)
     .insert([{ ...data, sender_id }])
-  if (eventError) {
-    console.log(eventError)
+    .select(
+      "id, sender_id, sender_name, message, cake_shape, cake_color, text_size, text_styles, text_color, text_align, text_font, outline_shape, outline_color, deco_shape, deco_color, created_at",
+    )
+    .single()
+  if (cakeError) {
+    console.log(cakeError)
     return {
       success: false,
       message: "오류가 발생했어요. 잠시후 다시 시도해주세요",
     }
   }
 
-  return { success: true }
+  return { success: true, data: cakeData }
 }
 
 export async function getCakeTotalCount(event_id) {
