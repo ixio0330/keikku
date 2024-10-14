@@ -14,6 +14,22 @@ export default function ActionButton({ activeEvent, isOwner, uri, domain }) {
   const pathname = usePathname()
   const [isModalOpen, setIsModalOpen] = useState(false)
 
+  const onClickCopyToClipboard = async () => {
+    try {
+      await window.navigator.clipboard.writeText(`${domain}${pathname}`)
+      window.alert("클립보드에 링크가 복사되었어요")
+    } catch (err) {
+      window.alert("링크를 복사하지 못했어요 :( 다시 시도해주세요")
+    }
+  }
+
+  const onClickShareToTwitter = () => {
+    const tweetText = encodeURIComponent(`${domain}${pathname}`)
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${tweetText}`
+    window.open(twitterUrl, "_blank")
+    setIsModalOpen(false)
+  }
+
   return (
     <div className="mt-10 flex flex-col gap-3 text-center font-semibold">
       {activeEvent ? (
@@ -32,7 +48,10 @@ export default function ActionButton({ activeEvent, isOwner, uri, domain }) {
                   <Avatar provider="kakao" />
                   <p>카카오톡</p>
                 </button>
-                <button className="flex flex-col items-center justify-center gap-1">
+                <button
+                  onClick={onClickShareToTwitter}
+                  className="flex flex-col items-center justify-center gap-1"
+                >
                   <Avatar provider="twitter" />
                   <p>X</p>
                 </button>
@@ -40,9 +59,15 @@ export default function ActionButton({ activeEvent, isOwner, uri, domain }) {
 
               <div className="flex">
                 <p className="w-10/12 overflow-hidden text-ellipsis whitespace-nowrap border bg-stone-100 px-2 py-1">
-                  {domain}/{pathname}
+                  {domain}
+                  {pathname}
                 </p>
-                <button className="flex-grow border border-l-0">복사</button>
+                <button
+                  onClick={onClickCopyToClipboard}
+                  className="flex-grow border border-l-0"
+                >
+                  복사
+                </button>
               </div>
             </Modal>
           </>
