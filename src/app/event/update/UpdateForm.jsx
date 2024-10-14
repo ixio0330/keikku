@@ -1,26 +1,28 @@
 "use client"
 import { useRouter } from "next/navigation"
+import { useState } from "react"
+import { useFormStatus } from "react-dom"
 
 // db
 import { deleteEvent, updateEvent } from "@/db/event"
 
 // component
 import Input from "@/components/common/Input"
-import Textarea from "@/components/common/Textarea"
+import Spinner from "@/components/common/Spinner"
 import EventCategories from "./EventCategories"
 
 export default function UpdateForm({ list, uri, detail }) {
   const router = useRouter()
+  const [loading, setLoading] = useState()
+
   const actionUpdateEvent = async (formData) => {
     const name = formData.get("name")
     const date = formData.get("date")
-    const description = formData.get("description")
     const category_id = Number(formData.get("category_id")) || null
     const { success, message } = await updateEvent({
       id: detail?.id,
       name,
       date,
-      description,
       category_id,
     })
 
@@ -41,7 +43,14 @@ export default function UpdateForm({ list, uri, detail }) {
         "이벤트를 삭제하면 선물받은 케이크도 전부 삭제돼요. 이벤트를 삭제할까요?",
       )
     ) {
-      const { success } = await deleteEvent(detail?.id)
+      setLoading(true)
+      const { success, message } = await deleteEvent(detail?.id)
+      setLoading(false)
+
+      if (success === false) {
+        window.alert(message)
+        return
+      }
 
       router.push(`/${uri}`)
       router.refresh()
@@ -71,33 +80,33 @@ export default function UpdateForm({ list, uri, detail }) {
         <Input type="date" name="date" required defaultValue={detail.date} />
       </label>
 
-      <label className="space-y-2">
-        <p className="text-lg font-bold">
-          이벤트에 대해 간단하게 설명해 주세요.
-        </p>
-        <Textarea
-          name="description"
-          placeholder="다른 이용자들이 알 수 있도록 이벤트에 대해 알려 주세요."
-          maxLength={100}
-          defaultValue={detail.description}
-        />
-      </label>
-
       <div className="flex gap-5">
         <button
           onClick={handleRemoveEvent}
+          disabled={loading}
           className="w-2/5 text-center text-red-500 bg-white font-semibold border border-red-500 rounded-lg box-border p-2 bg-white font-xs"
         >
           삭제
         </button>
+        {loading && <Spinner />}
 
-        <button
-          type="submit"
-          className="w-full text-center text-white font-semibold border border-primary rounded-lg box-border p-2 bg-primary font-xs"
-        >
-          저장
-        </button>
+        <SubmitButton />
       </div>
     </form>
+  )
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus()
+  return (
+    <>
+      <button
+        type="submit"
+        className="w-full text-center text-white font-semibold border border-primary rounded-lg box-border p-2 bg-primary font-xs"
+      >
+        저장
+      </button>
+      {pending && <Spinner />}
+    </>
   )
 }
