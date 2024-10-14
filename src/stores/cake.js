@@ -2,11 +2,11 @@ import { atom, useAtom } from "jotai"
 
 import {
   cakeColors,
-  cakeShape,
-  cakeOutlineShape,
   cakeDecoShape,
-  cakeTextColors,
+  cakeOutlineShape,
+  cakeShape,
   cakeTextAligns,
+  cakeTextColors,
   cakeTextFonts,
 } from "@/constants"
 
@@ -133,7 +133,7 @@ export default function useCake() {
   const updateCakeOutlineShape = (shape = cakeOutlineShape.cream1) => {
     setCake((prev) => ({
       ...prev,
-      outline_shape: shape,
+      outline_shape: shape === prev.outline_shape ? null : shape,
     }))
   }
 
@@ -148,7 +148,7 @@ export default function useCake() {
   const updateCakeDecoShape = (shape = cakeDecoShape.cream) => {
     setCake((prev) => ({
       ...prev,
-      deco_shape: shape,
+      deco_shape: shape === prev.deco_shape ? null : shape,
     }))
   }
 
