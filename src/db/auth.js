@@ -1,13 +1,13 @@
 "use server"
 
+import { oauthProvider, T_LEAVES, T_USERS } from "@/constants"
 import createSupabase from "@/supabase"
-import { redirect } from "next/navigation"
-import { oauthProvider, T_USERS } from "@/constants"
 import {
   getUserInfoFromCookie,
   resetCookie,
   setUserInfoInCookie,
 } from "@/utils/cookie"
+import { redirect } from "next/navigation"
 
 export const loginInWithOauth = async (provider = oauthProvider.google) => {
   const supabase = createSupabase()
@@ -144,5 +144,51 @@ export const updateUsername = async (name) => {
 
   return {
     success: true,
+  }
+}
+
+export const removeUser = async ({ leave_category_id = null }) => {
+  const userInfo = getUserInfoFromCookie()
+  if (!userInfo || !Number(userInfo.id)) {
+    return {
+      success: false,
+      message: "존재하지 않는 사용자에요",
+    }
+  }
+
+  const supabase = createSupabase()
+  const { error: userError } = await supabase
+    .from(T_USERS)
+    .select("id")
+    .eq("id", userInfo.id)
+    .single()
+
+  if (userError) {
+    return {
+      success: false,
+      message: "존재하지 않는 사용자에요",
+    }
+  }
+
+  const { error: userRemoveError } = await supabase
+    .from(T_USERS)
+    .delete("id")
+    .eq("id", userInfo.id)
+
+  if (userRemoveError) {
+    console.log(userRemoveError)
+    return {
+      success: false,
+      message: "탈퇴중 오류가 발생했어요",
+    }
+  }
+
+  if (leave_category_id) {
+    await supabase.from(T_LEAVES).insert([{ category_id: leave_category_id }])
+  }
+
+  return {
+    success: true,
+    data: "다음에 또 만나요 :)",
   }
 }

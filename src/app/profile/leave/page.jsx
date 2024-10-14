@@ -1,8 +1,10 @@
+import { getLeaveCategories } from "@/db/leave"
 import { getUserInfoFromCookie } from "@/utils/cookie"
 import Form from "./Form"
 
-export default function LeavePage() {
+export default async function LeavePage() {
   const userInfo = getUserInfoFromCookie()
+  const { data } = await getLeaveCategories()
 
   return (
     <div className="max-w-content px-content m-auto min-h-screen bg-background pb-10">
@@ -28,7 +30,7 @@ export default function LeavePage() {
           </p>
         </div>
 
-        <Form username={userInfo?.name} />
+        <Form username={userInfo?.name} options={data ?? []} />
       </main>
     </div>
   )

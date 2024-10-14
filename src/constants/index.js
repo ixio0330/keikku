@@ -1,18 +1,18 @@
-import { MdOutlineTextFormat, MdFormatBold } from "react-icons/md"
 import {
-  LuItalic,
-  LuAlignLeft,
-  LuAlignJustify,
-  LuAlignRight,
-} from "react-icons/lu"
-import { PiCake, PiGift, PiUser } from "react-icons/pi"
-import {
-  Nanum_Pen_Script,
-  Nanum_Gothic,
   Dongle,
   Gowun_Dodum,
+  Nanum_Gothic,
+  Nanum_Pen_Script,
   Single_Day,
 } from "next/font/google"
+import {
+  LuAlignJustify,
+  LuAlignLeft,
+  LuAlignRight,
+  LuItalic,
+} from "react-icons/lu"
+import { MdFormatBold, MdOutlineTextFormat } from "react-icons/md"
+import { PiCake, PiGift, PiUser } from "react-icons/pi"
 
 export const oauthProvider = {
   google: "google",
@@ -25,6 +25,8 @@ export const T_EVENT_CATEGORIES = "event_categories"
 export const T_EVENTS = "events"
 export const T_USERS = "users"
 export const T_CAKES = "cakes"
+export const T_LEAVES = "leaves"
+export const T_LEAVE_CATEGORIES = "leave_categories"
 
 // 케이크 탭
 export const cakeTabs = [
