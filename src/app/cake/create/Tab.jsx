@@ -1,5 +1,5 @@
-import Link from "next/link"
 import { cakeTabs } from "@/constants"
+import Link from "next/link"
 
 export default function Tab({ currentTab }) {
   return (
@@ -8,7 +8,7 @@ export default function Tab({ currentTab }) {
         <li key={id} className="w-full">
           <Link
             href={href}
-            className={`block pb-2 w-full text-center border-b-2 ${name === currentTab ? "border-primary text-primary" : "border-transparent"}`}
+            className={`block pb-2 w-full text-center border-b-2 ${name === currentTab ? "border-primary text-primary font-bold" : "border-transparent"}`}
           >
             {name}
           </Link>
