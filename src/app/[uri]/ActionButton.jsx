@@ -41,7 +41,11 @@ export default function ActionButton({ activeEvent, isOwner, uri, domain }) {
             >
               내 이벤트 알리기
             </button>
-            <Modal open={isModalOpen} className="space-y-5 text-sm font-normal">
+            <Modal
+              open={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+              className="space-y-5 text-sm font-normal"
+            >
               <h3 className="text-lg font-bold">친구에게 공유하기</h3>
               <div className="flex items-center justify-center gap-5">
                 <button className="flex flex-col items-center justify-center gap-1">
