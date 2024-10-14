@@ -21,7 +21,7 @@ export default function Avatar({ provider }) {
       )
     case oauthProvider.twitter:
       return (
-        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-black">
+        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-white">
           <RiTwitterXFill size={20} />
         </div>
       )

@@ -1,5 +1,5 @@
-import Link from "next/link"
 import Image from "next/image"
+import Link from "next/link"
 
 // db
 import { getUserInfo, isExistUser } from "@/db/auth"
@@ -9,9 +9,9 @@ import { getActiveEventByUri } from "@/db/event"
 import { getUserInfoFromCookie } from "@/utils/cookie"
 
 // component
-import { IoMdCalendar } from "react-icons/io"
 import AppHeader from "@/components/app/Header"
 import ActiveCakeList from "@/components/cake/view/ActiveCakeList"
+import { IoMdCalendar } from "react-icons/io"
 import ActionButton from "./ActionButton"
 
 export default async function KeikkuPage({ params }) {
@@ -126,7 +126,12 @@ export default async function KeikkuPage({ params }) {
           <ActiveCakeList eventId={activeEvent?.id} />
         </section>
 
-        <ActionButton activeEvent={activeEvent} isOwner={isOwner} uri={uri} />
+        <ActionButton
+          activeEvent={activeEvent}
+          isOwner={isOwner}
+          uri={uri}
+          domain={process.env.DOMAIN}
+        />
       </main>
     </>
   )

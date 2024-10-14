@@ -1,20 +1,51 @@
 "use client"
 
 import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { useState } from "react"
 
 // store
+import Avatar from "@/components/common/Avatar"
+import Modal from "@/components/common/Modal"
 import useCake from "@/stores/cake"
 
-export default function ActionButton({ activeEvent, isOwner, uri }) {
+export default function ActionButton({ activeEvent, isOwner, uri, domain }) {
   const { updateUri, updateEvent } = useCake()
+  const pathname = usePathname()
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
-    <div className="mt-10 flex flex-col space-y-3 text-center font-semibold">
+    <div className="mt-10 flex flex-col gap-3 text-center font-semibold">
       {activeEvent ? (
         isOwner ? (
-          <button className="m-auto box-border w-full rounded-lg border border-primary bg-primary p-2 text-white">
-            내 이벤트 알리기
-          </button>
+          <>
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="m-auto box-border w-full rounded-lg border border-primary bg-primary p-2 text-white"
+            >
+              내 이벤트 알리기
+            </button>
+            <Modal open={isModalOpen} className="space-y-5 text-sm font-normal">
+              <h3 className="text-lg font-bold">친구에게 공유하기</h3>
+              <div className="flex items-center justify-center gap-5">
+                <button className="flex flex-col items-center justify-center gap-1">
+                  <Avatar provider="kakao" />
+                  <p>카카오톡</p>
+                </button>
+                <button className="flex flex-col items-center justify-center gap-1">
+                  <Avatar provider="twitter" />
+                  <p>X</p>
+                </button>
+              </div>
+
+              <div className="flex">
+                <p className="w-10/12 overflow-hidden text-ellipsis whitespace-nowrap border bg-stone-100 px-2 py-1">
+                  {domain}/{pathname}
+                </p>
+                <button className="flex-grow border border-l-0">복사</button>
+              </div>
+            </Modal>
+          </>
         ) : (
           <Link
             href="/cake/create/shape"
