@@ -16,11 +16,11 @@ export default function Input({
         value={value}
         onChange={(e) => setValue(e.target.value)}
         maxLength={maxLength}
-        className={`w-full text-sm bg-transparent outline-none py-2 ${value ? "border-b border-green-600" : "border-b text-gray-400"} ${className}`}
+        className={`w-full bg-transparent py-2 text-sm outline-none ${value ? "border-b border-green-600" : "border-b text-gray-400"} ${className}`}
         {...props}
       />
       {maxLength && typeof value === "string" && (
-        <p className="absolute right-0 top-1/2 -translate-y-1/2 text-gray-400 font-light text-sm">
+        <p className="absolute right-0 top-1/2 -translate-y-1/2 text-sm font-light text-gray-400">
           {value ? value.length : 0}/{maxLength}
         </p>
       )}

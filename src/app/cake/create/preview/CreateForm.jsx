@@ -56,12 +56,12 @@ export default function CreateForm({ isGuest = true }) {
       <div className="flex gap-5 pb-10">
         <Link
           href="/cake/create/deco"
-          className="w-2/5 text-center text-primary bg-white font-semibold border border-primary rounded-lg box-border p-2 bg-primary font-xs"
+          className="font-xs box-border w-2/5 rounded-lg border border-primary bg-primary bg-white p-2 text-center font-semibold text-primary"
         >
           이전
         </Link>
 
-        <button className="w-full text-center text-white font-semibold border border-primary rounded-lg box-border p-2 bg-primary font-xs">
+        <button className="font-xs box-border w-full rounded-lg border border-primary bg-primary p-2 text-center font-semibold text-white">
           선물하기
         </button>
       </div>

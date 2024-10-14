@@ -2,7 +2,7 @@ export default function CreamOne({ shape = "circle", color }) {
   switch (shape) {
     case "circle":
       return (
-        <div className="absolute top-4.5 left-4.5">
+        <div className="top-4.5 left-4.5 absolute">
           <svg
             width="292"
             height="292"
@@ -4937,7 +4937,7 @@ export default function CreamOne({ shape = "circle", color }) {
       )
     case "rectangle":
       return (
-        <div className="absolute top-5.5 left-4.5">
+        <div className="top-5.5 left-4.5 absolute">
           <svg
             width="300"
             height="252"

@@ -24,7 +24,7 @@ export default async function KeikkuPage() {
   return (
     <>
       <AppHeader userInfo={userInfo} />
-      <main className="max-w-content px-content m-auto mt-16 min-h-[calc(100vh-64px)] bg-background pb-10">
+      <main className="m-auto mt-16 min-h-[calc(100vh-64px)] max-w-content bg-background px-content pb-10">
         <UserAvatar userInfo={userInfo} />
 
         <ul>
@@ -32,7 +32,7 @@ export default async function KeikkuPage() {
             <li key={name}>
               <Link
                 href={href}
-                className="block py-4 border-b border-stone-200"
+                className="block border-b border-stone-200 py-4"
               >
                 {name}
               </Link>
@@ -40,11 +40,11 @@ export default async function KeikkuPage() {
           ))}
         </ul>
 
-        <div className="flex justify-end items-center py-3 gap-2 font-light text-sm text-stone-500">
+        <div className="flex items-center justify-end gap-2 py-3 text-sm font-light text-stone-500">
           <form action={logout}>
             <button type="submit">로그아웃</button>
           </form>
-          <div className="w-px h-4 bg-stone-200" />
+          <div className="h-4 w-px bg-stone-200" />
           <Link href="/profile/leave">회원탈퇴</Link>
         </div>
       </main>

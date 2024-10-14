@@ -53,7 +53,7 @@ export default function CreateForm({ list, uri }) {
 
       <button
         type="submit"
-        className="w-full font-semibold text-white border border-primary rounded-lg box-border p-2 bg-primary"
+        className="box-border w-full rounded-lg border border-primary bg-primary p-2 font-semibold text-white"
       >
         이벤트 만들기
       </button>

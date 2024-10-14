@@ -22,7 +22,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <section className="max-w-content m-auto px-content">
+    <section className="m-auto max-w-content px-content">
       <div className="pt-12">
         <h1 className="mb-9 text-2xl font-bold">
           선물해 줄 친구에게 <br />
@@ -31,7 +31,7 @@ export default function RegisterPage() {
         </h1>
         <form action={actionRegister} className="flex flex-col gap-5">
           <input
-            className="w-full text-sm bg-transparent outline-none border-b border-primary py-2"
+            className="w-full border-b border-primary bg-transparent py-2 text-sm outline-none"
             type="text"
             name="name"
             placeholder="닉네임"

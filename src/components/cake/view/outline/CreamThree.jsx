@@ -2,7 +2,7 @@ export default function CreamThree({ shape = "circle", color }) {
   switch (shape) {
     case "circle":
       return (
-        <div className="absolute top-5.5 left-4.5">
+        <div className="top-5.5 left-4.5 absolute">
           <svg
             width="94"
             height="93"
@@ -1176,7 +1176,7 @@ export default function CreamThree({ shape = "circle", color }) {
       )
     case "rectangle":
       return (
-        <div className="absolute top-5.5 left-13">
+        <div className="top-5.5 left-13 absolute">
           <svg
             width="84"
             height="84"

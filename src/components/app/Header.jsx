@@ -16,7 +16,7 @@ export default function AppHeader({ userInfo }) {
 
   return (
     <>
-      <header className="fixed top-0 inset-x-0 mx-auto max-w-content w-full px-content h-16 flex items-center justify-between bg-background z-50">
+      <header className="fixed inset-x-0 top-0 z-50 mx-auto flex h-16 w-full max-w-content items-center justify-between bg-background px-content">
         <button className="text-primary" onClick={() => setIsSidebarOpen(true)}>
           <IoMdMenu size={28} />
         </button>
@@ -34,7 +34,7 @@ export default function AppHeader({ userInfo }) {
       </header>
 
       {isSidebarOpen && (
-        <div className="fixed inset-0 z-50 flex max-w-content m-auto">
+        <div className="fixed inset-0 z-50 m-auto flex max-w-content">
           <div className="w-3/4 bg-white">
             <AppSidebar userInfo={userInfo} />
           </div>

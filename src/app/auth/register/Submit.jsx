@@ -7,7 +7,7 @@ export default function Submit() {
     <>
       <button
         type="submit"
-        className="w-full text-white font-semibold border border-primary rounded-lg box-border p-2 bg-primary font-xs mb-6"
+        className="font-xs mb-6 box-border w-full rounded-lg border border-primary bg-primary p-2 font-semibold text-white"
       >
         케이크 만들러 가기
       </button>

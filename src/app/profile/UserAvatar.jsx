@@ -42,7 +42,7 @@ export default function UserAvatar({ userInfo }) {
         </div>
       </div>
       <Modal open={isModalOpen}>
-        <h3 className="text-center pb-5 font-bold text-lg">이름 변경하기</h3>
+        <h3 className="pb-5 text-center text-lg font-bold">이름 변경하기</h3>
         <form action={actionUpdateUsername} className="space-y-5">
           <label>
             <p className="text font-bold">이름</p>
@@ -61,7 +61,7 @@ export default function UserAvatar({ userInfo }) {
                 e.preventDefault()
                 setIsModalOpen(false)
               }}
-              className="w-1/2 text-center text-stone-400 bg-white font-semibold border border-stone-400 rounded-lg box-border p-2 bg-white font-xs"
+              className="font-xs box-border w-1/2 rounded-lg border border-stone-400 bg-white p-2 text-center font-semibold text-stone-400"
             >
               취소
             </button>
@@ -81,7 +81,7 @@ function Submit() {
     <button
       type="submit"
       disabled={pending}
-      className="w-1/2 text-center text-white font-semibold border border-primary rounded-lg box-border p-2 bg-primary font-xs"
+      className="font-xs box-border w-1/2 rounded-lg border border-primary bg-primary p-2 text-center font-semibold text-white"
     >
       {pending ? "저장중..." : "저장"}
     </button>

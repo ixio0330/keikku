@@ -3,12 +3,12 @@ import Link from "next/link"
 
 export default function Tab({ currentTab }) {
   return (
-    <ul className="flex justify-between items-center text-lg text-gray-400">
+    <ul className="flex items-center justify-between text-lg text-gray-400">
       {cakeTabs.map(({ id, name, href }) => (
         <li key={id} className="w-full">
           <Link
             href={href}
-            className={`block pb-2 w-full text-center border-b-2 ${name === currentTab ? "border-primary text-primary font-bold" : "border-transparent"}`}
+            className={`block w-full border-b-2 pb-2 text-center ${name === currentTab ? "border-primary font-bold text-primary" : "border-transparent"}`}
           >
             {name}
           </Link>

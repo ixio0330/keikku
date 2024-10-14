@@ -14,16 +14,16 @@ export default function LoginPage() {
   }
 
   return (
-    <section className="max-w-content m-auto h-full flex flex-col justify-center items-center gap-10 px-content">
+    <section className="m-auto flex h-full max-w-content flex-col items-center justify-center gap-10 px-content">
       <div className="relative">
         <Image
-          className="absolute -top-20 -left-8"
+          className="absolute -left-8 -top-20"
           src="/auth/balloon-blue.png"
           width={168}
           height={290}
           alt="파란색 풍선"
         />
-        <h1 className="relative top-12 text-2xl text-center font-bold z-50 mb-28">
+        <h1 className="relative top-12 z-50 mb-28 text-center text-2xl font-bold">
           어서오세요! 특별한 날을 기록하는
           <br /> 케이크샵{" "}
           <span className={`${chelaOne.className} text-primary`}>keikku</span>
@@ -33,7 +33,7 @@ export default function LoginPage() {
           <Image src="/auth/cake.png" width={320} height={250} alt="케이크" />
         </div>
         <Image
-          className="absolute top-0 left-5"
+          className="absolute left-5 top-0"
           src="/auth/confetti.png"
           width={360}
           height={424}
@@ -52,7 +52,7 @@ export default function LoginPage() {
           type="submit"
           name="provider"
           value={oauthProvider.google}
-          className="flex items-center justify-between w-full border border-gray-200 rounded box-border p-1 bg-white font-xs mb-3"
+          className="font-xs mb-3 box-border flex w-full items-center justify-between rounded border border-gray-200 bg-white p-1"
         >
           <Image
             src="/logo/google.png"
@@ -67,7 +67,7 @@ export default function LoginPage() {
           type="submit"
           name="provider"
           value={oauthProvider.kakao}
-          className="flex items-center justify-between w-full border border-kakao rounded box-border p-1 bg-kakao font-xs"
+          className="font-xs box-border flex w-full items-center justify-between rounded border border-kakao bg-kakao p-1"
         >
           <Image
             src="/logo/kakao.png"

@@ -9,16 +9,16 @@ export default function ActionButton({ activeEvent, isOwner, uri }) {
   const { updateUri, updateEvent } = useCake()
 
   return (
-    <div className="flex flex-col text-center font-semibold space-y-3 mt-10">
+    <div className="mt-10 flex flex-col space-y-3 text-center font-semibold">
       {activeEvent ? (
         isOwner ? (
-          <button className="m-auto w-full text-white border border-primary rounded-lg box-border p-2 bg-primary">
+          <button className="m-auto box-border w-full rounded-lg border border-primary bg-primary p-2 text-white">
             내 이벤트 알리기
           </button>
         ) : (
           <Link
             href="/cake/create/shape"
-            className="m-auto w-full text-white border border-primary rounded-lg box-border p-2 bg-primary"
+            className="m-auto box-border w-full rounded-lg border border-primary bg-primary p-2 text-white"
             onClick={() => {
               updateUri(uri)
               updateEvent(activeEvent?.id)
@@ -31,7 +31,7 @@ export default function ActionButton({ activeEvent, isOwner, uri }) {
         <>
           <Link
             href="/event/create"
-            className="m-auto w-full text-white border border-primary rounded-lg box-border p-2 bg-primary"
+            className="m-auto box-border w-full rounded-lg border border-primary bg-primary p-2 text-white"
           >
             내 이벤트 만들기
           </Link>

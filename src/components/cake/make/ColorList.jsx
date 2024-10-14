@@ -26,24 +26,24 @@ export default function ColorList({ items, selectColor, setColor }) {
 
   return (
     <div>
-      <h2 className="font-bold text-lg">색상</h2>
+      <h2 className="text-lg font-bold">색상</h2>
       <ul className="mt-3 flex w-full justify-between">
         {items.map(({ color }) => (
           <li
             key={color}
             onClick={() => handleColorSelection(color)}
-            className={`p-[2px] border-2 rounded-full ${
+            className={`rounded-full border-2 p-[2px] ${
               selectColor === color ? "border-primary" : "border-transparent"
             }`}
           >
             <div
-              className="rounded-full w-7 h-7 border"
+              className="h-7 w-7 rounded-full border"
               style={{ backgroundColor: color }}
             />
           </li>
         ))}
         <li
-          className={`relative border-2 rounded-full p-[2px] ${
+          className={`relative rounded-full border-2 p-[2px] ${
             customColor && selectColor === customColor
               ? "border-primary"
               : "border-transparent"
@@ -55,22 +55,22 @@ export default function ColorList({ items, selectColor, setColor }) {
               height={28}
               alt="사용자 정의 색상"
               src="/cake/custom-color.png"
-              className="w-7 h-7"
+              className="h-7 w-7"
             />
           )}
           {customColor ? (
-            <div className="relative z-20 border w-7 h-7 rounded-full overflow-hidden">
+            <div className="relative z-20 h-7 w-7 overflow-hidden rounded-full border">
               <input
-                className="bg-white h-10 absolute -top-2 -left-2"
+                className="absolute -left-2 -top-2 h-10 bg-white"
                 type="color"
                 onChange={handleChangeCustomColor}
                 defaultValue={customColor}
               />
             </div>
           ) : (
-            <div className="opacity-0 absolute top-0 left-0 z-20 border w-7 h-7 rounded-full overflow-hidden">
+            <div className="absolute left-0 top-0 z-20 h-7 w-7 overflow-hidden rounded-full border opacity-0">
               <input
-                className="bg-white h-10 absolute -top-2 -left-2"
+                className="absolute -left-2 -top-2 h-10 bg-white"
                 type="color"
                 onChange={handleChangeCustomColor}
               />

@@ -22,7 +22,7 @@ export default function Cake({ cake }) {
   const getTextStyle = () =>
     cake.message && (
       <div
-        className={`overflow-hidden absolute z-20 w-full h-full flex justify-center items-center ${cakeTextFonts.find(({ value }) => cake.text_font === value).className}`}
+        className={`absolute z-20 flex h-full w-full items-center justify-center overflow-hidden ${cakeTextFonts.find(({ value }) => cake.text_font === value).className}`}
         style={{
           ...miniCakeShapeStyle[cake.cake_shape],
           color: cake.text_color,
@@ -75,7 +75,7 @@ export default function Cake({ cake }) {
 
   return (
     <li className="relative">
-      <div className="relative m-auto border rounded-2xl w-[90px] h-[90px] bg-white flex justify-center items-center">
+      <div className="relative m-auto flex h-[90px] w-[90px] items-center justify-center rounded-2xl border bg-white">
         <div
           style={{
             ...miniCakeShapeStyle[cake.cake_shape],
@@ -86,7 +86,7 @@ export default function Cake({ cake }) {
         {getOutlineStyle()}
         {getDecoStyle()}
       </div>
-      <p className="absolute -bottom-3 bg-white rounded-full shadow w-full max-w-36 text-center py-1 border border-stone-400">
+      <p className="absolute -bottom-3 w-full max-w-36 rounded-full border border-stone-400 bg-white py-1 text-center shadow">
         {shortenString(cake.sender_name)}
       </p>
     </li>

@@ -12,12 +12,12 @@ const getShapeOutlineStyle = (isSelected) =>
 export default function ShapeList({ title, items }) {
   return (
     <div>
-      <h2 className="font-bold text-lg">{title}</h2>
-      <ul className="mt-3 flex space-x-5 overflow-hidden overflow-x-auto scrollbar-hide">
+      <h2 className="text-lg font-bold">{title}</h2>
+      <ul className="scrollbar-hide mt-3 flex space-x-5 overflow-hidden overflow-x-auto">
         {items.map(({ onClick, isSelected, Item }, idx) => (
           <li
             key={"shape" + idx}
-            className="flex justify-center items-center border-2 rounded-2xl bg-white min-w-24 w-24 h-24"
+            className="flex h-24 w-24 min-w-24 items-center justify-center rounded-2xl border-2 bg-white"
             onClick={onClick}
             style={getShapeOutlineStyle(isSelected)}
           >

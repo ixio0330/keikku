@@ -84,7 +84,7 @@ export default function UpdateForm({ list, uri, detail }) {
         <button
           onClick={handleRemoveEvent}
           disabled={loading}
-          className="w-2/5 text-center text-red-500 bg-white font-semibold border border-red-500 rounded-lg box-border p-2 bg-white font-xs"
+          className="font-xs box-border w-2/5 rounded-lg border border-red-500 bg-white p-2 text-center font-semibold text-red-500"
         >
           삭제
         </button>
@@ -102,7 +102,7 @@ function SubmitButton() {
     <>
       <button
         type="submit"
-        className="w-full text-center text-white font-semibold border border-primary rounded-lg box-border p-2 bg-primary font-xs"
+        className="font-xs box-border w-full rounded-lg border border-primary bg-primary p-2 text-center font-semibold text-white"
       >
         저장
       </button>

@@ -30,20 +30,20 @@ export default async function KeikkuPage({ params }) {
   return (
     <>
       <AppHeader userInfo={userInfo} />
-      <main className="max-w-content px-content m-auto mt-16 min-h-[calc(100vh-64px)] bg-background pb-10">
-        <section className="pt-5 pb-10 relative overflow-hidden">
+      <main className="m-auto mt-16 min-h-[calc(100vh-64px)] max-w-content bg-background px-content pb-10">
+        <section className="relative overflow-hidden pb-10 pt-5">
           {activeEvent ? (
             <div className="space-y-1">
               <p className="text-sm">
                 {activeEvent.username}님이 진행중인 이벤트에요!
               </p>
-              <p className="font-bold text-xl">{activeEvent.name}</p>
-              <div className="text-gray-400 text-sm flex items-center gap-2">
+              <p className="text-xl font-bold">{activeEvent.name}</p>
+              <div className="flex items-center gap-2 text-sm text-gray-400">
                 <IoMdCalendar size={20} />
                 <p>{activeEvent.date}</p>
                 {activeEvent.category && (
                   <>
-                    <div className="w-px h-4 bg-gray-400" />
+                    <div className="h-4 w-px bg-gray-400" />
                     <p>{activeEvent.category}</p>
                   </>
                 )}
@@ -54,7 +54,7 @@ export default async function KeikkuPage({ params }) {
                     pathname: "/event/update",
                     query: { id: activeEvent.id },
                   }}
-                  className="inline-block text-white bg-primary px-2 py-px rounded-full"
+                  className="inline-block rounded-full bg-primary px-2 py-px text-white"
                 >
                   수정하기
                 </Link>
@@ -66,7 +66,7 @@ export default async function KeikkuPage({ params }) {
               <p>이벤트가 없어요 ;(</p>
             </div>
           )}
-          <ul className="flex space-x-6 absolute -right-8 top-5">
+          <ul className="absolute -right-8 top-5 flex space-x-6">
             <li>
               <Image
                 width={80}

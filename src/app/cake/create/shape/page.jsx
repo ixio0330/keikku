@@ -34,7 +34,7 @@ export default function CreateCakeShapePage() {
       <Tab currentTab="모양" />
 
       {/* 케이크 틀 */}
-      <section className="relative m-auto border rounded-2xl w-80 h-80 bg-background flex justify-center items-center my-10">
+      <section className="relative m-auto my-10 flex h-80 w-80 items-center justify-center rounded-2xl border bg-background">
         {genCakeFrame()}
       </section>
 
@@ -48,7 +48,7 @@ export default function CreateCakeShapePage() {
               isSelected: cake.cake_shape === "circle",
               Item: () => (
                 <div
-                  className={`w-16 h-16 rounded-full ${cake.cake_shape === "circle" ? "bg-white" : "bg-gray-300"}`}
+                  className={`h-16 w-16 rounded-full ${cake.cake_shape === "circle" ? "bg-white" : "bg-gray-300"}`}
                 />
               ),
             },
@@ -57,7 +57,7 @@ export default function CreateCakeShapePage() {
               isSelected: cake.cake_shape === "rectangle",
               Item: () => (
                 <div
-                  className={`w-16 h-16 rounded-2xl ${cake.cake_shape === "rectangle" ? "bg-white" : "bg-gray-300"}`}
+                  className={`h-16 w-16 rounded-2xl ${cake.cake_shape === "rectangle" ? "bg-white" : "bg-gray-300"}`}
                 />
               ),
             },
@@ -73,7 +73,7 @@ export default function CreateCakeShapePage() {
         <div className="pb-10">
           <Link
             href="/cake/create/text"
-            className="block w-full text-center text-white font-semibold border border-primary rounded-lg box-border p-2 bg-primary font-xs"
+            className="font-xs box-border block w-full rounded-lg border border-primary bg-primary p-2 text-center font-semibold text-white"
           >
             다음
           </Link>

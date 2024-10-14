@@ -37,11 +37,11 @@ export default function CreateCakeShapePage() {
       {/* 케이크 틀 */}
       <CakeFrame>
         <div
-          className="overflow-hidden absolute z-20 w-full h-full flex justify-center items-center"
+          className="absolute z-20 flex h-full w-full items-center justify-center overflow-hidden"
           style={{ ...cakeShapeStyle[cake.cake_shape] }}
         >
           <textarea
-            className={`p-5 rounded-full focus:outline-none bg-transparent resize-none text-center placeholder-stone-200 ${cakeTextFonts.find(({ value }) => cake.text_font === value).className}`}
+            className={`resize-none rounded-full bg-transparent p-5 text-center placeholder-stone-200 focus:outline-none ${cakeTextFonts.find(({ value }) => cake.text_font === value).className}`}
             rows={cake.message ? undefined : 1}
             placeholder="메시지 작성하기"
             style={{
@@ -70,15 +70,15 @@ export default function CreateCakeShapePage() {
       <section className="space-y-10">
         {/* 서체 */}
         <div>
-          <h2 className="font-bold text-lg mb-1">서체</h2>
+          <h2 className="mb-1 text-lg font-bold">서체</h2>
 
           {/* 스타일 / 정렬 */}
-          <ul className="flex justify-between items-center">
+          <ul className="flex items-center justify-between">
             {cakeTextStyles.map(({ value, Icon }) => (
               <li
                 key={value}
                 onClick={() => toggleCakeTextStyles(value)}
-                className={`p-1 border-2 rounded-full ${cake.text_styles.includes(value) ? "border-primary" : "border-transparent"}`}
+                className={`rounded-full border-2 p-1 ${cake.text_styles.includes(value) ? "border-primary" : "border-transparent"}`}
               >
                 {Icon}
               </li>
@@ -88,7 +88,7 @@ export default function CreateCakeShapePage() {
               <li
                 key={value}
                 onClick={() => updateCakeTextAlign(value)}
-                className={`p-1 border-2 rounded-full ${cake.text_align === value ? "border-primary" : "border-transparent"}`}
+                className={`rounded-full border-2 p-1 ${cake.text_align === value ? "border-primary" : "border-transparent"}`}
               >
                 {Icon}
               </li>
@@ -96,11 +96,11 @@ export default function CreateCakeShapePage() {
           </ul>
 
           {/* 서체 / 사이즈 */}
-          <ul className="flex justify-between items-center my-3">
+          <ul className="my-3 flex items-center justify-between">
             <li className="w-8/12">
               <select
                 onChange={(e) => updateCakeTextFont(e.target.value)}
-                className="bg-white border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 outline-none"
+                className="block w-full rounded-lg border border-gray-200 bg-white p-2.5 text-sm text-gray-900 outline-none focus:border-primary focus:ring-primary"
               >
                 {cakeTextFonts.map(({ text, value }) => (
                   <option key={`font-family-${value}`} value={value}>
@@ -111,7 +111,7 @@ export default function CreateCakeShapePage() {
             </li>
             <li className="w-3/12">
               <select
-                className="bg-white border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 outline-none"
+                className="block w-full rounded-lg border border-gray-200 bg-white p-2.5 text-sm text-gray-900 outline-none focus:border-primary focus:ring-primary"
                 value={cake.text_size}
                 onChange={(e) => updateCakeTextSize(Number(e.target.value))}
               >
@@ -142,14 +142,14 @@ export default function CreateCakeShapePage() {
         <div className="flex gap-5 pb-10">
           <Link
             href="/cake/create/shape"
-            className="w-2/5 text-center text-primary bg-white font-semibold border border-primary rounded-lg box-border p-2 bg-primary font-xs"
+            className="font-xs box-border w-2/5 rounded-lg border border-primary bg-primary bg-white p-2 text-center font-semibold text-primary"
           >
             이전
           </Link>
 
           <Link
             href="/cake/create/outline"
-            className="w-full text-center text-white font-semibold border border-primary rounded-lg box-border p-2 bg-primary font-xs"
+            className="font-xs box-border w-full rounded-lg border border-primary bg-primary p-2 text-center font-semibold text-white"
           >
             다음
           </Link>

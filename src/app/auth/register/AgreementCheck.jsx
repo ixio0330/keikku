@@ -54,7 +54,7 @@ export default function AgreementCheck() {
           onChange={handleCheckAge}
           required
         />
-        <span className="text-red-500 mx-1">(필수)</span>
+        <span className="mx-1 text-red-500">(필수)</span>
         14세 이상입니다.
       </label>
       <label>
@@ -65,7 +65,7 @@ export default function AgreementCheck() {
           onChange={handleCheckTerms}
           required
         />
-        <span className="text-red-500 mx-1">(필수)</span>
+        <span className="mx-1 text-red-500">(필수)</span>
         이용약관 및 개인정보 수집 이용에 동의합니다.
       </label>
     </div>

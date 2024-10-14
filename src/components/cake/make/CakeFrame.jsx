@@ -27,7 +27,7 @@ export default function CakeFrame({ children }) {
   const getTextStyle = () =>
     cake.message && (
       <div
-        className={`overflow-hidden absolute z-20 w-full h-full flex justify-center items-center ${cakeTextFonts.find(({ value }) => cake.text_font === value).className}`}
+        className={`absolute z-20 flex h-full w-full items-center justify-center overflow-hidden ${cakeTextFonts.find(({ value }) => cake.text_font === value).className}`}
         style={{
           ...cakeShapeStyle[cake.cake_shape],
           color: cake.text_color,
@@ -79,7 +79,7 @@ export default function CakeFrame({ children }) {
   }
 
   return (
-    <section className="relative m-auto border rounded-2xl w-80 h-80 bg-background flex justify-center items-center my-10">
+    <section className="relative m-auto my-10 flex h-80 w-80 items-center justify-center rounded-2xl border bg-background">
       <div
         style={{
           ...cakeShapeStyle[cake.cake_shape],

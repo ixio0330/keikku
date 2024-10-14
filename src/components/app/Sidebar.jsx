@@ -7,7 +7,7 @@ import Avatar from "../common/Avatar"
 export default function AppSidebar({ userInfo }) {
   return (
     <aside>
-      <div className="bg-primary p-10 text-white flex flex-col justify-center items-center gap-2">
+      <div className="flex flex-col items-center justify-center gap-2 bg-primary p-10 text-white">
         {userInfo ? (
           <>
             <Avatar provider={userInfo.provider} />
@@ -27,7 +27,7 @@ export default function AppSidebar({ userInfo }) {
             {isRequiredAuth && userInfo ? (
               <Link
                 href={href}
-                className="flex items-center gap-3 py-3 px-5 font-semibold hover:text-primary"
+                className="flex items-center gap-3 px-5 py-3 font-semibold hover:text-primary"
               >
                 <Icon />
                 <p>{name}</p>
@@ -35,7 +35,7 @@ export default function AppSidebar({ userInfo }) {
             ) : (
               <div
                 href={href}
-                className="flex items-center gap-3 py-3 px-5 font-semibold text-stone-400"
+                className="flex items-center gap-3 px-5 py-3 font-semibold text-stone-400"
               >
                 <Icon />
                 <p>{name}</p>

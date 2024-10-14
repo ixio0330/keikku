@@ -24,7 +24,7 @@ export default function EventCategories({ list, name = "category_id" }) {
 function CategoryItem({ name, value, label, isSelected, onSelect }) {
   return (
     <label
-      className={`border border-primary rounded-lg py-1 px-2 cursor-pointer ${
+      className={`cursor-pointer rounded-lg border border-primary px-2 py-1 ${
         isSelected ? "bg-primary text-white" : ""
       }`}
     >

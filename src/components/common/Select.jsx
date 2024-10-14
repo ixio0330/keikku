@@ -15,7 +15,7 @@ export default function Select({
       <select
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        className={`w-full text-sm bg-transparent outline-none py-2 ${value ? "border-b border-green-600" : "border-b text-gray-400"} ${className}`}
+        className={`w-full bg-transparent py-2 text-sm outline-none ${value ? "border-b border-green-600" : "border-b text-gray-400"} ${className}`}
         {...props}
       >
         {options.map(({ name, value }) => (

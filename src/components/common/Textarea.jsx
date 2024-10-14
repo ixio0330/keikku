@@ -16,11 +16,11 @@ export default function Textarea({
         value={value}
         onChange={(e) => setValue(e.target.value)}
         maxLength={maxLength}
-        className={`w-full h-28 text-sm bg-transparent outline-none p-2 resize-none ${value ? "border border-green-600" : "border"} ${className}`}
+        className={`h-28 w-full resize-none bg-transparent p-2 text-sm outline-none ${value ? "border border-green-600" : "border"} ${className}`}
         {...props}
       />
       {maxLength && typeof value === "string" && (
-        <p className="absolute right-3 bottom-3 text-gray-400 font-light text-sm">
+        <p className="absolute bottom-3 right-3 text-sm font-light text-gray-400">
           {value ? value.length : 0}/{maxLength}
         </p>
       )}
