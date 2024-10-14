@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 // db
-import { getUserInfo, isExistUser } from "@/db/auth"
+import { isExistUser } from "@/db/auth"
 import { getActiveEventByUri } from "@/db/event"
 
 // util
@@ -24,8 +24,8 @@ export default async function KeikkuPage({ params }) {
 
   const { data: activeEvent } = await getActiveEventByUri(uri)
 
-  const isOwner = uri === getUserInfoFromCookie()?.uri
-  const userInfo = await getUserInfo()
+  const userInfo = getUserInfoFromCookie()
+  const isOwner = uri === userInfo?.uri
 
   return (
     <>
@@ -128,6 +128,7 @@ export default async function KeikkuPage({ params }) {
 
         <ActionButton
           activeEvent={activeEvent}
+          username={userInfo.name}
           isOwner={isOwner}
           uri={uri}
           domain={process.env.DOMAIN}

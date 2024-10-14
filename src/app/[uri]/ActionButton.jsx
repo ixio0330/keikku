@@ -9,10 +9,17 @@ import Avatar from "@/components/common/Avatar"
 import Modal from "@/components/common/Modal"
 import useCake from "@/stores/cake"
 
-export default function ActionButton({ activeEvent, isOwner, uri, domain }) {
+export default function ActionButton({
+  activeEvent,
+  username,
+  isOwner,
+  uri,
+  domain,
+}) {
   const { updateUri, updateEvent } = useCake()
   const pathname = usePathname()
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const eventURL = encodeURIComponent(`${domain}${pathname}`)
 
   const onClickCopyToClipboard = async () => {
     try {
@@ -24,10 +31,23 @@ export default function ActionButton({ activeEvent, isOwner, uri, domain }) {
   }
 
   const onClickShareToTwitter = () => {
-    const tweetText = encodeURIComponent(`${domain}${pathname}`)
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${tweetText}`
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${eventURL}`
     window.open(twitterUrl, "_blank")
     setIsModalOpen(false)
+  }
+
+  const onClickShareToKakao = () => {
+    const { Kakao } = window
+
+    Kakao.Share.createCustomButton({
+      content: {
+        description: username,
+      },
+      link: {
+        mobileWebUrl: eventURL,
+        webUrl: eventURL,
+      },
+    })
   }
 
   return (
@@ -48,7 +68,10 @@ export default function ActionButton({ activeEvent, isOwner, uri, domain }) {
             >
               <h3 className="text-lg font-bold">친구에게 공유하기</h3>
               <div className="flex items-center justify-center gap-5">
-                <button className="flex flex-col items-center justify-center gap-1">
+                <button
+                  onClick={onClickShareToKakao}
+                  className="flex flex-col items-center justify-center gap-1"
+                >
                   <Avatar provider="kakao" />
                   <p>카카오톡</p>
                 </button>

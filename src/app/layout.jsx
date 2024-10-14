@@ -1,3 +1,4 @@
+import KakaoScript from "@/components/script/KakaoScript"
 import localFont from "next/font/local"
 import "./globals.css"
 
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ko">
       <body className={`${pretendard.variable}`}>{children}</body>
+      <KakaoScript />
     </html>
   )
 }
