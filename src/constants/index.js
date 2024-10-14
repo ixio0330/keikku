@@ -150,7 +150,12 @@ export const cakeTextAligns = [
   },
 ]
 
-const nanumPen = Nanum_Pen_Script({ subsets: ["latin"], weight: ["400"] })
+const nanumPen = Nanum_Pen_Script({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+  adjustFontFallback: false,
+})
 const dongle = Dongle({ subsets: ["latin"], weight: ["400", "700"] })
 const singleDay = Single_Day({ subsets: ["latin"], weight: ["400"] })
 const nanumGothic = Nanum_Gothic({ subsets: ["latin"], weight: ["400", "700"] })
