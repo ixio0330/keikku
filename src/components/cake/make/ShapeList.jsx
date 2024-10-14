@@ -13,7 +13,7 @@ export default function ShapeList({ title, items }) {
   return (
     <div>
       <h2 className="font-bold text-lg">{title}</h2>
-      <ul className="mt-3 flex space-x-5 overflow-hidden overflow-x-auto">
+      <ul className="mt-3 flex space-x-5 overflow-hidden overflow-x-auto scrollbar-hide">
         {items.map(({ onClick, isSelected, Item }, idx) => (
           <li
             key={"shape" + idx}
