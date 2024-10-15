@@ -182,6 +182,7 @@ export const removeUser = async ({ leave_category_id = null }) => {
       message: "탈퇴중 오류가 발생했어요",
     }
   }
+  resetCookie()
 
   if (leave_category_id) {
     await supabase.from(T_LEAVES).insert([{ category_id: leave_category_id }])
