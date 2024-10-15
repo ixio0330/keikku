@@ -3,9 +3,10 @@
 import Link from "next/link"
 import { useState } from "react"
 
-// store
 import Avatar from "@/components/common/Avatar"
 import Modal from "@/components/common/Modal"
+
+// store
 import useCake from "@/stores/cake"
 
 export default function ActionButton({ activeEvent, isOwner, uri }) {
@@ -40,8 +41,9 @@ export default function ActionButton({ activeEvent, isOwner, uri }) {
       templateArgs: {
         USERNAME: activeEvent.username,
         REGI_WEB_DOMAIN: process.env.NEXT_PUBLIC_DOMAIN,
-        URI: uri,
+        ADDRESS: uri,
       },
+      installTalk: true,
     })
   }
 
