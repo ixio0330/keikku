@@ -31,7 +31,6 @@ export default function ActionButton({ activeEvent, isOwner, uri }) {
     )
     const twitterUrl = `https://twitter.com/intent/tweet?text=${eventURL}`
     window.open(twitterUrl, "_blank")
-    setIsModalOpen(false)
   }
 
   const onClickShareToKakao = () => {
@@ -46,7 +45,6 @@ export default function ActionButton({ activeEvent, isOwner, uri }) {
         URI: uri,
       },
     })
-    setIsModalOpen(false)
   }
 
   return (
