@@ -8,7 +8,6 @@ export const setUserInfoInCookie = (userInfo) => {
     cookieStore.set("keikku-token", token)
     return true
   } catch (err) {
-    console.log(err)
     return false
   }
 }
