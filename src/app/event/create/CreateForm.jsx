@@ -1,11 +1,13 @@
 "use client"
 import { useRouter } from "next/navigation"
+import { useFormStatus } from "react-dom"
 
 // db
 import { createEvent } from "@/db/event"
 
 // component
 import Input from "@/components/common/Input"
+import Spinner from "@/components/common/Spinner"
 import EventCategories from "./EventCategories"
 
 export default function CreateForm({ list, uri }) {
@@ -51,12 +53,22 @@ export default function CreateForm({ list, uri }) {
         <Input type="date" name="date" required />
       </label>
 
+      <SubmitButton />
+    </form>
+  )
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus()
+  return (
+    <>
       <button
         type="submit"
         className="box-border w-full rounded-lg border border-primary bg-primary p-2 font-semibold text-white"
       >
         이벤트 만들기
       </button>
-    </form>
+      {pending && <Spinner />}
+    </>
   )
 }
