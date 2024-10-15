@@ -1,5 +1,5 @@
-import { cookies } from "next/headers"
 import { genToken, getVerifyToken } from "@/libs/jwt"
+import { cookies } from "next/headers"
 
 export const setUserInfoInCookie = (userInfo) => {
   try {
@@ -8,6 +8,7 @@ export const setUserInfoInCookie = (userInfo) => {
     cookieStore.set("keikku-token", token)
     return true
   } catch (err) {
+    console.log(err)
     return false
   }
 }
