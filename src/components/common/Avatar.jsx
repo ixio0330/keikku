@@ -1,7 +1,6 @@
+import { BiSolidUser } from "react-icons/bi"
 import { FcGoogle } from "react-icons/fc"
 import { RiKakaoTalkFill, RiTwitterXFill } from "react-icons/ri"
-
-import { BiSolidUser } from "react-icons/bi"
 
 import { oauthProvider } from "@/constants"
 

@@ -1,6 +1,8 @@
-import Image from "next/image"
-import { Chela_One } from "next/font/google"
 import { oauthProvider } from "@/constants"
+import { Chela_One } from "next/font/google"
+import Image from "next/image"
+import { FcGoogle } from "react-icons/fc"
+import { RiKakaoTalkFill } from "react-icons/ri"
 
 // action
 import { loginInWithOauth } from "@/db/auth"
@@ -47,19 +49,19 @@ export default function LoginPage() {
           alt="노란색 풍선"
         />
       </div>
-      <form action={actionLogin} className="w-full">
+      <form
+        action={actionLogin}
+        className="flex w-full flex-col gap-3 font-semibold"
+      >
         <button
           type="submit"
           name="provider"
           value={oauthProvider.google}
-          className="font-xs mb-3 box-border flex w-full items-center justify-between rounded border border-gray-200 bg-white p-1"
+          className="font-xs box-border flex w-full items-center justify-between rounded-lg border border-gray-200 bg-white p-2"
         >
-          <Image
-            src="/logo/google.png"
-            width={30}
-            height={30}
-            alt="구글 로고"
-          />
+          <div className="flex h-5 w-5 items-center justify-center rounded-full bg-white">
+            <FcGoogle size={24} />
+          </div>
           <p>구글 계정으로 시작하기</p>
           <span></span>
         </button>
@@ -67,14 +69,11 @@ export default function LoginPage() {
           type="submit"
           name="provider"
           value={oauthProvider.kakao}
-          className="font-xs box-border flex w-full items-center justify-between rounded border border-kakao bg-kakao p-1"
+          className="font-xs box-border flex w-full items-center justify-between rounded-lg border border-kakao bg-kakao p-2"
         >
-          <Image
-            src="/logo/kakao.png"
-            width={30}
-            height={30}
-            alt="카카오 로고"
-          />
+          <div className="flex h-5 w-5 items-center justify-center rounded-full bg-[#FFE300]">
+            <RiKakaoTalkFill color="#1E1E1E" size={24} />
+          </div>
           <p>카카오 계정으로 시작하기</p>
           <span></span>
         </button>
