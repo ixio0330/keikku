@@ -46,6 +46,7 @@ export default function ActionButton({ activeEvent, isOwner, uri }) {
         URI: uri,
       },
     })
+    setIsModalOpen(false)
   }
 
   return (
