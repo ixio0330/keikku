@@ -16,7 +16,9 @@ export default function ActionButton({ activeEvent, isOwner, uri }) {
 
   const onClickCopyToClipboard = async () => {
     try {
-      await window.navigator.clipboard.writeText(`${domain}${pathname}`)
+      await window.navigator.clipboard.writeText(
+        `${process.env.NEXT_PUBLIC_DOMAIN}${pathname}`,
+      )
       window.alert("클립보드에 링크가 복사되었어요")
     } catch (err) {
       window.alert("링크를 복사하지 못했어요 :( 다시 시도해주세요")
@@ -24,7 +26,9 @@ export default function ActionButton({ activeEvent, isOwner, uri }) {
   }
 
   const onClickShareToTwitter = () => {
-    const eventURL = encodeURIComponent(`${domain}${pathname}`)
+    const eventURL = encodeURIComponent(
+      `${process.env.NEXT_PUBLIC_DOMAIN}${pathname}`,
+    )
     const twitterUrl = `https://twitter.com/intent/tweet?text=${eventURL}`
     window.open(twitterUrl, "_blank")
     setIsModalOpen(false)
@@ -81,7 +85,7 @@ export default function ActionButton({ activeEvent, isOwner, uri }) {
 
               <div className="flex">
                 <p className="w-10/12 overflow-hidden text-ellipsis whitespace-nowrap border bg-stone-100 px-2 py-1">
-                  {domain}
+                  {process.env.NEXT_PUBLIC_DOMAIN}
                   {pathname}
                 </p>
                 <button
