@@ -1,7 +1,6 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
 import { useState } from "react"
 
 // store
@@ -11,13 +10,12 @@ import useCake from "@/stores/cake"
 
 export default function ActionButton({ activeEvent, isOwner, uri }) {
   const { updateUri, updateEvent } = useCake()
-  const pathname = usePathname()
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const onClickCopyToClipboard = async () => {
     try {
       await window.navigator.clipboard.writeText(
-        `${process.env.NEXT_PUBLIC_DOMAIN}${pathname}`,
+        `${process.env.NEXT_PUBLIC_DOMAIN}${uri}`,
       )
       window.alert("클립보드에 링크가 복사되었어요")
     } catch (err) {
@@ -27,7 +25,7 @@ export default function ActionButton({ activeEvent, isOwner, uri }) {
 
   const onClickShareToTwitter = () => {
     const eventURL = encodeURIComponent(
-      `${process.env.NEXT_PUBLIC_DOMAIN}${pathname}`,
+      `${process.env.NEXT_PUBLIC_DOMAIN}${uri}`,
     )
     const twitterUrl = `https://twitter.com/intent/tweet?text=${eventURL}`
     window.open(twitterUrl, "_blank")
@@ -85,7 +83,7 @@ export default function ActionButton({ activeEvent, isOwner, uri }) {
               <div className="flex">
                 <p className="w-10/12 overflow-hidden text-ellipsis whitespace-nowrap border bg-stone-100 px-2 py-1">
                   {process.env.NEXT_PUBLIC_DOMAIN}
-                  {pathname}
+                  {uri}
                 </p>
                 <button
                   onClick={onClickCopyToClipboard}
