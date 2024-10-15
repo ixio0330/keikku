@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server"
 import createSupabase from "@/supabase"
 import { setUserInfoInCookie } from "@/utils/cookie"
+import { NextResponse } from "next/server"
 
 export async function GET(request) {
   try {
@@ -31,9 +31,8 @@ export async function GET(request) {
     }
 
     // 사용자 정보가 있을 경우, 로그인 처리
-    if (setUserInfoInCookie(data)) {
-      return NextResponse.redirect(new URL(data.uri, process.env.DOMAIN))
-    }
+    setUserInfoInCookie(data)
+    return NextResponse.redirect(new URL(data.uri, process.env.DOMAIN))
   } catch (err) {
     console.log(`Error: ${err}`)
     return NextResponse.redirect(new URL("/", process.env.DOMAIN))
