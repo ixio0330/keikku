@@ -19,7 +19,6 @@ export default function ActionButton({
   const { updateUri, updateEvent } = useCake()
   const pathname = usePathname()
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const eventURL = encodeURIComponent(`${domain}${pathname}`)
 
   const onClickCopyToClipboard = async () => {
     try {
@@ -31,6 +30,7 @@ export default function ActionButton({
   }
 
   const onClickShareToTwitter = () => {
+    const eventURL = encodeURIComponent(`${domain}${pathname}`)
     const twitterUrl = `https://twitter.com/intent/tweet?text=${eventURL}`
     window.open(twitterUrl, "_blank")
     setIsModalOpen(false)
@@ -40,12 +40,12 @@ export default function ActionButton({
     const { Kakao } = window
 
     Kakao.Share.createCustomButton({
-      content: {
-        description: username,
-      },
-      link: {
-        mobileWebUrl: eventURL,
-        webUrl: eventURL,
+      container: "#kakaotalk-sharing-btn",
+      templateId: Number(process.env.NEXT_PUBLIC_KAKAO_TEMPLATE_ID),
+      templateArgs: {
+        USERNAME: username,
+        REGI_WEB_DOMAIN: domain,
+        URI: uri,
       },
     })
   }
@@ -69,6 +69,7 @@ export default function ActionButton({
               <h3 className="text-lg font-bold">친구에게 공유하기</h3>
               <div className="flex items-center justify-center gap-5">
                 <button
+                  id="kakaotalk-sharing-btn"
                   onClick={onClickShareToKakao}
                   className="flex flex-col items-center justify-center gap-1"
                 >
