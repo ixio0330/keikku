@@ -9,13 +9,7 @@ import Avatar from "@/components/common/Avatar"
 import Modal from "@/components/common/Modal"
 import useCake from "@/stores/cake"
 
-export default function ActionButton({
-  activeEvent,
-  username,
-  isOwner,
-  uri,
-  domain,
-}) {
+export default function ActionButton({ activeEvent, isOwner, uri }) {
   const { updateUri, updateEvent } = useCake()
   const pathname = usePathname()
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -43,8 +37,8 @@ export default function ActionButton({
       container: "#kakaotalk-sharing-btn",
       templateId: Number(process.env.NEXT_PUBLIC_KAKAO_TEMPLATE_ID),
       templateArgs: {
-        USERNAME: username,
-        REGI_WEB_DOMAIN: domain,
+        USERNAME: activeEvent.username,
+        REGI_WEB_DOMAIN: process.env.NEXT_PUBLIC_DOMAIN,
         URI: uri,
       },
     })

@@ -126,13 +126,7 @@ export default async function KeikkuPage({ params }) {
           <ActiveCakeList eventId={activeEvent?.id} />
         </section>
 
-        <ActionButton
-          activeEvent={activeEvent}
-          username={userInfo.name}
-          isOwner={isOwner}
-          uri={uri}
-          domain={process.env.DOMAIN}
-        />
+        <ActionButton activeEvent={activeEvent} isOwner={isOwner} uri={uri} />
       </main>
     </>
   )
