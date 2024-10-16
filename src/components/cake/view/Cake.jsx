@@ -10,10 +10,10 @@ import CreamThree from "./outline/CreamThree"
 import CreamTwo from "./outline/CreamTwo"
 
 import {
-  miniCakeShapeStyle,
-  cakeOutlineShape,
   cakeDecoShape,
+  cakeOutlineShape,
   cakeTextFonts,
+  miniCakeShapeStyle,
 } from "@/constants"
 
 import { shortenString } from "@/utils/string"
@@ -86,7 +86,7 @@ export default function Cake({ cake }) {
         {getOutlineStyle()}
         {getDecoStyle()}
       </div>
-      <p className="absolute -bottom-3 w-full max-w-36 rounded-full border border-stone-400 bg-white py-1 text-center shadow">
+      <p className="absolute bottom-0 w-full max-w-36 rounded-full border border-stone-400 bg-white py-1 text-center shadow">
         {shortenString(cake.sender_name)}
       </p>
     </li>

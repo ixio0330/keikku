@@ -30,8 +30,8 @@ export default async function KeikkuPage({ params }) {
   return (
     <>
       <AppHeader userInfo={userInfo} />
-      <main className="m-auto mt-16 min-h-[calc(100vh-64px)] max-w-content bg-background px-content pb-10">
-        <section className="relative overflow-hidden pb-28 pt-5">
+      <main className="m-auto mt-16 min-h-[calc(100vh-64px)] max-w-content bg-background pb-10">
+        <section className="relative overflow-hidden px-content pb-28 pt-5">
           <div className="absolute z-20">
             {activeEvent ? (
               <div className="space-y">
@@ -68,7 +68,7 @@ export default async function KeikkuPage({ params }) {
               </div>
             )}
           </div>
-          <ul className="absolute -right-8 top-5 z-10 flex gap-5">
+          <ul className="absolute -right-8 top-5 z-10 flex gap-2">
             <li>
               <Image
                 width={80}
@@ -88,45 +88,8 @@ export default async function KeikkuPage({ params }) {
           </ul>
         </section>
 
-        <section className="relative pt-[118px]">
-          <ul className="absolute -top-5 left-0 flex items-end justify-between">
-            <Image
-              width={61}
-              height={94}
-              alt="모자 사진"
-              src="/main/cap01.png"
-            />
-            <Image
-              width={56}
-              height={96}
-              alt="모자 사진"
-              src="/main/cap02.png"
-            />
-            <Image
-              width={61}
-              height={109}
-              alt="모자 사진"
-              src="/main/cap03.png"
-            />
-            <Image width={92} height={92} alt="상자 사진" src="/main/box.png" />
-            <Image
-              width={79}
-              height={155}
-              alt="케이크 상태 사진"
-              src="/main/status.png"
-            />
-            <Image
-              width={38}
-              height={72}
-              alt="초 사진"
-              src="/main/candle.png"
-              className="ml-1"
-            />
-          </ul>
-
-          {/* 쇼케이스 */}
-          <ActiveCakeList eventId={activeEvent?.id} />
-        </section>
+        {/* 쇼케이스 */}
+        <ActiveCakeList eventId={activeEvent?.id} />
 
         <ActionButton activeEvent={activeEvent} isOwner={isOwner} uri={uri} />
       </main>

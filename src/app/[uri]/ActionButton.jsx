@@ -23,7 +23,9 @@ export default function ActionButton({ activeEvent, isOwner, uri }) {
         icon: "✅",
       })
     } catch (err) {
-      window.alert("링크를 복사하지 못했어요 :( 다시 시도해주세요")
+      toast("링크를 복사하지 못했어요 :( 다시 시도해주세요", {
+        icon: "❗️",
+      })
     }
   }
 
@@ -51,7 +53,7 @@ export default function ActionButton({ activeEvent, isOwner, uri }) {
   }
 
   return (
-    <div className="mt-10 flex flex-col gap-3 text-center font-semibold">
+    <div className="mt-10 flex flex-col gap-3 px-content text-center font-semibold">
       {activeEvent ? (
         isOwner ? (
           <>
