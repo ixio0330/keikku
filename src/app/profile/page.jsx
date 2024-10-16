@@ -22,9 +22,9 @@ export default async function KeikkuPage() {
   }
 
   return (
-    <>
+    <div className="bg-background">
       <AppHeader userInfo={userInfo} />
-      <main className="m-auto mt-16 min-h-[calc(100vh-64px)] max-w-content bg-background px-content pb-10">
+      <main className="m-auto mt-16 min-h-[calc(100vh-64px)] max-w-content px-content pb-10">
         <UserAvatar userInfo={userInfo} />
 
         <ul>
@@ -48,6 +48,6 @@ export default async function KeikkuPage() {
           <Link href="/profile/leave">회원탈퇴</Link>
         </div>
       </main>
-    </>
+    </div>
   )
 }

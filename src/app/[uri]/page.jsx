@@ -28,7 +28,7 @@ export default async function KeikkuPage({ params }) {
   const isOwner = uri === userInfo?.uri
 
   return (
-    <>
+    <div className="bg-background">
       <AppHeader userInfo={userInfo} />
       <main className="m-auto mt-16 min-h-[calc(100vh-64px)] max-w-content bg-background pb-10">
         <section className="relative overflow-hidden px-content pb-28 pt-5">
@@ -93,6 +93,6 @@ export default async function KeikkuPage({ params }) {
 
         <ActionButton activeEvent={activeEvent} isOwner={isOwner} uri={uri} />
       </main>
-    </>
+    </div>
   )
 }
