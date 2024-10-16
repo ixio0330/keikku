@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { register } from "@/db/auth"
 
 // component
+import Input from "@/components/common/Input"
 import AgreementCheck from "./AgreementCheck"
 import Submit from "./Submit"
 
@@ -30,13 +31,15 @@ export default function RegisterPage() {
           알려주세요
         </h1>
         <form action={actionRegister} className="flex flex-col gap-5">
-          <input
-            className="w-full border-b border-primary bg-transparent py-2 text-sm outline-none"
-            type="text"
-            name="name"
-            placeholder="닉네임"
-            required
-          />
+          <label>
+            <Input
+              type="text"
+              name="name"
+              placeholder="닉네임"
+              maxLength={10}
+              required
+            />
+          </label>
           <AgreementCheck />
           <Submit />
         </form>
