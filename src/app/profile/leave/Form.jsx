@@ -3,6 +3,7 @@
 import Select from "@/components/common/Select"
 import { removeUser } from "@/db/auth"
 import { useRouter } from "next/navigation"
+import toast from "react-hot-toast"
 import Submit from "./Submit"
 
 export default function Form({ username, options }) {
@@ -13,11 +14,15 @@ export default function Form({ username, options }) {
         formData.get("reason") === "none" ? null : formData.get("reason"),
     })
     if (!success) {
-      window.alert(message)
+      toast(message, {
+        icon: "❗️",
+      })
       return
     }
 
-    window.alert(data)
+    toast(data, {
+      icon: "👋",
+    })
     router.replace("/auth/login")
   }
 
