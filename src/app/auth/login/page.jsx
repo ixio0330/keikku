@@ -2,7 +2,7 @@ import { oauthProvider } from "@/constants"
 import { Chela_One } from "next/font/google"
 import Image from "next/image"
 import { FcGoogle } from "react-icons/fc"
-import { RiKakaoTalkFill } from "react-icons/ri"
+import { RiKakaoTalkFill, RiTwitterXFill } from "react-icons/ri"
 
 // action
 import { loginInWithOauth } from "@/db/auth"
@@ -59,10 +59,22 @@ export default function LoginPage() {
           value={oauthProvider.google}
           className="font-xs box-border flex w-full items-center justify-between rounded-lg border border-gray-200 bg-white p-2"
         >
-          <div className="flex h-5 w-5 items-center justify-center rounded-full bg-white">
+          <div className="flex h-5 w-5 items-center justify-center rounded-full">
             <FcGoogle size={24} />
           </div>
-          <p>구글 계정으로 시작하기</p>
+          <p>구글로 시작하기</p>
+          <span></span>
+        </button>
+        <button
+          type="submit"
+          name="provider"
+          value={oauthProvider.twitter}
+          className="font-xs box-border flex w-full items-center justify-between rounded-lg border border-black bg-black p-2 text-white"
+        >
+          <div className="flex h-5 w-5 items-center justify-center rounded-full">
+            <RiTwitterXFill size={24} />
+          </div>
+          <p>트위터로 시작하기</p>
           <span></span>
         </button>
         <button
@@ -74,7 +86,7 @@ export default function LoginPage() {
           <div className="flex h-5 w-5 items-center justify-center rounded-full bg-[#FFE300]">
             <RiKakaoTalkFill color="#1E1E1E" size={24} />
           </div>
-          <p>카카오 계정으로 시작하기</p>
+          <p>카카오로 시작하기</p>
           <span></span>
         </button>
       </form>
