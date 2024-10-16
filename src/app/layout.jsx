@@ -1,5 +1,6 @@
 import KakaoScript from "@/components/script/KakaoScript"
 import localFont from "next/font/local"
+import { Toaster } from "react-hot-toast"
 import "./globals.css"
 
 const pretendard = localFont({
@@ -43,7 +44,22 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
-      <body className={`${pretendard.variable}`}>{children}</body>
+      <body className={`${pretendard.variable}`}>
+        {children}
+        <Toaster
+          position="bottom-center"
+          reverseOrder={false}
+          toastOptions={{
+            className: "text-sm",
+            style: {
+              background: "rgba(0, 0, 0, 0.5)",
+              color: "#fff",
+              borderRadius: "8px",
+              padding: "4px 8px",
+            },
+          }}
+        />
+      </body>
       <KakaoScript />
     </html>
   )

@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useState } from "react"
+import toast from "react-hot-toast"
 
 import Avatar from "@/components/common/Avatar"
 import Modal from "@/components/common/Modal"
@@ -18,7 +19,9 @@ export default function ActionButton({ activeEvent, isOwner, uri }) {
       await window.navigator.clipboard.writeText(
         `${process.env.NEXT_PUBLIC_DOMAIN}${uri}`,
       )
-      window.alert("클립보드에 링크가 복사되었어요")
+      toast("클립보드에 링크가 복사되었어요", {
+        icon: "✅",
+      })
     } catch (err) {
       window.alert("링크를 복사하지 못했어요 :( 다시 시도해주세요")
     }
