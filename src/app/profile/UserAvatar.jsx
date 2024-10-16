@@ -1,17 +1,17 @@
 "use client"
 
-import { useState } from "react"
 import { useRouter } from "next/navigation"
+import { useState } from "react"
 import { useFormStatus } from "react-dom"
 
 // db
 import { updateUsername } from "@/db/auth"
 
 // component
-import { PiPencilSimple } from "react-icons/pi"
 import { BigAvatar } from "@/components/common/Avatar"
-import Modal from "@/components/common/Modal"
 import Input from "@/components/common/Input"
+import Modal from "@/components/common/Modal"
+import { PiPencilSimple } from "react-icons/pi"
 
 export default function UserAvatar({ userInfo }) {
   const router = useRouter()
@@ -50,7 +50,7 @@ export default function UserAvatar({ userInfo }) {
               type="text"
               name="name"
               placeholder="이름을 입력해주세요."
-              maxLength={16}
+              maxLength={10}
               required
               defaultValue={userInfo.name}
             />
