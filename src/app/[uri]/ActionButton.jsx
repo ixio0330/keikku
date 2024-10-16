@@ -41,7 +41,7 @@ export default function ActionButton({ activeEvent, isOwner, uri }) {
       templateArgs: {
         USERNAME: activeEvent.username,
         REGI_WEB_DOMAIN: process.env.NEXT_PUBLIC_DOMAIN,
-        ADDRESS: uri,
+        URI: uri,
       },
       installTalk: true,
     })
