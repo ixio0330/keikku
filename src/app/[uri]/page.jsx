@@ -31,42 +31,44 @@ export default async function KeikkuPage({ params }) {
     <>
       <AppHeader userInfo={userInfo} />
       <main className="m-auto mt-16 min-h-[calc(100vh-64px)] max-w-content bg-background px-content pb-10">
-        <section className="relative overflow-hidden pb-10 pt-5">
-          {activeEvent ? (
-            <div className="space-y-1">
-              <p className="text-sm">
-                {activeEvent.username}님이 진행중인 이벤트에요!
-              </p>
-              <p className="text-xl font-bold">{activeEvent.name}</p>
-              <div className="flex items-center gap-2 text-sm text-gray-400">
-                <IoMdCalendar size={20} />
-                <p>{activeEvent.date}</p>
-                {activeEvent.category && (
-                  <>
-                    <div className="h-4 w-px bg-gray-400" />
-                    <p>{activeEvent.category}</p>
-                  </>
+        <section className="relative overflow-hidden pb-28 pt-5">
+          <div className="absolute z-20">
+            {activeEvent ? (
+              <div className="space-y">
+                <p className="text-sm">
+                  {activeEvent.username}님이 진행중인 이벤트에요!
+                </p>
+                <p className="text-xl font-bold">{activeEvent.name}</p>
+                <div className="flex items-center gap-2 text-sm text-gray-400">
+                  <IoMdCalendar size={20} />
+                  <p>{activeEvent.date}</p>
+                  {activeEvent.category && (
+                    <>
+                      <div className="h-4 w-px bg-gray-400" />
+                      <p>{activeEvent.category}</p>
+                    </>
+                  )}
+                </div>
+                {isOwner && (
+                  <Link
+                    href={{
+                      pathname: "/event/update",
+                      query: { id: activeEvent.id },
+                    }}
+                    className="inline-block rounded-full bg-primary px-2 py-px text-white"
+                  >
+                    수정하기
+                  </Link>
                 )}
               </div>
-              {isOwner && (
-                <Link
-                  href={{
-                    pathname: "/event/update",
-                    query: { id: activeEvent.id },
-                  }}
-                  className="inline-block rounded-full bg-primary px-2 py-px text-white"
-                >
-                  수정하기
-                </Link>
-              )}
-            </div>
-          ) : (
-            <div className="text-xl">
-              <p>현재 진행 중인</p>
-              <p>이벤트가 없어요 ;(</p>
-            </div>
-          )}
-          <ul className="absolute -right-8 top-5 flex space-x-6">
+            ) : (
+              <div className="text-xl">
+                <p>현재 진행 중인</p>
+                <p>이벤트가 없어요 ;(</p>
+              </div>
+            )}
+          </div>
+          <ul className="absolute -right-8 top-5 z-10 flex gap-5">
             <li>
               <Image
                 width={80}
