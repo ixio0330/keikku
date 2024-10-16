@@ -1,17 +1,20 @@
 "use client"
 
-import { useRouter } from "next/navigation"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useFormStatus } from "react-dom"
+import toast from "react-hot-toast"
 
 // db
 import { createCake } from "@/db/cake"
 
 // store
-import useCake from "@/stores/cake"
 import useActiveCakes from "@/stores/activeCakes"
+import useCake from "@/stores/cake"
 
 // component
 import Input from "@/components/common/Input"
+import Spinner from "@/components/common/Spinner"
 
 export default function CreateForm({ isGuest = true }) {
   const router = useRouter()
@@ -28,13 +31,18 @@ export default function CreateForm({ isGuest = true }) {
     })
 
     if (success === false) {
-      window.alert(message)
+      toast(message, {
+        icon: "❗️",
+      })
       return
     }
 
+    toast("케이크를 선물했어요", {
+      icon: "🍰",
+    })
     addNewCake(data)
-    resetCake()
     router.push(`/${cake.uri}`)
+    resetCake()
   }
 
   return (
@@ -60,11 +68,20 @@ export default function CreateForm({ isGuest = true }) {
         >
           이전
         </Link>
-
-        <button className="font-xs box-border w-full rounded-lg border border-primary bg-primary p-2 text-center font-semibold text-white">
-          선물하기
-        </button>
+        <SubmitButton />
       </div>
     </form>
+  )
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus()
+  return (
+    <>
+      <button className="font-xs box-border w-full rounded-lg border border-primary bg-primary p-2 text-center font-semibold text-white">
+        선물하기
+      </button>
+      {pending && <Spinner />}
+    </>
   )
 }
