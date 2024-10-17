@@ -217,15 +217,16 @@ export const profileMenus = [
     name: "공지사항",
   },
   {
-    href: "/profile/policy",
-    name: "개인정보 처리방침 / 이용약관",
+    href: "https://equal-dragon-59f.notion.site/12154d562f8780768c65ffd7e83ce24a",
+    name: "이용약관/개인정보처리방침",
+    target: "_blank",
   },
   {
     href: "/profile/faq",
     name: "자주 묻는 질문",
   },
-  {
-    href: "/profile/app",
-    name: "앱정보",
-  },
+  // {
+  //   href: "/profile/app",
+  //   name: "앱정보",
+  // },
 ]

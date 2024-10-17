@@ -28,10 +28,11 @@ export default async function KeikkuPage() {
         <UserAvatar userInfo={userInfo} />
 
         <ul>
-          {profileMenus.map(({ href, name }) => (
+          {profileMenus.map(({ href, name, target }) => (
             <li key={name}>
               <Link
                 href={href}
+                target={target}
                 className="block border-b border-stone-200 py-4"
               >
                 {name}

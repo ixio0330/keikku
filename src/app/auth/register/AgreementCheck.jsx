@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useState } from "react"
 
 export default function AgreementCheck() {
@@ -66,7 +67,22 @@ export default function AgreementCheck() {
           required
         />
         <span className="mx-1 text-red-500">(필수)</span>
-        이용약관 및 개인정보 수집 이용에 동의합니다.
+        <Link
+          href="https://www.notion.so/12154d562f878042b8f7f4326125d9a1"
+          target="_blank"
+          className="mr-1 text-stone-700 underline"
+        >
+          이용약관
+        </Link>
+        및
+        <Link
+          href="https://www.notion.so/12154d562f87803d935ec73d7e262205"
+          target="_blank"
+          className="ml-1 text-stone-700 underline"
+        >
+          개인정보처리방침
+        </Link>
+        에 동의합니다.
       </label>
     </div>
   )
