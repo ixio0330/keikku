@@ -3,7 +3,12 @@
 import Image from "next/image"
 import { useState } from "react"
 
-export default function ColorList({ items, selectColor, setColor }) {
+export default function ColorList({
+  items,
+  selectColor,
+  setColor,
+  disabled = false,
+}) {
   const isUsedCustomColor =
     selectColor && !items.find(({ color }) => color === selectColor)
   const [customColor, setCustomColor] = useState(
@@ -38,7 +43,7 @@ export default function ColorList({ items, selectColor, setColor }) {
           >
             <div
               className="h-7 w-7 rounded-full border"
-              style={{ backgroundColor: color }}
+              style={{ backgroundColor: disabled ? "#ddd" : color }}
             />
           </li>
         ))}
@@ -49,14 +54,19 @@ export default function ColorList({ items, selectColor, setColor }) {
               : "border-transparent"
           }`}
         >
-          {!customColor && selectColor !== customColor && (
-            <Image
-              width={28}
-              height={28}
-              alt="사용자 정의 색상"
-              src="/cake/custom-color.png"
-              className="h-7 w-7"
-            />
+          {disabled ? (
+            <div className="h-7 w-7 rounded-full border bg-[#ddd]" />
+          ) : (
+            !customColor &&
+            selectColor !== customColor && (
+              <Image
+                width={28}
+                height={28}
+                alt="사용자 정의 색상"
+                src="/cake/custom-color.png"
+                className="h-7 w-7"
+              />
+            )
           )}
           {customColor ? (
             <div className="relative z-20 h-7 w-7 overflow-hidden rounded-full border">

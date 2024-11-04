@@ -1,6 +1,7 @@
 "use client"
 import Link from "next/link"
 import { useParams } from "next/navigation"
+import { useState } from "react"
 
 // store
 import useCake from "@/stores/cake"
@@ -25,6 +26,7 @@ export default function CreateCakeShapePage() {
   const uri = params?.uri
   const event_id = params.event_id
   const { cake, updateCakeDecoShape, updateCakeDecoColor } = useCake()
+  const [disabledColor, setDisabledColor] = useState(false)
 
   return (
     <>
@@ -40,7 +42,10 @@ export default function CreateCakeShapePage() {
           title="모양"
           items={[
             {
-              onClick: () => updateCakeDecoShape(cakeDecoShape.cream),
+              onClick: () => {
+                updateCakeDecoShape(cakeDecoShape.cream)
+                setDisabledColor(false)
+              },
               isSelected: cake.deco_shape === cakeDecoShape.cream,
               Item: () => (
                 <DecoCream
@@ -49,14 +54,20 @@ export default function CreateCakeShapePage() {
               ),
             },
             {
-              onClick: () => updateCakeDecoShape(cakeDecoShape.line),
+              onClick: () => {
+                updateCakeDecoShape(cakeDecoShape.line)
+                setDisabledColor(true)
+              },
               isSelected: cake.deco_shape === cakeDecoShape.line,
               Item: () => (
                 <DecoLine isSelected={cake.deco_shape === cakeDecoShape.line} />
               ),
             },
             {
-              onClick: () => updateCakeDecoShape(cakeDecoShape.sprinkles),
+              onClick: () => {
+                updateCakeDecoShape(cakeDecoShape.sprinkles)
+                setDisabledColor(true)
+              },
               isSelected: cake.deco_shape === cakeDecoShape.sprinkles,
               Item: () => (
                 <DecoSprinkles
@@ -65,7 +76,10 @@ export default function CreateCakeShapePage() {
               ),
             },
             {
-              onClick: () => updateCakeDecoShape(cakeDecoShape.heart),
+              onClick: () => {
+                updateCakeDecoShape(cakeDecoShape.heart)
+                setDisabledColor(false)
+              },
               isSelected: cake.deco_shape === cakeDecoShape.heart,
               Item: () => (
                 <DecoHeart
@@ -74,7 +88,10 @@ export default function CreateCakeShapePage() {
               ),
             },
             {
-              onClick: () => updateCakeDecoShape(cakeDecoShape.flower),
+              onClick: () => {
+                updateCakeDecoShape(cakeDecoShape.flower)
+                setDisabledColor(true)
+              },
               isSelected: cake.deco_shape === cakeDecoShape.flower,
               Item: () => (
                 <DecoFlower
@@ -83,7 +100,10 @@ export default function CreateCakeShapePage() {
               ),
             },
             {
-              onClick: () => updateCakeDecoShape(cakeDecoShape.carrot),
+              onClick: () => {
+                updateCakeDecoShape(cakeDecoShape.carrot)
+                setDisabledColor(true)
+              },
               isSelected: cake.deco_shape === cakeDecoShape.carrot,
               Item: () => (
                 <DecoCarrot
@@ -98,6 +118,7 @@ export default function CreateCakeShapePage() {
           items={cakeColors}
           selectColor={cake.deco_color}
           setColor={updateCakeDecoColor}
+          disabled={disabledColor}
         />
 
         <div className="flex gap-5 pb-10">
