@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link"
 import { useParams } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 // store
 import useCake from "@/stores/cake"
@@ -27,6 +27,12 @@ export default function CreateCakeShapePage() {
   const event_id = params.event_id
   const { cake, updateCakeDecoShape, updateCakeDecoColor } = useCake()
   const [disabledColor, setDisabledColor] = useState(false)
+
+  useEffect(() => {
+    if (cake.deco_shape == null) {
+      updateCakeDecoColor(null)
+    }
+  }, [cake.deco_shape])
 
   return (
     <>
@@ -57,6 +63,7 @@ export default function CreateCakeShapePage() {
               onClick: () => {
                 updateCakeDecoShape(cakeDecoShape.line)
                 setDisabledColor(true)
+                updateCakeDecoColor(null)
               },
               isSelected: cake.deco_shape === cakeDecoShape.line,
               Item: () => (
@@ -67,6 +74,7 @@ export default function CreateCakeShapePage() {
               onClick: () => {
                 updateCakeDecoShape(cakeDecoShape.sprinkles)
                 setDisabledColor(true)
+                updateCakeDecoColor(null)
               },
               isSelected: cake.deco_shape === cakeDecoShape.sprinkles,
               Item: () => (
@@ -91,6 +99,7 @@ export default function CreateCakeShapePage() {
               onClick: () => {
                 updateCakeDecoShape(cakeDecoShape.flower)
                 setDisabledColor(true)
+                updateCakeDecoColor(null)
               },
               isSelected: cake.deco_shape === cakeDecoShape.flower,
               Item: () => (
@@ -103,6 +112,7 @@ export default function CreateCakeShapePage() {
               onClick: () => {
                 updateCakeDecoShape(cakeDecoShape.carrot)
                 setDisabledColor(true)
+                updateCakeDecoColor(null)
               },
               isSelected: cake.deco_shape === cakeDecoShape.carrot,
               Item: () => (
