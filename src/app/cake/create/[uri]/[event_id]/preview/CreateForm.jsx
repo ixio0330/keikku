@@ -16,13 +16,13 @@ import useCake from "@/stores/cake"
 import Input from "@/components/common/Input"
 import Spinner from "@/components/common/Spinner"
 
-export default function CreateForm({ isGuest = true }) {
+export default function CreateForm({ isGuest = true, uri, eventId }) {
   const router = useRouter()
   const { cake, resetCake } = useCake()
   const { addNewCake } = useActiveCakes()
 
   const actionCreateCake = async (formData) => {
-    const createForm = { ...cake }
+    const createForm = { ...cake, uri, event_id: eventId }
     delete createForm.uri
 
     const { success, message, data } = await createCake({
@@ -41,7 +41,7 @@ export default function CreateForm({ isGuest = true }) {
       icon: "🍰",
     })
     addNewCake(data)
-    router.push(`/${cake.uri}`)
+    router.push(`/${uri}`)
     resetCake()
   }
 
@@ -63,7 +63,7 @@ export default function CreateForm({ isGuest = true }) {
       )}
       <div className="flex gap-5 pb-10">
         <Link
-          href="/cake/create/deco"
+          href={`/cake/create/${uri}/${eventId}/deco`}
           className="font-xs box-border w-2/5 rounded-lg border border-primary bg-primary bg-white p-2 text-center font-semibold text-primary"
         >
           이전

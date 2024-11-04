@@ -2,19 +2,17 @@
 
 import Image from "next/image"
 import Link from "next/link"
-
-// store
-import useCake from "@/stores/cake"
+import { useParams } from "next/navigation"
 
 import { MdHomeFilled } from "react-icons/md"
 
 export default function CreateCakeLayout({ children }) {
-  const { cake } = useCake()
+  const params = useParams()
 
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-50 mx-auto flex h-16 w-full max-w-content items-center justify-between bg-white px-content">
-        <Link href={`/${cake.uri ?? "/"}`} className="text-primary">
+        <Link href={`/${params.uri ?? "/"}`} className="text-primary">
           <MdHomeFilled size={28} />
         </Link>
         <h1 className="text-lg font-bold">케이크 제작</h1>

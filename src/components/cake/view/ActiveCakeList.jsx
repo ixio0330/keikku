@@ -72,9 +72,9 @@ export default function ActiveCakeList({ eventId }) {
             alt="쇼케이스 사진"
             src="/main/showcase.png"
           />
-          <ul className="absolute left-0 top-0 grid h-full w-full grid-cols-3 gap-5 px-6 py-4">
+          <ul className="absolute left-0 top-0 grid h-full w-full grid-cols-3 grid-rows-3 gap-5 px-6 py-4">
             {page[currentPage]?.map((props, idx) => (
-              <Cake key={`cake-${props.id}-${idx}`} cake={props} />
+              <Cake key={`cake-${idx}`} cake={props} />
             ))}
           </ul>
         </div>

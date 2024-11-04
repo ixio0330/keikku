@@ -11,8 +11,6 @@ import {
 } from "@/constants"
 
 const cakeAtom = atom({
-  uri: null, // 사용자 uri
-  event_id: null, // 이벤트 ID
   sender_name: null, // 보낸 사람: 익명 사용자는 이름 입력
   message: null, // 작성한 메시지
   cake_shape: cakeShape.circle, // 케이크 모양

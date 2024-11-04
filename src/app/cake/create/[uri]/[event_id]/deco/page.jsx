@@ -1,31 +1,35 @@
 "use client"
 import Link from "next/link"
+import { useParams } from "next/navigation"
 
 // store
 import useCake from "@/stores/cake"
 
 // component
-import Tab from "../Tab"
 import CakeFrame from "@/components/cake/make/CakeFrame"
-import ShapeList from "@/components/cake/make/ShapeList"
 import ColorList from "@/components/cake/make/ColorList"
+import ShapeList from "@/components/cake/make/ShapeList"
+import Tab from "../Tab"
 
 // constants
-import { cakeColors, cakeDecoShape } from "@/constants"
+import DecoCarrot from "@/components/cake/make/deco/DecoCarrot"
 import DecoCream from "@/components/cake/make/deco/DecoCream"
+import DecoFlower from "@/components/cake/make/deco/DecoFlower"
+import DecoHeart from "@/components/cake/make/deco/DecoHeart"
 import DecoLine from "@/components/cake/make/deco/DecoLine"
 import DecoSprinkles from "@/components/cake/make/deco/DecoSprinkles"
-import DecoHeart from "@/components/cake/make/deco/DecoHeart"
-import DecoFlower from "@/components/cake/make/deco/DecoFlower"
-import DecoCarrot from "@/components/cake/make/deco/DecoCarrot"
+import { cakeColors, cakeDecoShape } from "@/constants"
 
 export default function CreateCakeShapePage() {
+  const params = useParams()
+  const uri = params?.uri
+  const event_id = params.event_id
   const { cake, updateCakeDecoShape, updateCakeDecoColor } = useCake()
 
   return (
     <>
       {/* 탭 메뉴 */}
-      <Tab currentTab="데코" />
+      <Tab currentTab="데코" uri={params?.uri} eventId={params?.event_id} />
 
       {/* 케이크 틀 */}
       <CakeFrame />
@@ -98,14 +102,14 @@ export default function CreateCakeShapePage() {
 
         <div className="flex gap-5 pb-10">
           <Link
-            href="/cake/create/outline"
+            href={`/cake/create/${uri}/${event_id}/outline`}
             className="font-xs box-border w-2/5 rounded-lg border border-primary bg-primary bg-white p-2 text-center font-semibold text-primary"
           >
             이전
           </Link>
 
           <Link
-            href="/cake/create/preview"
+            href={`/cake/create/${uri}/${event_id}/preview`}
             className="font-xs box-border w-full rounded-lg border border-primary bg-primary p-2 text-center font-semibold text-white"
           >
             다음

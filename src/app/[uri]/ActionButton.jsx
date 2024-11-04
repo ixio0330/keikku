@@ -8,10 +8,8 @@ import Avatar from "@/components/common/Avatar"
 import Modal from "@/components/common/Modal"
 
 // store
-import useCake from "@/stores/cake"
 
 export default function ActionButton({ activeEvent, isOwner, uri }) {
-  const { updateUri, updateEvent } = useCake()
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const onClickCopyToClipboard = async () => {
@@ -103,12 +101,8 @@ export default function ActionButton({ activeEvent, isOwner, uri }) {
           </>
         ) : (
           <Link
-            href="/cake/create/shape"
+            href={`/cake/create/${uri}/${activeEvent?.id}/shape`}
             className="m-auto box-border w-full rounded-lg border border-primary bg-primary p-2 text-white"
-            onClick={() => {
-              updateUri(uri)
-              updateEvent(activeEvent?.id)
-            }}
           >
             케이크 선물하기
           </Link>

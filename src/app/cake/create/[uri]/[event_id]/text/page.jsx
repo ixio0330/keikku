@@ -1,5 +1,6 @@
 "use client"
 import Link from "next/link"
+import { useParams } from "next/navigation"
 
 // store
 import useCake from "@/stores/cake"
@@ -19,6 +20,9 @@ import {
 } from "@/constants"
 
 export default function CreateCakeShapePage() {
+  const params = useParams()
+  const uri = params?.uri
+  const event_id = params.event_id
   const {
     cake,
     updateCakeTextColor,
@@ -32,7 +36,7 @@ export default function CreateCakeShapePage() {
   return (
     <>
       {/* 탭 메뉴 */}
-      <Tab currentTab="텍스트" />
+      <Tab currentTab="텍스트" uri={params?.uri} eventId={params?.event_id} />
 
       {/* 케이크 틀 */}
       <CakeFrame>
@@ -141,14 +145,14 @@ export default function CreateCakeShapePage() {
 
         <div className="flex gap-5 pb-10">
           <Link
-            href="/cake/create/shape"
+            href={`/cake/create/${uri}/${event_id}/shape`}
             className="font-xs box-border w-2/5 rounded-lg border border-primary bg-primary bg-white p-2 text-center font-semibold text-primary"
           >
             이전
           </Link>
 
           <Link
-            href="/cake/create/outline"
+            href={`/cake/create/${uri}/${event_id}/outline`}
             className="font-xs box-border w-full rounded-lg border border-primary bg-primary p-2 text-center font-semibold text-white"
           >
             다음

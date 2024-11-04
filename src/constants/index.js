@@ -33,22 +33,22 @@ export const cakeTabs = [
   {
     id: "shape",
     name: "모양",
-    href: "/cake/create/shape",
+    href: "shape",
   },
   {
     id: "text",
     name: "텍스트",
-    href: "/cake/create/text",
+    href: "text",
   },
   {
     id: "outline",
     name: "테두리",
-    href: "/cake/create/outline",
+    href: "outline",
   },
   {
     id: "deco",
     name: "데코",
-    href: "/cake/create/deco",
+    href: "deco",
   },
 ]
 
