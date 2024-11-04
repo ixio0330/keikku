@@ -1,6 +1,7 @@
 "use client"
 import Link from "next/link"
 import { useParams } from "next/navigation"
+import { useEffect } from "react"
 
 // store
 import useCake from "@/stores/cake"
@@ -22,6 +23,12 @@ export default function CreateCakeShapePage() {
   const uri = params?.uri
   const event_id = params.event_id
   const { cake, updateCakeOutlineShape, updateCakeOutlineColor } = useCake()
+
+  useEffect(() => {
+    if (cake.outline_shape == null) {
+      updateCakeOutlineColor(null)
+    }
+  }, [cake.outline_shape])
 
   return (
     <>
