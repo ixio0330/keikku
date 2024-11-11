@@ -10,6 +10,7 @@ import { getUserInfoFromCookie } from "@/utils/cookie"
 // component
 import AppHeader from "@/components/app/Header"
 import ActiveCakeList from "@/components/cake/view/ActiveCakeList"
+import Notfound from "@/components/common/Notfound"
 import ActionButton from "./ActionButton"
 
 export default async function KeikkuPage({ params }) {
@@ -17,7 +18,7 @@ export default async function KeikkuPage({ params }) {
   const isActiveUser = await isExistUser(uri)
 
   if (isActiveUser === false) {
-    return <div>존재하지 않는 사용자에요.</div>
+    return <Notfound message="탈퇴한 사용자에요" />
   }
 
   const { data: activeEvent } = await getActiveEventByUri(uri)
