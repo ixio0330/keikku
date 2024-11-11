@@ -10,7 +10,6 @@ import { getUserInfoFromCookie } from "@/utils/cookie"
 // component
 import AppHeader from "@/components/app/Header"
 import ActiveCakeList from "@/components/cake/view/ActiveCakeList"
-import { IoMdCalendar } from "react-icons/io"
 import ActionButton from "./ActionButton"
 
 export default async function KeikkuPage({ params }) {
@@ -32,20 +31,14 @@ export default async function KeikkuPage({ params }) {
       <main className="m-auto mt-16 min-h-[calc(100vh-64px)] max-w-content bg-background pb-10">
         <section className="relative overflow-hidden px-content">
           {activeEvent ? (
-            <div className="space-y">
+            <div className="space-y-2">
               <p className="text-sm">
                 {activeEvent.username}님이 진행중인 이벤트에요!
               </p>
               <p className="text-xl font-bold">{activeEvent.name}</p>
-              <div className="flex items-center gap-2 text-sm text-gray-400">
-                <IoMdCalendar size={20} />
-                <p>{activeEvent.date}</p>
-                {activeEvent.category && (
-                  <>
-                    <div className="h-4 w-px bg-gray-400" />
-                    <p>{activeEvent.category}</p>
-                  </>
-                )}
+              <div className="flex items-center gap-2 text-sm">
+                <p className="text-gray-400">{activeEvent.date}</p>
+                <p className="text-[#FF6341]">{activeEvent.category}</p>
               </div>
               {isOwner && (
                 <Link
@@ -53,9 +46,9 @@ export default async function KeikkuPage({ params }) {
                     pathname: "/event/update",
                     query: { id: activeEvent.id },
                   }}
-                  className="inline-block rounded-full bg-primary px-2 py-px text-white"
+                  className="inline-block rounded-lg border border-primary bg-white px-2 py-[2px] text-sm text-primary"
                 >
-                  수정하기
+                  이벤트 수정
                 </Link>
               )}
             </div>
