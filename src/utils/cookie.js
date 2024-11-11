@@ -5,7 +5,7 @@ export const setUserInfoInCookie = (userInfo) => {
   try {
     const token = genToken(userInfo)
     const cookieStore = cookies()
-    cookieStore.set("keikku-token", token)
+    cookieStore.set("keikku-token", token, { httpOnly: true })
     return true
   } catch (err) {
     return false
