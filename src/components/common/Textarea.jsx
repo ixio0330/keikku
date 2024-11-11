@@ -16,7 +16,7 @@ export default function Textarea({
         value={value}
         onChange={(e) => setValue(e.target.value)}
         maxLength={maxLength}
-        className={`h-28 w-full resize-none bg-transparent p-2 text-sm outline-none ${value ? "border border-green-600" : "border"} ${className}`}
+        className={`h-28 w-full resize-none rounded-lg border bg-transparent bg-white p-2 text-sm text-stone-700 outline-none focus:border-primary ${className}`}
         {...props}
       />
       {maxLength && typeof value === "string" && (

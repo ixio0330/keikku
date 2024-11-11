@@ -147,7 +147,7 @@ export const updateUsername = async (name) => {
   }
 }
 
-export const removeUser = async ({ leave_category_id = null }) => {
+export const removeUser = async ({ leave_category_id = null, description }) => {
   const userInfo = getUserInfoFromCookie()
   if (!userInfo || !Number(userInfo.id)) {
     return {
@@ -185,7 +185,9 @@ export const removeUser = async ({ leave_category_id = null }) => {
   resetCookie()
 
   if (leave_category_id) {
-    await supabase.from(T_LEAVES).insert([{ category_id: leave_category_id }])
+    await supabase
+      .from(T_LEAVES)
+      .insert([{ category_id: leave_category_id, description }])
   }
 
   return {

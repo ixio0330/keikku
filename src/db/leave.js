@@ -8,7 +8,8 @@ export const getLeaveCategories = async () => {
 
   const { data, error } = await supabase
     .from(T_LEAVE_CATEGORIES)
-    .select("id , description")
+    .select("id , description, enable_description")
+    .order("id")
 
   if (error) {
     return {
@@ -19,9 +20,10 @@ export const getLeaveCategories = async () => {
 
   return {
     success: true,
-    data: data.map(({ id, description }) => ({
+    data: data.map(({ id, description, enable_description }) => ({
       value: id,
       name: description,
+      enable_description: enable_description,
     })),
   }
 }
