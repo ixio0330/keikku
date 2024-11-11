@@ -82,7 +82,7 @@ export default function ActiveCakeList({ eventId }) {
 
       {eventId && 0 < totalPages && (
         <div className="flex items-center justify-center pt-5">
-          <div className="flex items-center rounded-full bg-primary p-1 text-sm text-white">
+          <div className="flex items-center rounded-full bg-stone-700 p-px text-sm text-white">
             <button
               className="p-1"
               onClick={handlePreviousPage}
