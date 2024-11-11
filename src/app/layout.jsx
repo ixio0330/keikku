@@ -1,14 +1,7 @@
 import KakaoScript from "@/components/script/KakaoScript"
-import localFont from "next/font/local"
 import { Toaster } from "react-hot-toast"
+import { pretendard } from "./fonts"
 import "./globals.css"
-
-const pretendard = localFont({
-  src: "./fonts/PretendardVariable.woff2",
-  display: "swap",
-  weight: "45 920",
-  variable: "--font-pretendard",
-})
 
 export const viewport = {
   width: "device-width",
