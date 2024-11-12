@@ -68,7 +68,7 @@ export default function AgreementCheck() {
         />
         <span className="mx-1 text-red-500">(필수)</span>
         <Link
-          href="https://www.notion.so/12154d562f878042b8f7f4326125d9a1"
+          href="https://equal-dragon-59f.notion.site/12154d562f878042b8f7f4326125d9a1"
           target="_blank"
           className="mr-1 text-stone-700 underline"
         >
@@ -76,7 +76,7 @@ export default function AgreementCheck() {
         </Link>
         및
         <Link
-          href="https://www.notion.so/12154d562f87803d935ec73d7e262205"
+          href="https://equal-dragon-59f.notion.site/12154d562f87803d935ec73d7e262205"
           target="_blank"
           className="ml-1 text-stone-700 underline"
         >
