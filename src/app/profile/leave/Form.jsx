@@ -1,12 +1,15 @@
 "use client"
 
+import Modal from "@/components/common/Modal"
 import Select from "@/components/common/Select"
+import Spinner from "@/components/common/Spinner"
 import Textarea from "@/components/common/Textarea"
 import { removeUser } from "@/db/auth"
+import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
+import { useFormStatus } from "react-dom"
 import toast from "react-hot-toast"
-import Submit from "./Submit"
 
 export default function Form({ username, options }) {
   const router = useRouter()
@@ -55,5 +58,50 @@ export default function Form({ username, options }) {
       )}
       <Submit />
     </form>
+  )
+}
+
+function Submit() {
+  const { pending } = useFormStatus()
+  const [isModalOpen, setIsModalOpen] = useState()
+  return (
+    <div className="flex gap-5">
+      <Link
+        href="/profile"
+        className="font-xs box-border w-2/5 rounded-lg border border-primary bg-primary bg-white p-2 text-center font-semibold text-primary"
+      >
+        돌아가기
+      </Link>
+      <button
+        onClick={() => setIsModalOpen(true)}
+        className="font-xs box-border w-full rounded-lg border border-primary bg-primary p-2 font-semibold text-white"
+      >
+        계정 탈퇴
+      </button>
+
+      <Modal open={isModalOpen}>
+        <div className="space-y-5">
+          <p className="p-5 text-center">계정을 탈퇴하시겠어요?</p>
+          <div className="flex gap-5">
+            <button
+              type="button"
+              disabled={pending}
+              onClick={() => setIsModalOpen(false)}
+              className="font-xs box-border w-1/2 rounded-lg border border-stone-400 bg-white p-2 text-center font-semibold text-stone-400"
+            >
+              취소
+            </button>
+            <button
+              type="submit"
+              disabled={pending}
+              className="font-xs box-border w-full rounded-lg border border-primary bg-primary p-2 text-center font-semibold text-white"
+            >
+              저장
+            </button>
+            {pending && <Spinner />}
+          </div>
+        </div>
+      </Modal>
+    </div>
   )
 }
