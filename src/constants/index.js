@@ -191,17 +191,19 @@ export const appMenus = [
 
 export const profileMenus = [
   {
-    href: "/profile/notice",
+    href: "https://equal-dragon-59f.notion.site/13c54d562f8780738838c487113e20fd",
     name: "공지사항",
+    target: "_blank",
   },
   {
-    href: "https://equal-dragon-59f.notion.site/12154d562f8780768c65ffd7e83ce24a",
+    href: "https://equal-dragon-59f.notion.site/13c54d562f878010a4a5e69140d04bf0",
     name: "이용약관/개인정보처리방침",
     target: "_blank",
   },
   {
-    href: "/profile/faq",
+    href: "https://equal-dragon-59f.notion.site/13c54d562f8780f69c3ef81a6444c1ee",
     name: "자주 묻는 질문",
+    target: "_blank",
   },
   // {
   //   href: "/profile/app",
